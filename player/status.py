@@ -23,12 +23,10 @@
 
 import os, time
 from assets.config import Char
-from assets.things import clearScreen
 from menus.menu import menu
 
 #Just print the status.
 def status():
-    clearScreen()
     print(f"Nome: {Char.Name}")
     print(f"\033[32mVida:\033[0m {Char.health}")
     print(f"\033[36mMana:\033[0m {Char.mana}")

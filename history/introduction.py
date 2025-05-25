@@ -3,7 +3,6 @@
 
 import os, time
 from assets.config import Char
-from assets.things import clearScreen
 from assets.things import typedPrint
 from assets.config import Config
 from menus.menu import menu

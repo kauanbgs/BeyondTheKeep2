@@ -1,113 +1,119 @@
-#File made by: Kauan
-
-
-from player.status import Char
-import os
+import curses
 import time
-from assets.things import clearScreen
-from assets.config import Config
-from assets.config import Char
+from assets.things import typedPrint, randomVillage
+from assets.config import Config, Char
 from menus.menu import menu
-from assets.things import randomVillage
 from history.villages.villageEldoria import eldoriaIntro
 from history.villages.villageBrumaria import brumariaIntro
 from history.villages.villageVentogard import ventogardIntro
 from history.villages.villageSkaldenheim import skaldenheim
 
 
-def areas():
+def areas(stdscr):
+    curses.curs_set(0)
+    curses.start_color()
+    curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)  # Normal
+    curses.init_pair(2, curses.COLOR_BLACK, curses.COLOR_CYAN)   # Selecionado
 
-  from assets.things import typedPrint
+    selecionado = 0
 
-  clearScreen()
-  Char.where = "Placa de Sinalização"
-  print(f"Você está atualmente em: {Char.where}\n")
-  print("Você pode ir para: ")
-  print("[0] - Voltar a praia")
-  print("[1] - Procurar vila")
-  if Char.veioEldoria:
-    print("[2] - Eldoria - TAVERNA")
-  if Char.veioBrumaria:
-    print("[3] - Brumaria - FERREIRO")
-  if Char.veioVentogard:
-    print("[4] - Ventogard - MEMÓRIAS")
-    
-  option = input("Escolha uma opção: ")
+    while True:
+        stdscr.clear()
+        altura, largura = stdscr.getmaxyx()
 
-  if not option.isdigit():
-    clearScreen()
-    print("Opção inválida!")
-    time.sleep(1)
-    areas()
-  else:
-    option = int(option)
+        opcoes = ["Voltar à praia", "Procurar vila"]
+        if Char.veioEldoria:
+            opcoes.append("Eldoria - TAVERNA")
+        if Char.veioBrumaria:
+            opcoes.append("Brumaria - FERREIRO")
+        if Char.veioVentogard:
+            opcoes.append("Ventogard - MEMÓRIAS")
 
-  if option == 0:
-    clearScreen()
-    typedPrint("voltando para a praia...\n", Config.speed)
-    time.sleep(0.5)
-    menu()
-    
-  
-  if option == 1:
-    clearScreen()
-    if randomVillage() == "Eldoria":
-      typedPrint("Você encontrou Eldoria!\n", Config.speed)
-      time.sleep(0.5)
-      eldoriaIntro()
-    if randomVillage() == "Brumaria":
-      typedPrint("Você encontrou Brumaria!\n", Config.speed)
-      time.sleep(0.5)
-      brumariaIntro()
-    if randomVillage() == "Ventogard":
-      typedPrint("Você encontrou Ventogard!\n", Config.speed)
-      time.sleep(0.5)
-      ventogardIntro()
-    if randomVillage() == "Skaldenheim":
-      typedPrint("Você encontrou Skaldenheim!\n", Config.speed)
-      time.sleep(0.5)
-      skaldenheim()
+        titulo = f"Você está em: {Char.where if Char.where else 'Placa de Sinalização'}"
+        stdscr.addstr(1, (largura - len(titulo)) // 2, titulo)
+        stdscr.addstr(3, 2, "[ESC] Voltar ao menu")
 
-  elif option == 2:
-    if Char.veioEldoria:
-      clearScreen()
-      typedPrint(f"{Char.Name} está indo para Eldoria...\n", Config.speed)
-      time.sleep(0.5)
-      eldoriaIntro()
-    else:
-      clearScreen()
-      print(f"{Char.name} ainda não desbloqueou isso.")
-      time.sleep(2)
-      areas()
+        for i, opcao in enumerate(opcoes):
+            x = 4
+            y = 5 + i
+            if i == selecionado:
+                stdscr.attron(curses.color_pair(2))
+                stdscr.addstr(y, x, f"> {opcao}")
+                stdscr.attroff(curses.color_pair(2))
+            else:
+                stdscr.addstr(y, x, f"  {opcao}")
 
-  elif option == 3:
-    if Char.veioBrumaria:
-      clearScreen()
-      typedPrint(f"{Char.Name} está indo para Brumaria...\n", Config.speed)
-      time.sleep(0.5)
-      brumariaIntro()
-    else:
-      clearScreen()
-      print(f"{Char.name} ainda não desbloqueou isso.")
-      time.sleep(2)
-      areas()
+        stdscr.refresh()
 
-  elif option == 3:
-    if Char.veioVentogard:
-      clearScreen()
-      typedPrint(f"{Char.Name} está indo para Ventogard...\n", Config.speed)
-      time.sleep(0.5)
-      brumariaIntro()
-    else:
-      clearScreen()
-      print(f"{Char.name} ainda não desbloqueou isso.")
-      time.sleep(2)
-      areas()
-    
+        tecla = stdscr.getch()
 
-  
-  else:
-    clearScreen()
-    print("Opção não existente.")
-    time.sleep(1)
-    areas()
+        if tecla == curses.KEY_UP and selecionado > 0:
+            selecionado -= 1
+        elif tecla == curses.KEY_DOWN and selecionado < len(opcoes) - 1:
+            selecionado += 1
+        elif tecla == 27:  # ESC
+            menu(stdscr)
+            return
+        elif tecla in [10, 13]:  # ENTER
+            opcao = opcoes[selecionado]
+
+            if opcao == "Voltar à praia":
+                stdscr.clear()
+                Char.where = "Praia"
+                typedPrint("Voltando para a praia...\n", Config.speed)
+                time.sleep(0.5)
+                menu(stdscr)
+                return
+
+            elif opcao == "Procurar vila":
+                stdscr.clear()
+                vila = randomVillage()
+
+                typedPrint(f"Você encontrou {vila}!\n", Config.speed)
+                time.sleep(0.5)
+
+                if vila == "Eldoria":
+                    eldoriaIntro(stdscr)
+                elif vila == "Brumaria":
+                    brumariaIntro(stdscr)
+                elif vila == "Ventogard":
+                    ventogardIntro(stdscr)
+                elif vila == "Skaldenheim":
+                    skaldenheim(stdscr)
+                return
+
+            elif opcao == "Eldoria - TAVERNA":
+                if Char.veioEldoria:
+                    stdscr.clear()
+                    typedPrint(f"{Char.Name} está indo para Eldoria...\n", Config.speed)
+                    time.sleep(0.5)
+                    eldoriaIntro(stdscr)
+                else:
+                    msg = "Você ainda não desbloqueou Eldoria."
+                    stdscr.addstr(altura//2, (largura - len(msg))//2, msg)
+                    stdscr.refresh()
+                    time.sleep(2)
+
+            elif opcao == "Brumaria - FERREIRO":
+                if Char.veioBrumaria:
+                    stdscr.clear()
+                    typedPrint(f"{Char.Name} está indo para Brumaria...\n", Config.speed)
+                    time.sleep(0.5)
+                    brumariaIntro(stdscr)
+                else:
+                    msg = "Você ainda não desbloqueou Brumaria."
+                    stdscr.addstr(altura//2, (largura - len(msg))//2, msg)
+                    stdscr.refresh()
+                    time.sleep(2)
+
+            elif opcao == "Ventogard - MEMÓRIAS":
+                if Char.veioVentogard:
+                    stdscr.clear()
+                    typedPrint(f"{Char.Name} está indo para Ventogard...\n", Config.speed)
+                    time.sleep(0.5)
+                    ventogardIntro(stdscr)
+                else:
+                    msg = "Você ainda não desbloqueou Ventogard."
+                    stdscr.addstr(altura//2, (largura - len(msg))//2, msg)
+                    stdscr.refresh()
+                    time.sleep(2)

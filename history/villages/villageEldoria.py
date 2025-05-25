@@ -3,7 +3,7 @@
 from player.status import Char
 import os
 import time
-from assets.things import clearScreen
+
 from assets.things import typedPrint
 from menus.menu import menu
 from assets.config import Config

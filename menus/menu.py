@@ -86,7 +86,8 @@ def menu(stdscr):
              return
             #ADICIONAR LOGICA DE EQUIPAMENTOS
           elif opcoes[selecionado] == "Explorar":
-             return
+            from menus.areas import areas
+            areas(stdscr)
             #ADICIONAR LOGICA DE EXPLORAR
           elif opcoes[selecionado] == "Sair":
             break  # Sair do loop e fechar o menu inicial

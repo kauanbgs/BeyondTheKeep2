@@ -1,71 +1,60 @@
-#File made by: Kauan, Rafael
-
-import time
 from assets.config import Char
-from assets.itens import Itens
-from assets.things import clearScreen
-from menus.menu import menu
-from player.inventory import inventoryItens
-from assets.config import Config
+import curses
 from assets.things import typedPrint
-from assets.things import revealChar
+import time
+from menus.menu import menu
 
-def comprar_item(item):
-    name = item["nome"]
-    price = item["preco"]
 
-    # Verifica se o jogador tem moedas suficientes
-    if Char.coins >= price:
-        inventoryItens.append(item)
-        Char.coins -= price
-        print(f"Você comprou {name} por {price} moedas!")
-    else:
-        print("Você não tem moedas suficientes!")
 
-    time.sleep(2)
+textosIntro2 = [
+        "Ao chegar em Eldoria, você sente o cheiro de aventura no ar. O vilarejo é pequeno, mas vibrante.",
+        "A taverna local, 'A Taverna do Dragão', é o coração da vila. Aqui, histórias são contadas e alianças são formadas.",
+        "Você entra na taverna e é recebido por um caloroso sorriso do taverneiro.",
+    ]
 
 def tavernIntro():
-    if Char.veioTavern:
+    if Char.veioTaverna:
         tavern()
-    Char.veioTavern = True
-    clearScreen()
-    revealChar("\033[33mGrog\033[0m", "Eai, sô! Seja bem vindo a taverna!", "to vendendo essas paradas ai, quarque coisa ce da um toque!" )
-    tavern()
+    stdscr = curses.initscr()
+    curses.curs_set(0)
+    curses.start_color()
+    curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)
+    curses.init_pair(2, curses.COLOR_BLACK, curses.COLOR_CYAN)
+
+    stdscr.clear()
+    stdscr.border()
+
+    altura, largura = stdscr.getmaxyx()
+    x = 2
+    y = 2
+
+    # Mostra os textos
+    for texto in textosIntro2:
+        typedPrint(stdscr, texto, y, x)
+        y += 2
+        time.sleep(0.5)
+
+    stdscr.addstr(y + 1, x, "Pressione qualquer tecla para continuar...")
+    stdscr.refresh()
+    stdscr.getch()
+
+    menu(stdscr)
 
 def tavern():
-    Char.where = "Taverna"
-    
-    while True:
-        clearScreen()
-        mostrar_opcoes()
-        option = input("Escolha uma opção: ")
+    stdscr = curses.initscr()
+    curses.curs_set(0)
+    curses.start_color()
+    curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)
+    curses.init_pair(2, curses.COLOR_BLACK, curses.COLOR_CYAN)
 
-        if not option.isdigit():
-            clearScreen()
-            print("Opção inválida!")
-            time.sleep(1)
-            continue
+    stdscr.clear()
+    stdscr.border()
 
-        option = int(option)
+    altura, largura = stdscr.getmaxyx()
+    x = 2
+    y = 2
 
-        if option == 0:
-            clearScreen()
-            typedPrint("Saindo da taverna...", Config.speed)
-            time.sleep(1)
-            menu()
-            break
+    typedPrint(stdscr, "Você está na Taverna do Dragão.", y, x)
+    y += 2
 
-        elif 1 <= option <= len(Itens.tavern):
-            clearScreen()
-            choItem = Itens.tavern[option - 1]
-            comprar_item(choItem)
-        else:
-            clearScreen()
-            print("Opção inválida!")
-            time.sleep(1)
-
-def mostrar_opcoes():
-    print(f"Você tem {Char.coins} moedas, e está na {Char.where}!")
-    print("[0] - Voltar")
-    for index, item in enumerate(Itens.tavern, start=1):
-      print(f"\033[33mGrog\033[0m: [{index}] - {item['nome']} - {item['preco']} moedas")
+    menu(stdscr)
