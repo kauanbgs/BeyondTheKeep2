@@ -19,10 +19,7 @@ class Itens:
 
 
 class Village:
-    village_names = [
-    "Eldoria", "Brumária", "Ventogard", "Skaldenheim", "Ravenspire",
-    "Calthera", "Thornwick", "Montavela", "Dornbridge", "Luzern"
-    ]
+    village_names = ["Eldoria", "Brumária", "Calthera"]
 
 class Flashback:
     flashbacks = [

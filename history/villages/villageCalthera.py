@@ -4,57 +4,52 @@ from player.status import Char
 from assets.things import typedPrint
 from menus.menu import menu
 from assets.config import Config
-from areas.blacksmith import blacksmithIntro
 
 
-def brumariaIntro(stdscr):
+def caltheraIntro(stdscr):
     curses.curs_set(0)
-    curses.start_color()
-    curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)  # Normal
-    curses.init_pair(2, curses.COLOR_BLACK, curses.COLOR_CYAN)   # Selecionado
 
-    if Char.veioBrumaria:
-        brumaria(stdscr)
+    if Char.veioCalthera:
+        calthera(stdscr)
         return
 
     Char.villagesVisited += 1
-    Char.veioBrumaria = True
-    Char.where = "Brumaria"
+    Char.veioCalthera = True
+    Char.where = "Calthera"
 
     stdscr.clear()
     altura, largura = stdscr.getmaxyx()
 
     textos = [
-        f"Depois de muito tempo caminhando, {Char.Name} avistou Brumaria.",
-        "Onde as mais belas armas das dez vilas são formadas, bem vindo à terra da forja!",
-        f"Aqui, {Char.Name} pode acessar o Ferreiro."
+        f"Depois de muito tempo caminhando, {Char.Name} avistou Calthera.",
+        "Uma vila conhecida pelos duelos intrigantes e perigosos, onde os mais fortes guerreiros se reúnem.",
+        f"Aqui, {Char.Name} pode acessar os combates."
     ]
 
     for texto in textos:
         stdscr.clear()
         typedPrint(stdscr, texto, altura // 2, (largura - len(texto)) // 2, Config.speed)
-        stdscr.refresh()
         time.sleep(2)
 
-    brumaria(stdscr)
+    calthera(stdscr)
 
 
-def brumaria(stdscr):
+def calthera(stdscr):
     curses.curs_set(0)
     curses.start_color()
-    curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)  # Normal
-    curses.init_pair(2, curses.COLOR_BLACK, curses.COLOR_CYAN)   # Selecionado
+    curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)
+    curses.init_pair(2, curses.COLOR_BLACK, curses.COLOR_CYAN)
 
     selecionado = 0
-    opcoes = ["Voltar à praia", "Ferreiro"]
+    opcoes = ["Voltar à praia", "Duelar"]
 
     while True:
         stdscr.clear()
         altura, largura = stdscr.getmaxyx()
 
         titulo = f"Você está atualmente em: {Char.where}"
-        stdscr.addstr(1, (largura - len(titulo)) // 2, titulo)
-        stdscr.addstr(3, 2, "[ESC] Voltar ao menu")
+        stdscr.addstr(1, (largura - len(titulo)) // 2, titulo, curses.color_pair(1))
+        stdscr.addstr(3, 2, "[ESC] Voltar ao menu", curses.color_pair(1))
 
         for i, opcao in enumerate(opcoes):
             x = 4
@@ -83,14 +78,17 @@ def brumaria(stdscr):
             if opcao == "Voltar à praia":
                 stdscr.clear()
                 Char.where = "Praia"
-                typedPrint(stdscr, "Voltando para a praia...", altura // 2, (largura - len("Voltando para a praia...")) // 2, Config.speed)
-                time.sleep(1)
+                typedPrint(stdscr, "Voltando para a praia...", 5, 4, Config.speed)
+                time.sleep(0.5)
                 menu(stdscr)
                 return
 
-            elif opcao == "Ferreiro":
+            elif opcao == "Duelar":
                 stdscr.clear()
-                typedPrint(stdscr, "Indo ao Ferreiro...", altura // 2, (largura - len("Indo ao Ferreiro...")) // 2, Config.speed)
-                time.sleep(1)
-                blacksmithIntro(stdscr)
+                typedPrint(stdscr, "Indo duelar...", 5, 4, Config.speed)
+                time.sleep(0.5)
+                # Aqui você deve chamar a função que controla o sistema de duelo
+                # Exemplo (se existir): duelIntro(stdscr)
+                # Se não existir, volta pro menu provisoriamente:
+                menu(stdscr)
                 return

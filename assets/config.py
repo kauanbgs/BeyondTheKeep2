@@ -33,5 +33,7 @@ class Char:
   veioVentogard = False
   veioSkaldenheim = False
   veioTavern = False
+  veioCalthera = False
+  veioThornwick = False
 
 
