@@ -1,6 +1,6 @@
 import curses
 import time
-from player.status import Char
+from assets.config import Char
 from assets.things import typedPrint
 from menus.menu import menu
 from assets.config import Config
@@ -40,6 +40,10 @@ def brumariaIntro(stdscr):
 
 
 def brumaria(stdscr):
+
+    from menus.areas import areas
+
+
     curses.curs_set(0)
     curses.start_color()
     curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)  # Normal
@@ -85,7 +89,7 @@ def brumaria(stdscr):
                 Char.where = "Praia"
                 typedPrint(stdscr, "Voltando para a praia...", altura // 2, (largura - len("Voltando para a praia...")) // 2, Config.speed)
                 time.sleep(1)
-                menu(stdscr)
+                areas(stdscr)
                 return
 
             elif opcao == "Ferreiro":

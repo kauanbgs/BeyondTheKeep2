@@ -1,7 +1,7 @@
 import curses
 import time
 from assets.itens import Itens
-from player.status import Char
+from assets.config import Char
 from assets.config import Config
 from assets.things import typedPrint
 from menus.menu import menu

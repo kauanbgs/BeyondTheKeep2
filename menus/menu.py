@@ -1,6 +1,7 @@
 import curses
 import time
 from assets.things import animar_texto
+from player.status import status
 
 
 def menu(stdscr):
@@ -80,7 +81,7 @@ def menu(stdscr):
             from player.inventory import inventory
             inventory(stdscr)
           elif opcoes[selecionado] == "Status":
-             return
+             status(stdscr)
             #ADICIONAR LOGICA DE STATUS
           elif opcoes[selecionado] == "Equipamentos":
              return

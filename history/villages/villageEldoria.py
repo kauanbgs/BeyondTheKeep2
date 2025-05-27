@@ -1,10 +1,12 @@
 import curses
 import time
-from player.status import Char
+from assets.config import Char
 from assets.things import typedPrint
 from menus.menu import menu
 from assets.config import Config
 from areas.tavern import tavern
+
+
 
 
 def eldoriaIntro(stdscr):
@@ -36,6 +38,8 @@ def eldoriaIntro(stdscr):
 
 
 def eldoria(stdscr):
+    from menus.areas import areas
+
     curses.curs_set(0)
     curses.start_color()
     curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLACK)
@@ -81,7 +85,7 @@ def eldoria(stdscr):
                 Char.where = "Praia"
                 typedPrint(stdscr, "Voltando para a praia...", 5, 4, Config.speed)
                 time.sleep(0.5)
-                menu(stdscr)
+                areas(stdscr)
                 return
 
             elif opcao == "Taverna":

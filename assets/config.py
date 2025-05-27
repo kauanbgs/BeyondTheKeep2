@@ -9,7 +9,8 @@ class Char:
   classplayer = 0
   Name = "garbage"
   mana = 200 #CHANGE THIS
-  health = 100
+  health = 80 # CHANGE THIS
+  max_health = 100
   attack = 0
   attack_base = 1.3
   weapon = "garbage"

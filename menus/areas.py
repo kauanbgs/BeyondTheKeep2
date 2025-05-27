@@ -20,7 +20,7 @@ def areas(stdscr):
         stdscr.clear()
         altura, largura = stdscr.getmaxyx()
 
-        opcoes = ["Procurar vila", "Voltar à praia"]
+        opcoes = ["Procurar vila", "Voltar ao menu"]
         if Char.veioEldoria:
             opcoes.append("Eldoria - TAVERNA")
         if Char.veioBrumaria:
@@ -56,9 +56,9 @@ def areas(stdscr):
         elif tecla in [10, 13]:  # ENTER
             opcao = opcoes[selecionado]
 
-            if opcao == "Voltar à praia":
+            if opcao == "Voltar ao menu":
                 stdscr.clear()
-                Char.where = "Praia"
+                Char.where = "Menu"
                 stdscr.addstr(altura // 2, (largura - len("Voltando para a praia...")) // 2, "Voltando para a praia...")
                 stdscr.refresh()
                 time.sleep(0.8)

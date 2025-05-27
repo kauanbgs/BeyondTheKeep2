@@ -64,8 +64,6 @@ def randomVillage():
     return choice
 
 def updateStatus(stdscr, item):
-    from player.inventory import inventoryItens
-    from player.status import Char
 
     curses.curs_set(0)
     stdscr.clear()
