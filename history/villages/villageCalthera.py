@@ -92,5 +92,6 @@ def calthera(stdscr):
                 stdscr.clear()
                 typedPrint(stdscr, "Indo duelar...", 5, 4, Config.speed)
                 time.sleep(0.5)
-                duel(stdscr)
+                curses.endwin()
+                duel()
                 return
