@@ -13,4 +13,5 @@ from resources.duel import duel
 
 # curses.wrapper(menu)
 # curses.wrapper(duel)
-duel()
+# duel()
+menuInicial()
