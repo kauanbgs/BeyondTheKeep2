@@ -50,16 +50,9 @@ def escolhaClasse(stdscr):
     stdscr.clear()
     altura, largura = stdscr.getmaxyx()
 
-    textoApresentação1 = ("Você desperta, sentindo a areia fria sob seu corpo e o som das ondas quebrando na praia. "
-              "Ao abrir os olhos, percebe que está sozinho numa ilha deserta, cercado por uma densa floresta "
-              "e um céu cinzento que promete tempestade.")
-    textoApresentação2 = ("Enquanto tenta se levantar, algo chama sua atenção: duas armas repousam na areia, como se estivessem esperando por você."
-              "A primeira é uma Espada gasta pelo tempo, mas ainda forte — a arma dos Guerreiros."
-              "A segunda é um Cajado antigo, coberto de runas misteriosas — a arma dos Magos."
-              "Sua vida, Seu destino começam agora!")
+
   
-    typedPrint(stdscr, textoApresentação1, 2, 2)
-    typedPrint(stdscr, textoApresentação2, 4, 2)
+
     time.sleep(2)
 
 
