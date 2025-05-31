@@ -1,16 +1,12 @@
 import curses
 import time
 
-from menus.menu import menu 
 from menus.menuInicial import menuInicial  
-from player.inventory import inventory
-from history.introduction import intro
-from menus.areas import areas
-from history.villages.villageCalthera import calthera
-from resources.duel import duel
+# from player.inventory import inventory
+# from history.introduction import intro
+# from menus.areas import areas
+# from history.villages.villageCalthera import calthera
 
 
 
-# curses.wrapper(menu)
-# curses.wrapper(duel)
-duel()
+curses.wrapper(menuInicial)
