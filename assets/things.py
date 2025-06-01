@@ -3,6 +3,8 @@ import curses
 import random
 import os
 import time
+
+import pygame
 from assets.config import Char
 from assets.config import Config
 from assets.itens import Village
@@ -83,5 +85,21 @@ def updateStatus(stdscr, item):
     stdscr.addstr(altura//2, (largura - len(msg))//2, msg)
     stdscr.refresh()
     time.sleep(1.5)
+
+def draw_text(text, font, color, surface, x, y):
+    textobject = font.render(text, 1, color)
+    textrect = textobject.get_rect()
+    textrect.topleft = (x, y)
+    surface.blit(textobject, textrect)
+
+def escrever_texto_animado(texto, fonte, cor, x, y, velocidade, superficie):
+    texto_renderizado = ''
+    for letra in texto:
+        texto_renderizado += letra
+        render = fonte.render(texto_renderizado, True, cor)
+        superficie.blit(render, (x, y))
+        pygame.display.update()
+        pygame.time.delay(velocidade)
+
 
    

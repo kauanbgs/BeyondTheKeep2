@@ -1,18 +1,10 @@
-# import pygame
-# import math
-# import sys
+import pygame
+import math
+import sys
 
-# <<<<<<< HEAD
-# pygame.init()
-
-# WIDTH, HEIGHT = 800, 400
-# screen = pygame.display.set_mode((WIDTH, HEIGHT))
-# pygame.display.set_caption("Duelos Mágicos")
-# =======
-# def duel():
-#     from assets.config import Char
-#     import random
-# >>>>>>> 6df707ee969f364ae0b69945220cdc464f24c348
+def duel():
+    from assets.config import Char
+    import random
 
 # clock = pygame.time.Clock()
 
@@ -23,10 +15,8 @@
 # enemy_img = pygame.image.load("assets/images/magoParado.gif").convert_alpha()
 # enemy_img = pygame.transform.scale(enemy_img, (150, 150))
 
-# <<<<<<< HEAD
 # background = pygame.image.load("assets/images/background.jpg").convert()
 # background = pygame.transform.scale(background, (WIDTH, HEIGHT))
-# =======
 #     mago_frames = [
 #     pygame.transform.scale(pygame.image.load("assets/images/magoFrame1.png").convert_alpha(), (128, 128)),
 #     pygame.transform.scale(pygame.image.load("assets/images/magoFrame2.png").convert_alpha(), (128, 128)),
@@ -40,7 +30,6 @@
 #     pygame.transform.scale(pygame.image.load(f"assets/images/magoParadoframe3.png").convert_alpha(), (128, 128)),
 #     pygame.transform.scale(pygame.image.load(f"assets/images/magoParadoframe4.png").convert_alpha(), (128, 128)),
 #     ]
-# >>>>>>> 6df707ee969f364ae0b69945220cdc464f24c348
 
 # player_x, player_y = 200, HEIGHT - 190
 # enemy_x, enemy_y = WIDTH - 200, HEIGHT - 190
@@ -151,34 +140,34 @@
 #                         magias.append(Magia(player_x + 75, player_y + 50, enemy_x + 75, enemy_y + 50,
 #                                             magia_info['cor'], magia_info['dano'], magia_info['tipo']))
 
-#                 # Movimento e animação
-#         keys = pygame.key.get_pressed()
-#         moving = False
+        #         # Movimento e animação
+        # keys = pygame.key.get_pressed()
+        # moving = False
 
-#         if keys[pygame.K_q]:
-#             Char.health = max(0, Char.health - 1)
-#         if keys[pygame.K_e]:
-#             enemy_hp = max(0, enemy_hp - 1)
-#         if keys[pygame.K_d]:
-#             player_x += player_speed
-#             moving = True
-#         if keys[pygame.K_a]:
-#             player_x -= player_speed
-#             moving = True
+        # if keys[pygame.K_q]:
+        #     Char.health = max(0, Char.health - 1)
+        # if keys[pygame.K_e]:
+        #     enemy_hp = max(0, enemy_hp - 1)
+        # if keys[pygame.K_d]:
+        #     player_x += player_speed
+        #     moving = True
+        # if keys[pygame.K_a]:
+        #     player_x -= player_speed
+        #     moving = True
 
-#         # Atualizar frame
-#         frame_timer += 1
-#         if frame_timer >= frame_delay:
-#             frame_timer = 0
-#             current_frame += 1
+        # # Atualizar frame
+        # frame_timer += 1
+        # if frame_timer >= frame_delay:
+        #     frame_timer = 0
+        #     current_frame += 1
 
 #         # Decide qual animação usar
-#         if moving:
-#             frame_list = mago_frames
-#         else:
-#             frame_list = mago_frames_parado
+        # if moving:
+        #     frame_list = mago_frames
+        # else:
+        #     frame_list = mago_frames_parado
 
-#         current_frame = current_frame % len(frame_list)
+        # current_frame = current_frame % len(frame_list)
 
 #         # Desenhar tudo
 #         screen.blit(background, (0, 0))  # fundo
