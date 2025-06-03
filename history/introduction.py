@@ -1,5 +1,6 @@
 import pygame
 import sys
+# from menus.gameMenu import gameMenu
 from assets.config import Char
 from assets.things import draw_text
 from assets.things import escrever_texto_animado
@@ -22,7 +23,7 @@ def introTexto():
         escrever_texto_animado(f"Um mago, mestre das artes arcanas e professor de magia.", font, (255, 255, 255), 0, 175, 25, screen)
     escrever_texto_animado("E sua jornada está apenas começando.", font, (255, 255, 255), 0, 200, 25, screen)
     pygame.display.update()
-    areas()
+    gameMenu()
     while True:
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:

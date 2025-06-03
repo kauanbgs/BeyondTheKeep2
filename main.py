@@ -7,10 +7,11 @@ import time
 # from menus.areas import areas
 # from history.villages.villageCalthera import calthera
 # from resources.duel import duel
-from menus.menu import menu
+# from menus.menu import menu
+from menus.gameMenu import gameMenu
 # from areas.tavern import desenhar_tela
 
 
 
 # desenhar_tela()
-menu()
+gameMenu()
