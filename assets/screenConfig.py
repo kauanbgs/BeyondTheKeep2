@@ -46,6 +46,8 @@ praia = pygame.image.load("assets/images/praia.png")
 praia = pygame.transform.scale(praia, (largura, altura))
 
 praiaBack = pygame.image.load("assets/images/praiaBack.png")
+praiaBack = pygame.transform.scale(praiaBack, (largura, altura))
+
 
 
 filtro_preto = pygame.Surface((800, 600)) 
@@ -56,17 +58,17 @@ filtro_preto.fill((0, 0, 0))
 
 
 mago_frames_parado = [
-    pygame.transform.scale(pygame.image.load(f"assets/images/magoParadoframe1.png").convert_alpha(), (128, 128)),
-    pygame.transform.scale(pygame.image.load(f"assets/images/magoParadoframe2.png").convert_alpha(), (128, 128)),
-    pygame.transform.scale(pygame.image.load(f"assets/images/magoParadoframe3.png").convert_alpha(), (128, 128)),
-    pygame.transform.scale(pygame.image.load(f"assets/images/magoParadoframe4.png").convert_alpha(), (128, 128)),
+    pygame.transform.scale(pygame.image.load(f"assets/images/magoParadoframe1.png").convert_alpha(), (160, 160)),
+    pygame.transform.scale(pygame.image.load(f"assets/images/magoParadoframe2.png").convert_alpha(), (160, 160)),
+    pygame.transform.scale(pygame.image.load(f"assets/images/magoParadoframe3.png").convert_alpha(), (160, 160)),
+    pygame.transform.scale(pygame.image.load(f"assets/images/magoParadoframe4.png").convert_alpha(), (160, 160)),
     ]
 
 mago_frames = [
-    pygame.transform.scale(pygame.image.load("assets/images/magoFrame1.png").convert_alpha(), (128, 128)),
-    pygame.transform.scale(pygame.image.load("assets/images/magoFrame2.png").convert_alpha(), (128, 128)),
-    pygame.transform.scale(pygame.image.load("assets/images/magoFrame3.png").convert_alpha(), (128, 128)),
-    pygame.transform.scale(pygame.image.load("assets/images/magoFrame4.png").convert_alpha(), (128, 128)),
+    pygame.transform.scale(pygame.image.load("assets/images/magoFrame1.png").convert_alpha(), (160, 160)),
+    pygame.transform.scale(pygame.image.load("assets/images/magoFrame2.png").convert_alpha(), (160, 160)),
+    pygame.transform.scale(pygame.image.load("assets/images/magoFrame3.png").convert_alpha(), (160, 160)),
+    pygame.transform.scale(pygame.image.load("assets/images/magoFrame4.png").convert_alpha(), (160, 160)),
 ]
 
 espada = pygame.image.load("assets/images/espada.png")
