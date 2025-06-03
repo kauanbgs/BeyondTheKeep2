@@ -1,10 +1,18 @@
+#File made by: Kauan
+
 import pygame
 
+#Main settings of pygame
 
 mainClock = pygame.time.Clock()
 pygame.init()
-largura = 800
-altura = 450
+
+#---------------------------------------------------------------------#
+largura = 800 #PLEASE DONT CHANGE THIS!
+altura = 450 #PLEASE DONT CHANGE THIS!
+#---------------------------------------------------------------------#
+
+
 pygame.display.set_caption("Beyond The Keep")
 screen = pygame.display.set_mode((largura, altura))
 

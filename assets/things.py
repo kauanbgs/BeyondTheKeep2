@@ -21,27 +21,6 @@ def startTimer():
   startTime = time.time()
 
 
-#Makes the print like an 'typing' print. You can change the speed by going on 'assets/config.py at the config class'
-def typedPrint(stdscr, texto, y, x, delay=0.03):
-    altura, largura = stdscr.getmaxyx()
-    stdscr.move(y, x)
-    stdscr.refresh()
-    for char in texto:
-        
-        if x >= largura - 1:
-            y += 1
-            x = 0
-            stdscr.move(y, x)
-        stdscr.addstr(y, x, char)
-        stdscr.refresh()
-        time.sleep(delay)
-        x += 1
-
-def animar_texto(stdscr, texto, y, x, atributo=0, delay=0.05):
-    for i, letra in enumerate(texto):
-        stdscr.addstr(y, x + i, letra, atributo)
-        stdscr.refresh()
-        time.sleep(delay)
 
 def classUpdate():
   if Char.Name == "Aton":
@@ -65,26 +44,6 @@ def randomVillage():
     Village.village_names.remove(choice)
     return choice
 
-def updateStatus(stdscr, item):
-
-    curses.curs_set(0)
-    stdscr.clear()
-    altura, largura = stdscr.getmaxyx()
-
-    msg = ""
-
-    if item == "Pocao de Vida":
-        Char.health += 10
-        msg = f"Você recuperou 10 de vida. Vida atual: {Char.health}"
-    elif item == "Pocao de Ataque":
-        Char.attack += 0.5
-        msg = f"Você ganhou 0.5 de ataque. Ataque atual: {Char.attack}"
-    else:
-        msg = "Esse item não tem efeito."
-
-    stdscr.addstr(altura//2, (largura - len(msg))//2, msg)
-    stdscr.refresh()
-    time.sleep(1.5)
 
 def draw_text(text, font, color, surface, x, y):
     textobject = font.render(text, 1, color)
