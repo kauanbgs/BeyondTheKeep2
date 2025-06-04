@@ -1,14 +1,17 @@
 import pygame
 import sys
-from history.introduction import intro
-from assets.screenConfig import screen, font, praiaBack, filtro_preto, mainClock, mago_frames_parado, mago_frames, praia, espada, cajado, fundo, botaoPlay, botaoPlayHover, botaoSaves, botaoSavesHover, botaoQuit, botaoQuitHover, fade_out, play_rect, quit_rect, saves_rect, backSemMarcacao, backMarcacaoInventario1, backMarcacaoInventario2
+from assets.screenConfig import screen, font, praiaBack, filtro_preto, mainClock, mago_frames_parado, mago_frames, praia, espada, cajado, fundo, botaoPlay, botaoPlayHover, botaoSaves, botaoSavesHover, botaoQuit, botaoQuitHover, fade_out, play_rect, quit_rect, saves_rect, backSemMarcacao, backMarcacaoInventario1, backMarcacaoInventario2, backMarcacaoExplorar1, backMarcacaoExplorar2, explorarVilas
+
 
 
 def gameMenu():
-    inventario_rect = pygame.Rect(325, 60, 200, 150)
+    from menus.areas import explorar
+    inventario_rect = pygame.Rect(325, 30, 200, 150)
+    explorar_rect = pygame.Rect(550, 100, 150, 150)
     botao_rect = pygame.Rect(340, 275, 50, 50)
     rodando = True
     selecionado_inventario = False
+    selecionado_explorar = False
 
     while rodando:
         for evento in pygame.event.get():
@@ -19,23 +22,36 @@ def gameMenu():
             if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
                 if inventario_rect.collidepoint(evento.pos):
                     selecionado_inventario = not selecionado_inventario
+                    selecionado_explorar = False  # Deseleciona o outro
+
+                if explorar_rect.collidepoint(evento.pos):
+                    selecionado_explorar = not selecionado_explorar
+                    selecionado_inventario = False  # Deseleciona o outro
 
                 if selecionado_inventario and botao_rect.collidepoint(evento.pos):
-                    # Aqui seria a troca de tela, não só um blit
-                    abrirPraia()  # <-- Você precisa criar essa função para a praia
+                    abrirPraia()  # Aqui entraria o inventário
+
+                if selecionado_explorar and botao_rect.collidepoint(evento.pos):
+                    explorar()  # Aqui entraria a exploração
 
         pos_mouse = pygame.mouse.get_pos()
 
+        # Fundo base
+        screen.blit(backSemMarcacao, (0, 0))
+
+        # Marcações de hover ou seleção
         if selecionado_inventario:
-            screen.blit(backMarcacaoInventario2, (0, 0))  # Estado selecionado
+            screen.blit(backMarcacaoInventario2, (0, 0))
         elif inventario_rect.collidepoint(pos_mouse):
-            screen.blit(backMarcacaoInventario1, (0, 0))  # Hover
-        else:
-            screen.blit(backSemMarcacao, (0, 0))          # Normal
+            screen.blit(backMarcacaoInventario1, (0, 0))
+
+        if selecionado_explorar:
+            screen.blit(backMarcacaoExplorar2, (0, 0))
+        elif explorar_rect.collidepoint(pos_mouse):
+            screen.blit(backMarcacaoExplorar1, (0, 0))
 
         pygame.display.update()
         mainClock.tick(60)
-
 
 def abrirPraia():
     rodando = True
@@ -52,3 +68,4 @@ def abrirPraia():
         screen.blit(praiaBack, (0, 0))
         pygame.display.update()
         mainClock.tick(60)
+

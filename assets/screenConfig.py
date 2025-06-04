@@ -48,6 +48,9 @@ praia = pygame.transform.scale(praia, (largura, altura))
 praiaBack = pygame.image.load("assets/images/praiaBack.png")
 praiaBack = pygame.transform.scale(praiaBack, (largura, altura))
 
+explorarVilas = pygame.image.load("assets/images/explorarVilas.jpg")
+explorarVilas = pygame.transform.scale(explorarVilas, (largura, altura))
+
 backSemMarcacao = pygame.image.load("assets/images/backSemMarcacao.png")
 backSemMarcacao = pygame.transform.scale(backSemMarcacao, (largura, altura))
 
@@ -56,6 +59,13 @@ backMarcacaoInventario1 = pygame.transform.scale(backMarcacaoInventario1, (largu
 
 backMarcacaoInventario2 = pygame.image.load("assets/images/backMarcacaoInventario2.png")
 backMarcacaoInventario2 = pygame.transform.scale(backMarcacaoInventario2, (largura, altura))
+
+backMarcacaoExplorar1 = pygame.image.load("assets/images/backMarcacaoExplorar1.png")
+backMarcacaoExplorar1 = pygame.transform.scale(backMarcacaoExplorar1, (largura, altura))
+
+backMarcacaoExplorar2 = pygame.image.load("assets/images/backMarcacaoExplorar2.png")
+backMarcacaoExplorar2 = pygame.transform.scale(backMarcacaoExplorar2, (largura, altura))
+
 
 
 filtro_preto = pygame.Surface((800, 600)) 
