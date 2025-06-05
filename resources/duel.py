@@ -140,34 +140,34 @@ def duel():
 #                         magias.append(Magia(player_x + 75, player_y + 50, enemy_x + 75, enemy_y + 50,
 #                                             magia_info['cor'], magia_info['dano'], magia_info['tipo']))
 
-        #         # Movimento e animação
-        # keys = pygame.key.get_pressed()
-        # moving = False
+#                 # Movimento e animação
+#         keys = pygame.key.get_pressed()
+#         moving = False
 
-        # if keys[pygame.K_q]:
-        #     Char.health = max(0, Char.health - 1)
-        # if keys[pygame.K_e]:
-        #     enemy_hp = max(0, enemy_hp - 1)
-        # if keys[pygame.K_d]:
-        #     player_x += player_speed
-        #     moving = True
-        # if keys[pygame.K_a]:
-        #     player_x -= player_speed
-        #     moving = True
+#         if keys[pygame.K_q]:
+#             Char.health = max(0, Char.health - 1)
+#         if keys[pygame.K_e]:
+#             enemy_hp = max(0, enemy_hp - 1)
+#         if keys[pygame.K_d]:
+#             player_x += player_speed
+#             moving = True
+#         if keys[pygame.K_a]:
+#             player_x -= player_speed
+#             moving = True
 
-        # # Atualizar frame
-        # frame_timer += 1
-        # if frame_timer >= frame_delay:
-        #     frame_timer = 0
-        #     current_frame += 1
+#         # Atualizar frame
+#         frame_timer += 1
+#         if frame_timer >= frame_delay:
+#             frame_timer = 0
+#             current_frame += 1
 
 #         # Decide qual animação usar
-        # if moving:
-        #     frame_list = mago_frames
-        # else:
-        #     frame_list = mago_frames_parado
+#         if moving:
+#             frame_list = mago_frames
+#         else:
+#             frame_list = mago_frames_parado
 
-        # current_frame = current_frame % len(frame_list)
+#         current_frame = current_frame % len(frame_list)
 
 #         # Desenhar tudo
 #         screen.blit(background, (0, 0))  # fundo
