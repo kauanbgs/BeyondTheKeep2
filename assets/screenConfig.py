@@ -68,11 +68,22 @@ backMarcacaoExplorar2 = pygame.transform.scale(backMarcacaoExplorar2, (largura, 
 
 
 
+apostasBack = pygame.image.load("assets/images/apostasBack.png")
+apostasBack = pygame.transform.scale(apostasBack, (largura, altura))
+
+
 filtro_preto = pygame.Surface((800, 600)) 
 filtro_preto.set_alpha(200) 
 filtro_preto.fill((0, 0, 0)) 
 
+frame1 = pygame.image.load(f"assets/images/backFrame1.jpg").convert_alpha()
+frame1 = pygame.transform.scale(frame1, (largura, altura))
 
+backFrames = []
+for i in range(1, 14):  # Vai de 1 até 13
+    frame = pygame.image.load(f"assets/images/backFrame{i}.jpg").convert_alpha()
+    frame = pygame.transform.scale(frame, (largura, altura))
+    backFrames.append(frame)
 
 
 mago_frames_parado = [
@@ -95,8 +106,9 @@ cajado = pygame.image.load("assets/images/cajado.png")
 cajado = pygame.transform.scale(cajado, (200, 200))
 
 font = pygame.font.Font("assets/fonts/Minecraft.ttf", 16) 
+fontBold = pygame.font.Font("assets/fonts/Minecraft.ttf", 22) 
 
-def fade_out(velocidade=5):
+def fade_out(velocidade=5, fundo = frame1):
     fade = pygame.Surface((largura, altura))
     fade.fill((0, 0, 0))
     for alpha in range(0, 255, velocidade):

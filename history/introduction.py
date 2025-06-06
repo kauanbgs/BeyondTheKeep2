@@ -1,13 +1,36 @@
 import pygame
 import sys
-# from menus.gameMenu import gameMenu
+from menus.gameMenu import gameMenu
 from assets.config import Char
 from assets.things import draw_text
 from assets.things import escrever_texto_animado
 from assets.things import classUpdate
-from assets.screenConfig import screen, font, praiaBack, filtro_preto, mainClock, mago_frames_parado, mago_frames, praia, espada, cajado, fundo, botaoPlay, botaoPlayHover, botaoSaves, botaoSavesHover, botaoQuit, botaoQuitHover, fade_out, play_rect, quit_rect, saves_rect
+from assets.screenConfig import screen, font, praiaBack, filtro_preto, mainClock, mago_frames_parado, mago_frames, praia, espada, cajado, fundo, botaoPlay, botaoPlayHover, botaoSaves, botaoSavesHover, botaoQuit, botaoQuitHover, fade_out, play_rect, quit_rect, saves_rect, fontBold
 
-
+def introJogo():
+    pygame.mixer.init()
+    pygame.mixer.music.load("assets/sounds/tecladoDigitando.mp3")
+    pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(.15)
+    screen.fill ((0, 0, 0))
+    pygame.time.wait(500)
+    escrever_texto_animado("Um jogo feito por Kauan, Rafael e Davi.", fontBold, (255, 255, 255), 0, 50, 25, screen)
+    pygame.mixer.music.pause()
+    pygame.time.wait(3000)
+    screen.fill((0, 0, 0))
+    pygame.display.update()
+    pygame.mixer.music.unpause()
+    escrever_texto_animado("Agradecimentos especiais a Euller e Adriano.", fontBold, (255, 255, 255), 0, 50, 25, screen)
+    pygame.mixer.music.pause()
+    pygame.time.wait(3000)
+    screen.fill((0, 0, 0))
+    pygame.display.update()
+    pygame.mixer.music.unpause()
+    escrever_texto_animado("Espero que gostem!", fontBold, (255, 255, 255), 0, 50, 25, screen)
+    pygame.mixer.music.pause()
+    pygame.time.wait(2000)
+    screen.fill((0, 0, 0))
+    intro()
 
 def introTexto():
     screen.fill((0, 0, 0))
@@ -40,10 +63,13 @@ def intro():
     screen.blit(filtro_preto, (0, 0))
     escrever_texto_animado("Voce acorda, tonto e desnorteado, em uma praia qualquer.", font, (255, 255, 255), 0, 50, 25, screen)
     escrever_texto_animado("Em ambos os seus lados pairam duas armas sobre o ar.", font, (255, 255, 255), 0, 75, 25, screen)
+    pygame.time.wait(1000)
     escrever_texto_animado("A primeira e um:", font, (255, 255, 255), 0, 100, 25, screen)
     escrever_texto_animado("CAJADO ANTIGO", font, (255, 0, 0), 0, 125, 75, screen)
+    pygame.time.wait(1000)
     escrever_texto_animado("A segunda e uma:", font, (255, 255, 255), 0, 150, 25, screen)
     escrever_texto_animado("ESPADA GASTA", font, (255, 0, 0), 0, 175, 75, screen)
+    pygame.time.wait(1000)
     escrever_texto_animado("Voce deve escolher uma delas para continuar sua jornada.", font, (255, 255, 255), 0, 200, 50, screen)
     pygame.time.delay(2000)
     
