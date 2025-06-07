@@ -121,12 +121,12 @@ def interagirEldoria():
     screen.blit(casteloPrincipal, (0, 0))
     screen.blit(filtro_preto, (0, 0))
     screen.blit(npcEldoria, (0, 0))
-    # escrever_texto_animado("???: OLA!!!! BOM DIA!!! AAAAAAA!", font, (255, 255, 255), 375, 50, 25, screen)
-    # pygame.time.wait(500)
-    # escrever_texto_animado("???: EU SOU O CARLINHO!", font, (255, 255, 255), 375, 75, 25, screen)
-    # pygame.time.wait(1500)
-    # escrever_texto_animado("Carlinho: O QUE TE TRAZ AQUI?????", font, (255, 255, 255), 375, 100, 25, screen)
-    # pygame.time.wait(3000)
+    escrever_texto_animado("???: OLA!!!! BOM DIA!!! AAAAAAA!", font, (255, 255, 255), 375, 50, 25, screen)
+    pygame.time.wait(500)
+    escrever_texto_animado("???: EU SOU O CARLINHO!", font, (255, 255, 255), 375, 75, 25, screen)
+    pygame.time.wait(1500)
+    escrever_texto_animado("Carlinho: O QUE TE TRAZ AQUI?????", font, (255, 255, 255), 375, 100, 25, screen)
+    pygame.time.wait(3000)
     pergunta = fontBold.render("O que Aton responde?", True, (255, 255, 255))
     while rodando:
 
