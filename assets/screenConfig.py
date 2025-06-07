@@ -1,5 +1,6 @@
 #File made by: Kauan
 
+import cv2
 import pygame
 
 #Main settings of pygame
@@ -11,6 +12,8 @@ pygame.init()
 largura = 800 #PLEASE DONT CHANGE THIS!
 altura = 450 #PLEASE DONT CHANGE THIS!
 #---------------------------------------------------------------------#
+
+
 
 
 pygame.display.set_caption("Beyond The Keep")
@@ -118,11 +121,6 @@ filtro_preto.fill((0, 0, 0))
 frame1 = pygame.image.load(f"assets/images/backFrame1.jpg").convert_alpha()
 frame1 = pygame.transform.scale(frame1, (largura, altura))
 
-backFrames = []
-for i in range(1, 14):  # Vai de 1 até 13
-    frame = pygame.image.load(f"assets/images/backFrame{i}.jpg").convert_alpha()
-    frame = pygame.transform.scale(frame, (largura, altura))
-    backFrames.append(frame)
 
 
 mago_frames_parado = [
