@@ -42,7 +42,7 @@ play_rect = pygame.Rect(160 + 125, -160 + 175, 200, 100)
 saves_rect = pygame.Rect(0 + 125, -160 + 175, 200, 100)
 quit_rect = pygame.Rect(320 + 125, -160 + 175, 200, 100)
 
-praia = pygame.image.load("assets/images/praia.png")
+praia = pygame.image.load("assets/images/praia.jpg")
 praia = pygame.transform.scale(praia, (largura, altura))
 
 praiaBack = pygame.image.load("assets/images/praiaBack.png")
@@ -66,11 +66,41 @@ backMarcacaoExplorar1 = pygame.transform.scale(backMarcacaoExplorar1, (largura, 
 backMarcacaoExplorar2 = pygame.image.load("assets/images/backMarcacaoExplorar2.png")
 backMarcacaoExplorar2 = pygame.transform.scale(backMarcacaoExplorar2, (largura, altura))
 
+persoBase = pygame.image.load("assets/images/persoBase.png")
+persoBase = pygame.transform.scale(persoBase, (160, 160))
 
+casteloZoom0 = pygame.image.load("assets/images/casteloZoom0.jpeg")
+casteloZoom0 = pygame.transform.scale(casteloZoom0, (largura, altura))
+
+casteloZoom1 = pygame.image.load("assets/images/casteloZoom1.jpg")
+casteloZoom1 = pygame.transform.scale(casteloZoom1, (largura, altura))
+
+casteloZoom2 = pygame.image.load("assets/images/casteloZoom2.jpg")
+casteloZoom2 = pygame.transform.scale(casteloZoom2, (largura, altura))
+
+casteloZoom3 = pygame.image.load("assets/images/casteloZoom3.jpg")
+casteloZoom3 = pygame.transform.scale(casteloZoom3, (largura, altura))
+
+casteloPortaZoom0 = pygame.image.load("assets/images/casteloPortaZoom0.jpeg")
+casteloPortaZoom0 = pygame.transform.scale(casteloPortaZoom0, (largura, altura))
+
+casteloPortaZoom1 = pygame.image.load("assets/images/casteloPortaZoom1.jpg")
+casteloPortaZoom1 = pygame.transform.scale(casteloPortaZoom1, (largura, altura))
+
+casteloPortaZoom2 = pygame.image.load("assets/images/casteloPortaZoom2.jpg")
+casteloPortaZoom2 = pygame.transform.scale(casteloPortaZoom2, (largura, altura))
+
+casteloPrincipal = pygame.image.load("assets/images/casteloPrincipal.jpeg")
+casteloPrincipal = pygame.transform.scale(casteloPrincipal, (largura, altura))
 
 apostasBack = pygame.image.load("assets/images/apostasBack.png")
 apostasBack = pygame.transform.scale(apostasBack, (largura, altura))
 
+fundoEldoria = pygame.image.load("assets/images/fundoEldoria.png")
+fundoEldoria = pygame.transform.scale(fundoEldoria, (largura, altura))
+
+persoAndando = pygame.image.load("assets/images/persoAndando.png")
+persoAndando = pygame.transform.scale(persoAndando, (largura, altura))
 
 filtro_preto = pygame.Surface((800, 600)) 
 filtro_preto.set_alpha(200) 

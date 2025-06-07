@@ -13,6 +13,8 @@ from player.inventory import inventory
 from player.inventory import weaponsInventory
 from assets.itens import Itens
 
+from assets.screenConfig import screen, font, praiaBack, filtro_preto, mainClock, mago_frames_parado, mago_frames, praia, espada, cajado, fundo, botaoPlay, botaoPlayHover, botaoSaves, botaoSavesHover, botaoQuit, botaoQuitHover, fade_out, play_rect, quit_rect, saves_rect, backFrames, casteloZoom3, casteloZoom2, casteloZoom1, casteloZoom0, casteloPortaZoom1, casteloPortaZoom0, casteloPortaZoom2, casteloPrincipal, fontBold, altura, largura, fundoEldoria, persoAndando
+
 startTime = 0
 
 #Starts an timer (it will be used on the saved games, at the game over and at the final page.)
@@ -61,4 +63,34 @@ def escrever_texto_animado(texto, fonte, cor, x, y, velocidade, superficie):
         pygame.time.delay(velocidade)
 
 
-   
+def fade_transicao(imagem1, imagem2, duracao=300):
+    clock = pygame.time.Clock()
+    alpha = 0
+    passo = 255 / (duracao / 10)
+
+    overlay = pygame.Surface(screen.get_size()).convert()
+    overlay.fill((0, 0, 0))
+
+    screen.blit(imagem1, (0, 0))
+    pygame.display.update()
+
+    # Fade para preto
+    while alpha < 255:
+        overlay.set_alpha(alpha)
+        screen.blit(imagem1, (0, 0))
+        screen.blit(overlay, (0, 0))
+        pygame.display.update()
+        alpha += passo
+        clock.tick(60)
+
+    # Fade de preto para imagem2
+    alpha = 255
+    while alpha > 0:
+        overlay.set_alpha(alpha)
+        screen.blit(imagem2, (0, 0))
+        screen.blit(overlay, (0, 0))
+        pygame.display.update()
+        alpha -= passo
+        clock.tick(60)
+
+
