@@ -4,7 +4,7 @@ import os
 from assets.screenConfig import screen, font, praiaBack, filtro_preto, mainClock, mago_frames_parado, mago_frames, praia, espada, cajado, fundo, botaoPlay, botaoPlayHover, botaoSaves, botaoSavesHover, botaoQuit, botaoQuitHover, fade_out, play_rect, quit_rect, saves_rect, backFrames, casteloZoom3, casteloZoom2, casteloZoom1, casteloZoom0, casteloPortaZoom1, casteloPortaZoom0, casteloPortaZoom2, casteloPrincipal, fontBold, altura, largura, fundoEldoria, persoAndando, botaoEldoriaInteragir, botaoEldoriaSair, botaoEldoriaExplorar, cavaleiro, npcEldoria, botaoOiEldoriaNpc, botaoOuroEldoriaNpc
 from assets.things import escrever_texto_animado
 from assets.things import fade_transicao
-from menus.areas import explorar
+
 from assets.config import Char
 
 
@@ -19,6 +19,7 @@ CINZA = (180, 180, 180)
 
 
 def introEldoria():
+    Char.veioEldoria = True
     screen.blit(persoAndando, (0, 0))
     pygame.display.update()
     escrever_texto_animado("Aton caminha bravamente em direcao ao castelo de Eldoria.", font, (0, 0, 0), 50, 50, 25, screen)
@@ -50,6 +51,7 @@ def introEldoria():
     menuEldoria()
 
 def menuEldoria():
+    from menus.areas import explorar
     explorarEldoriaRect = pygame.Rect(325, 80, 150, 50)
     interagirEldoriaRect = pygame.Rect(325, 200, 150, 50)
     sairEldoriaRect = pygame.Rect(325, 320, 150, 50)
