@@ -1,6 +1,6 @@
 import pygame
 import sys
-
+from assets.things import filtro_preto
 pygame.init()
 
 # Configurações da janela
@@ -22,13 +22,13 @@ OURO = (255, 215, 0)
 MARROM = (139, 69, 19)
 
 # Fontes
-fonte = pygame.font.Font("Minecraftia.ttf", 20)
-fonte_pequena = pygame.font.Font("Minecraftia.ttf", 14)
+fonte = pygame.font.Font("assets/areas/Minecraftia.ttf", 20)
+fonte_pequena = pygame.font.Font("assets/areas/Minecraftia.ttf", 14)
 
 relogio = pygame.time.Clock()
 
 # Fundo
-fundo1 = pygame.image.load("fundo1.jpeg").convert()
+fundo1 = pygame.image.load("assets/areas/fundo1.jpeg").convert()
 fundo1 = pygame.transform.scale(fundo1,(800,450))
 
 # Inventário e loja
@@ -103,6 +103,7 @@ selecionado_combinacao = 0  # índice para navegar na lista de espadas no invent
 def desenhar_tela(itens, modo_combinacao):
     tela.fill(PRETO)  # Limpa a tela antes de desenhar tudo
     tela.blit(fundo1, (0, 0))  # desenha o fundo
+    tela.blit(filtro_preto, (0, 0))
 
     if not modo_combinacao:
         # Desenha título com moedas e categoria

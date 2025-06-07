@@ -1,7 +1,7 @@
 import pygame
 import sys
 import os
-from assets.screenConfig import screen, font, praiaBack, filtro_preto, mainClock, mago_frames_parado, mago_frames, praia, espada, cajado, fundo, botaoPlay, botaoPlayHover, botaoSaves, botaoSavesHover, botaoQuit, botaoQuitHover, fade_out, play_rect, quit_rect, saves_rect, backFrames, casteloZoom3, casteloZoom2, casteloZoom1, casteloZoom0, casteloPortaZoom1, casteloPortaZoom0, casteloPortaZoom2, casteloPrincipal, fontBold, altura, largura, fundoEldoria, persoAndando, botaoEldoriaInteragir, botaoEldoriaSair, botaoEldoriaExplorar
+from assets.screenConfig import screen, font, praiaBack, filtro_preto, mainClock, mago_frames_parado, mago_frames, praia, espada, cajado, fundo, botaoPlay, botaoPlayHover, botaoSaves, botaoSavesHover, botaoQuit, botaoQuitHover, fade_out, play_rect, quit_rect, saves_rect, backFrames, casteloZoom3, casteloZoom2, casteloZoom1, casteloZoom0, casteloPortaZoom1, casteloPortaZoom0, casteloPortaZoom2, casteloPrincipal, fontBold, altura, largura, fundoEldoria, persoAndando, botaoEldoriaInteragir, botaoEldoriaSair, botaoEldoriaExplorar, cavaleiro, npcEldoria, botaoOiEldoriaNpc, botaoOuroEldoriaNpc
 from assets.things import escrever_texto_animado
 from assets.things import fade_transicao
 from menus.areas import explorar
@@ -72,53 +72,127 @@ def menuEldoria():
         screen.blit(botaoEldoriaInteragir, (275, 100))
         screen.blit(botaoEldoriaSair, (275, 220))
         
+        pos_mouse = pygame.mouse.get_pos()
+
+        if explorarEldoriaRect.collidepoint(pos_mouse):
+            if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
+                introDuelos()
+
+        if interagirEldoriaRect.collidepoint(pos_mouse):
+            if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
+                if Char.conversouCarlinhoOuro:
+                    screen.fill((0, 0, 0))
+                    pygame.display.update()
+                    escrever_texto_animado("Aton prometeu nao conversar com carlinho.", font, (255, 255, 255), 275, 200, 25, screen)
+                    pygame.time.wait(1000)
+                    menuEldoria()
+                interagirEldoria()
+
+        if sairEldoriaRect.collidepoint(pos_mouse):
+            if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
+                explorar()
+
         pygame.display.update()
 
-# def acao_aldeoes():
-#     mostrar_texto_animado("Você conversa com os aldeões e ouve rumores de uma criatura nas montanhas.", 60, 380, font, CINZA, delay=20)
-#     pygame.time.wait(800)
+def introDuelos():
+    screen.blit(casteloPrincipal, (0, 0))
+    screen.blit(filtro_preto, (0, 0))
+    screen.blit(cavaleiro, (0, 0))
+    escrever_texto_animado("O que achou do castelo? hahaha!", font, (255, 255, 255), 375, 50, 25, screen)
+    pygame.time.wait(1000)
+    escrever_texto_animado("Nosso treinamento comeca em 60 minutos.", font, (255, 255, 255), 375, 75, 25, screen)
+    pygame.time.wait(1500)
+    escrever_texto_animado("Te espero la!", font, (255, 255, 255), 375, 100, 25, screen)
+    pygame.time.wait(3000)
+    fixo = fontBold.render(" Minutos depois...", True, (255, 255, 255))
+    for i in range(60):
+        tempo = fontBold.render(f"{i}", True, (255, 255, 255))
+        screen.blit(tempo, (310, 200))
+        screen.blit(fixo, (335, 200))
+        pygame.display.update()
+        screen.fill((0,0,0))
+        pygame.time.wait(60)
+    #INSERIR DUELO AQUI
 
-# def executar_acao(acao):
-#     if acao == "sair":
-#         pygame.quit()
-#         sys.exit()
-#     elif acao == "explorar":
-#         acao_explorar()
-#     elif acao == "aldeoes":
-#         acao_aldeoes()
+def interagirEldoria():
+    rodando = True
+    botaoOiRect = pygame.Rect(315, 290, 150, 45)
+    botaoOuroRect = pygame.Rect(490, 290, 150, 45)
+    screen.blit(casteloPrincipal, (0, 0))
+    screen.blit(filtro_preto, (0, 0))
+    screen.blit(npcEldoria, (0, 0))
+    # escrever_texto_animado("???: OLA!!!! BOM DIA!!! AAAAAAA!", font, (255, 255, 255), 375, 50, 25, screen)
+    # pygame.time.wait(500)
+    # escrever_texto_animado("???: EU SOU O CARLINHO!", font, (255, 255, 255), 375, 75, 25, screen)
+    # pygame.time.wait(1500)
+    # escrever_texto_animado("Carlinho: O QUE TE TRAZ AQUI?????", font, (255, 255, 255), 375, 100, 25, screen)
+    # pygame.time.wait(3000)
+    pergunta = fontBold.render("O que Aton responde?", True, (255, 255, 255))
+    while rodando:
 
-# # Mostra introdução antes de entrar no loop
-# eldoria_introducao()
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
 
-# # Loop principal
-# rodando = True
-# while rodando:
-#     screen.blit(casteloPrincipal, (0, 0))
+        screen.blit(pergunta, (362, 225))
+        screen.blit(botaoOiEldoriaNpc, (275, 200))
+        screen.blit(botaoOuroEldoriaNpc, (450, 200))
 
-#     if introducao:
-#         desenhar_botoes()
-#         desenhar_instrucao()
+        pos_mouse = pygame.mouse.get_pos()
 
-#     pygame.display.update()
+        if botaoOiRect.collidepoint(pos_mouse):
+            if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
+                rodando = False
+                conversaCarlinhoOi()
 
-#     for evento in pygame.event.get():
-#         if evento.type == pygame.QUIT:
-#             rodando = False
-#         elif introducao and evento.type == pygame.KEYDOWN:
-#             if evento.key == pygame.K_q:
-#                 executar_acao("sair")
-#             elif evento.key == pygame.K_UP:
-#                 botao_selecionado = (botao_selecionado - 1) % len(botoes)
-#             elif evento.key == pygame.K_DOWN:
-#                 botao_selecionado = (botao_selecionado + 1) % len(botoes)
-#             elif evento.key == pygame.K_RETURN:
-#                 executar_acao(botoes[botao_selecionado]["acao"])
-#         elif introducao and evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
-#             acao = checar_clique_botoes(evento.pos)
-#             if acao:
-#                 executar_acao(acao)
+        if botaoOuroRect.collidepoint(pos_mouse):
+            if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
+                rodando = False
+                conversaCarlinhoOuro()
 
-#     mainClock.tick(60)
+        pygame.display.update()
+    
 
-# pygame.quit()
-# sys.exit()
+def conversaCarlinhoOi():
+    if Char.conversouCarlinhoOi:
+        screen.fill((0, 0, 0))
+        pygame.display.update()
+        escrever_texto_animado("Aton ja fez essa interacao.", font, (255, 255, 255), 275, 200, 25, screen)
+        pygame.time.wait(1000)
+        interagirEldoria()
+    Char.conversouCarlinhoOi = True
+    screen.blit(casteloPrincipal, (0, 0))
+    screen.blit(filtro_preto, (0, 0))
+    screen.blit(npcEldoria, (0, 0))
+    escrever_texto_animado("Carlinho: CALTHERA! PERIGO!!!", font, (255, 255, 255), 375, 50, 25, screen)
+    pygame.time.wait(500)
+    escrever_texto_animado("Carlinho: CUIDADO POR LA.", font, (255, 255, 255), 375, 75, 25, screen)
+    pygame.time.wait(2000)
+    interagirEldoria()
+
+def conversaCarlinhoOuro():
+    if Char.conversouCarlinhoOuro:
+        screen.fill((0, 0, 0))
+        pygame.display.update()
+        escrever_texto_animado("Aton ja fez essa interacao.", font, (255, 255, 255), 275, 200, 25, screen)
+        pygame.time.wait(1000)
+        interagirEldoria()
+    Char.conversouCarlinhoOuro = True
+    screen.blit(casteloPrincipal, (0, 0))
+    screen.blit(filtro_preto, (0, 0))
+    screen.blit(npcEldoria, (0, 0))
+    escrever_texto_animado("Carlinho: VOCE QUER OURO?? EU TENHO OURO!!", font, (255, 255, 255), 300, 50, 25, screen)
+    pygame.time.wait(500)
+    escrever_texto_animado("Carlinho: MAS TUDO TEM UM PREcO.", font, (255, 255, 255), 300, 75, 25, screen)
+    pygame.time.wait(2000)
+    escrever_texto_animado("Carlinho: NUNCA MAIS FALE COMIGO", font, (255, 255, 255), 300, 100, 25, screen)
+    escrever_texto_animado("E EM TROCA, PEGUE 3 MOEDAS.", font, (255, 255, 255), 300, 115, 25, screen)
+    pygame.time.wait(2000)
+    Char.coins += 3
+    screen.fill((0, 0, 0))
+    pygame.display.update()
+    escrever_texto_animado("Aton ganhou 3 moedas.", font, (255, 255, 255), 275, 200, 25, screen)
+    pygame.time.wait(1000)
+    menuEldoria()
+

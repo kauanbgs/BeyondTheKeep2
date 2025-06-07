@@ -31,11 +31,13 @@ class Char:
   veioFeiticeiro = False
   veioEldoria = False
   veioBrumaria = False
-  veioVentogard = False
-  veioSkaldenheim = False
   veioTavern = False
   veioCalthera = False
-  veioThornwick = False
+  conversouCarlinhoOi = False
+  conversouCarlinhoOuro = False
+
+
+
 
 
 

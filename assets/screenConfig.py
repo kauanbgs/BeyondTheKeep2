@@ -139,6 +139,18 @@ mago_frames = [
     pygame.transform.scale(pygame.image.load("assets/images/magoFrame4.png").convert_alpha(), (160, 160)),
 ]
 
+cavaleiro = pygame.image.load(f"assets/images/cavaleiro.png").convert_alpha()
+cavaleiro = pygame.transform.scale(cavaleiro, (480, 480))
+
+npcEldoria = pygame.image.load(f"assets/images/npcEldoria.png").convert_alpha()
+npcEldoria = pygame.transform.scale(npcEldoria, (480, 480))
+
+botaoOiEldoriaNpc = pygame.image.load(f"assets/images/botaoOiEldoriaNpc.png").convert_alpha()
+botaoOiEldoriaNpc = pygame.transform.scale(botaoOiEldoriaNpc, (225, 225))
+
+botaoOuroEldoriaNpc = pygame.image.load(f"assets/images/botaoOuroEldoriaNpc.png").convert_alpha()
+botaoOuroEldoriaNpc = pygame.transform.scale(botaoOuroEldoriaNpc, (225, 225))
+
 espada = pygame.image.load("assets/images/espada.png")
 espada = pygame.transform.scale(espada, (250, 250))
 cajado = pygame.image.load("assets/images/cajado.png")
