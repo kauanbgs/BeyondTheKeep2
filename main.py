@@ -13,10 +13,10 @@ from menus.menu import menu
 # from areas.tavern import desenhar_tela
 # from menus.areas import explorar
 # from history.villages.villageRavenspire import apostasMenu
-from history.villages.villageEldoria import introEldoria
+from history.villages.villageEldoria import menuEldoria
 
 
 
 
 # desenhar_tela()
-menu()
+menuEldoria()

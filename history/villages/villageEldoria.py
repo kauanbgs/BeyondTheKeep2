@@ -1,11 +1,10 @@
 import pygame
 import sys
 import os
-from assets.screenConfig import screen, font, praiaBack, filtro_preto, mainClock, mago_frames_parado, mago_frames, praia, espada, cajado, fundo, botaoPlay, botaoPlayHover, botaoSaves, botaoSavesHover, botaoQuit, botaoQuitHover, fade_out, play_rect, quit_rect, saves_rect, backFrames, casteloZoom3, casteloZoom2, casteloZoom1, casteloZoom0, casteloPortaZoom1, casteloPortaZoom0, casteloPortaZoom2, casteloPrincipal, fontBold, altura, largura, fundoEldoria, persoAndando
+from assets.screenConfig import screen, font, praiaBack, filtro_preto, mainClock, mago_frames_parado, mago_frames, praia, espada, cajado, fundo, botaoPlay, botaoPlayHover, botaoSaves, botaoSavesHover, botaoQuit, botaoQuitHover, fade_out, play_rect, quit_rect, saves_rect, backFrames, casteloZoom3, casteloZoom2, casteloZoom1, casteloZoom0, casteloPortaZoom1, casteloPortaZoom0, casteloPortaZoom2, casteloPrincipal, fontBold, altura, largura, fundoEldoria, persoAndando, botaoEldoriaInteragir, botaoEldoriaSair, botaoEldoriaExplorar
 from assets.things import escrever_texto_animado
 from assets.things import fade_transicao
-
-# Importa o Char de outro diretório
+from menus.areas import explorar
 from assets.config import Char
 
 
@@ -16,43 +15,6 @@ VERMELHO = (200, 50, 50)
 AZUL = (50, 50, 200)
 AMARELO = (200, 200, 50)
 CINZA = (180, 180, 180)
-
-
-
-# def eldoria_introducao():
-#     global introducao
-#     pygame.display.update()
-#     screen.blit(fundoEldoria, (0, 0))
-#     mostrar_texto_animado("Aton caminha bravamente em direção à vila de Eudoria", 80, 80, fontBold, PRETO)
-#     pygame.time.wait(1000)
-#     mostrar_texto_animado("Após longas horas de caminhadas...", 80, 80, fontBold, PRETO)
-#     pygame.time.wait(1000)
-    
-#     screen.blit(casteloZoom0, (0,0))
-#     pygame.display.update()
-#     mostrar_texto_animado("Aton já começa a sentir o ar frio da vila", 80, 80, fontBold, CINZA)
-#     pygame.time.wait(1000)   
-    
-
-   
-    # screen.blit(casteloPortaZoom1, (0,0))
-    # pygame.display.update()
-    # mostrar_texto_animado("Logo após sua chegada, um cavaleiro vem até seu encontro", 80, 80, fontBold, CINZA)
-    # pygame.time.wait(1000)
-    
-    
-    # screen.blit(casteloPrincipal, (0,0))
-    # pygame.display.update()
-    # mostrar_texto_animado(f"-Você é {Char.name} de Skalice ?", 80, 80, fontBold, AZUL)
-    # pygame.time.wait(1000)
-
-    # mostrar_texto_animado("-Sim, sou eu...", 80, 80, fontBold, BRANCO)
-    # pygame.time.wait(1000)
-    # mostrar_texto_animado("-Ótimo, ouvimos muito sobre você", 80, 80, fontBold, AZUL)
-    # pygame.time.wait(1000)
-    # mostrar_texto_animado("-Entre, esperávamos sua visita...", 80, 80, fontBold, AZUL)
-    # pygame.time.wait(1000)
-    # introducao = True
 
 
 
@@ -74,19 +36,43 @@ def introEldoria():
     fade_transicao(casteloZoom3, casteloPortaZoom0)
     fade_transicao(casteloPortaZoom0, casteloPortaZoom1)
     fade_transicao(casteloPortaZoom1, casteloPortaZoom2)
-
     fade_transicao(casteloPortaZoom2, casteloPrincipal)
 
-# def acao_explorar():
-#     mostrar_texto_animado("Você acaba indo explorar dentro do castelo...", 60, 150, fontBold, CINZA, delay=20)
-#     pygame.time.wait(800)
-#     mostrar_texto_animado(f"No caminho {Char.name} acaba encontrando um dos cavaleiros", 20, 150, fontBold, CINZA, delay = 20)
-#     pygame.time.wait(800)
-#     mostrar_texto_animado(f"-Ei {Char.name},você acha de participar do nosso treino?", 60, 150,fontBold,CINZA, delay = 20)
-#     pygame.time.wait(800)
-    
+    screen.blit(filtro_preto, (0, 0))
+    pygame.display.update()
+    escrever_texto_animado("Logo apos sua chegada, um cavaleiro vem ate seu encontro", font, (255, 255, 255), 50, 50, 25, screen)
+    pygame.time.wait(1000)
+    escrever_texto_animado(f"CAVALEIRO: -Voce e {Char.Name} de Skalice ?", font, (255, 255, 255), 50, 75, 25, screen)
+    pygame.time.wait(1000)
+    escrever_texto_animado("-Sim, sou eu...", font, (255, 255, 255), 50, 100, 25, screen)
+    pygame.time.wait(1000)
+    escrever_texto_animado("CAVALEIRO: -Entre, esperavamos sua visita...", font, (255, 255, 255), 50, 125, 25, screen)
+    menuEldoria()
 
+def menuEldoria():
+    explorarEldoriaRect = pygame.Rect(325, 80, 150, 50)
+    interagirEldoriaRect = pygame.Rect(325, 200, 150, 50)
+    sairEldoriaRect = pygame.Rect(325, 320, 150, 50)
+    rodando = True
+    selecionado_inventario = False
+    selecionado_explorar = False
 
+    while rodando:
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
+                if sairEldoriaRect.collidepoint(evento.pos):
+                    explorar()
+        screen.blit(casteloPrincipal, (0, 0))
+        screen.blit(filtro_preto, (0, 0))
+
+        screen.blit(botaoEldoriaExplorar, (275, -20))
+        screen.blit(botaoEldoriaInteragir, (275, 100))
+        screen.blit(botaoEldoriaSair, (275, 220))
+        
+        pygame.display.update()
 
 # def acao_aldeoes():
 #     mostrar_texto_animado("Você conversa com os aldeões e ouve rumores de uma criatura nas montanhas.", 60, 380, font, CINZA, delay=20)

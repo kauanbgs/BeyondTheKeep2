@@ -102,6 +102,15 @@ fundoEldoria = pygame.transform.scale(fundoEldoria, (largura, altura))
 persoAndando = pygame.image.load("assets/images/persoAndando.png")
 persoAndando = pygame.transform.scale(persoAndando, (largura, altura))
 
+botaoEldoriaSair = pygame.image.load("assets/images/botaoEldoriaSair.png")
+botaoEldoriaSair = pygame.transform.scale(botaoEldoriaSair, (250, 250))
+
+botaoEldoriaExplorar = pygame.image.load("assets/images/botaoEldoriaExplorar.png")
+botaoEldoriaExplorar = pygame.transform.scale(botaoEldoriaExplorar, (250, 250))
+
+botaoEldoriaInteragir = pygame.image.load("assets/images/botaoEldoriaInteragir.png")
+botaoEldoriaInteragir = pygame.transform.scale(botaoEldoriaInteragir, (250, 250))
+
 filtro_preto = pygame.Surface((800, 600)) 
 filtro_preto.set_alpha(200) 
 filtro_preto.fill((0, 0, 0)) 
