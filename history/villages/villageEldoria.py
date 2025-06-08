@@ -1,10 +1,10 @@
 import pygame
 import sys
 import os
-from assets.screenConfig import screen, font, praiaBack, filtro_preto, mainClock, mago_frames_parado, mago_frames, praia, espada, cajado, fundo, botaoPlay, botaoPlayHover, botaoSaves, botaoSavesHover, botaoQuit, botaoQuitHover, fade_out, play_rect, quit_rect, saves_rect, backFrames, casteloZoom3, casteloZoom2, casteloZoom1, casteloZoom0, casteloPortaZoom1, casteloPortaZoom0, casteloPortaZoom2, casteloPrincipal, fontBold, altura, largura, fundoEldoria, persoAndando, botaoEldoriaInteragir, botaoEldoriaSair, botaoEldoriaExplorar, cavaleiro, npcEldoria, botaoOiEldoriaNpc, botaoOuroEldoriaNpc
+from assets.screenConfig import screen, font, filtro_preto, casteloZoom3, casteloZoom2, casteloZoom1, casteloZoom0, casteloPortaZoom1, casteloPortaZoom0, casteloPortaZoom2, casteloPrincipal, fontBold, persoAndando, botaoEldoriaInteragir, botaoEldoriaSair, botaoEldoriaExplorar, cavaleiro, npcEldoria, botaoOiEldoriaNpc, botaoOuroEldoriaNpc
 from assets.things import escrever_texto_animado
 from assets.things import fade_transicao
-
+from resources.duel import duel
 from assets.config import Char
 
 
@@ -114,7 +114,7 @@ def introDuelos():
         pygame.display.update()
         screen.fill((0,0,0))
         pygame.time.wait(60)
-    #INSERIR DUELO AQUI
+    duel("Goblin", 100, 100, 1, 5, "magoFrame1.png", "mago", 3)
 
 def interagirEldoria():
     rodando = True

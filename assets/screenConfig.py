@@ -113,6 +113,9 @@ botaoEldoriaExplorar = pygame.transform.scale(botaoEldoriaExplorar, (250, 250))
 botaoEldoriaInteragir = pygame.image.load("assets/images/botaoEldoriaInteragir.png")
 botaoEldoriaInteragir = pygame.transform.scale(botaoEldoriaInteragir, (250, 250))
 
+fundoEldoria = pygame.image.load("assets/images/fundoEldoria.png")
+fundoEldoria = pygame.transform.scale(fundoEldoria, (largura, altura))
+
 filtro_preto = pygame.Surface((800, 600)) 
 filtro_preto.set_alpha(200) 
 filtro_preto.fill((0, 0, 0)) 
@@ -155,6 +158,7 @@ cajado = pygame.transform.scale(cajado, (200, 200))
 
 font = pygame.font.Font("assets/fonts/Minecraft.ttf", 16) 
 fontBold = pygame.font.Font("assets/fonts/Minecraft.ttf", 22) 
+fontBoldGiga = pygame.font.Font("assets/fonts/Minecraft.ttf", 75) 
 
 backDuelo = pygame.image.load("assets/images/backDuelo.jpg")
 backDuelo = pygame.transform.scale(backDuelo, (largura, altura))
@@ -163,7 +167,26 @@ nextage = pygame.image.load("assets/images/magoFrame1.png")
 nextage = pygame.transform.scale(nextage, (250, 250))
 
 aton = pygame.image.load("assets/images/aton.png")
-aton = pygame.transform.scale(aton, (150, 150))
+aton = pygame.transform.scale(aton, (250, 250))
+
+atonEspada3 = pygame.image.load("assets/images/atonEspada3.png")
+atonEspada3 = pygame.transform.scale(atonEspada3, (250, 250))
+
+atonEspada4 = pygame.image.load("assets/images/atonEspada4.png")
+atonEspada4 = pygame.transform.scale(atonEspada4, (250, 250))
+
+atonEspada5 = pygame.image.load("assets/images/atonEspada5.png")
+atonEspada5 = pygame.transform.scale(atonEspada5, (250, 250))
+
+atonEspada6 = pygame.image.load("assets/images/atonEspada6.png")
+atonEspada6 = pygame.transform.scale(atonEspada6, (250, 250))
+
+framesEspada = [
+    atonEspada3,
+    atonEspada4,
+    atonEspada5,
+    atonEspada6
+]
 
 barraVida1de8 = pygame.image.load("assets/images/barraVida1de8.png")
 barraVida1de8 = pygame.transform.scale(barraVida1de8, (600, 700))

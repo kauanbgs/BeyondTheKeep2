@@ -6,12 +6,12 @@ class Config:
   
 #Player settings, only change if you're a developer or tester. (CHANGING THIS WILL MAKE YOUR GAMEPLAY BORING!)
 class Char:
-  classplayer = 0
+  classplayer = 1
   Name = "garbage"
   mana = 200 #CHANGE THIS
   health = 100 # CHANGE THIS
   max_health = 100
-  attack = 0
+  attack = 1
   attack_base = 1.3
   weapon = "garbage"
   defense = 1.0

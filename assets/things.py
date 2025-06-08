@@ -1,17 +1,11 @@
 #File made by: Kauan
-import curses
 import random
-import os
 import time
 
 import pygame
 from assets.config import Char
-from assets.config import Config
 from assets.itens import Village
-from assets.itens import Flashback
-from player.inventory import inventory
-from player.inventory import weaponsInventory
-from assets.itens import Itens
+# from player.inventory import weaponsInventory
 
 from assets.screenConfig import screen
 
@@ -19,7 +13,7 @@ startTime = 0
 
 #Starts an timer (it will be used on the saved games, at the game over and at the final page.)
 def startTimer():
-  global tempoComeco
+  global startTime
   startTime = time.time()
 
 
@@ -94,3 +88,5 @@ def fade_transicao(imagem1, imagem2, duracao=300):
         clock.tick(60)
 
 
+def d20():
+    return random.randint(1, 20)
