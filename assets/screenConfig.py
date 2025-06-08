@@ -1,6 +1,5 @@
 #File made by: Kauan
 
-import cv2
 import pygame
 
 #Main settings of pygame
