@@ -156,6 +156,64 @@ cajado = pygame.transform.scale(cajado, (200, 200))
 font = pygame.font.Font("assets/fonts/Minecraft.ttf", 16) 
 fontBold = pygame.font.Font("assets/fonts/Minecraft.ttf", 22) 
 
+backDuelo = pygame.image.load("assets/images/backDuelo.jpg")
+backDuelo = pygame.transform.scale(backDuelo, (largura, altura))
+
+nextage = pygame.image.load("assets/images/magoFrame1.png")
+nextage = pygame.transform.scale(nextage, (250, 250))
+
+aton = pygame.image.load("assets/images/aton.png")
+aton = pygame.transform.scale(aton, (150, 150))
+
+barraVida1de8 = pygame.image.load("assets/images/barraVida1de8.png")
+barraVida1de8 = pygame.transform.scale(barraVida1de8, (600, 700))
+
+barraVida2de8 = pygame.image.load("assets/images/barraVida2de8.png")
+barraVida2de8 = pygame.transform.scale(barraVida2de8, (600, 700))
+
+barraVida3de8 = pygame.image.load("assets/images/barraVida3de8.png")
+barraVida3de8 = pygame.transform.scale(barraVida3de8, (600, 700))
+
+barraVida4de8 = pygame.image.load("assets/images/barraVida4de8.png")    
+barraVida4de8 = pygame.transform.scale(barraVida4de8, (600, 700))
+
+barraVida5de8 = pygame.image.load("assets/images/barraVida5de8.png")
+barraVida5de8 = pygame.transform.scale(barraVida5de8, (600, 700))
+
+barraVida6de8 = pygame.image.load("assets/images/barraVida6de8.png")
+barraVida6de8 = pygame.transform.scale(barraVida6de8, (600, 700))
+
+barraVida7de8 = pygame.image.load("assets/images/barraVida7de8.png")
+barraVida7de8 = pygame.transform.scale(barraVida7de8, (600, 700))
+
+barraVida8de8 = pygame.image.load("assets/images/barraVida8de8.png")
+barraVida8de8 = pygame.transform.scale(barraVida8de8, (600, 700))
+
+barraVidaInimigo1de8 = pygame.image.load("assets/images/barraVidaInimigo1de8.png")
+barraVidaInimigo1de8 = pygame.transform.scale(barraVidaInimigo1de8, (600, 700))
+
+barraVidaInimigo2de8 = pygame.image.load("assets/images/barraVidaInimigo2de8.png")
+barraVidaInimigo2de8 = pygame.transform.scale(barraVidaInimigo2de8, (600, 700))
+
+barraVidaInimigo3de8 = pygame.image.load("assets/images/barraVidaInimigo3de8.png")
+barraVidaInimigo3de8 = pygame.transform.scale(barraVidaInimigo3de8, (600, 700))
+
+barraVidaInimigo4de8 = pygame.image.load("assets/images/barraVidaInimigo4de8.png")
+barraVidaInimigo4de8 = pygame.transform.scale(barraVidaInimigo4de8, (600, 700))
+
+barraVidaInimigo5de8 = pygame.image.load("assets/images/barraVidaInimigo5de8.png")
+barraVidaInimigo5de8 = pygame.transform.scale(barraVidaInimigo5de8, (600, 700))
+
+barraVidaInimigo6de8 = pygame.image.load("assets/images/barraVidaInimigo6de8.png")
+barraVidaInimigo6de8 = pygame.transform.scale(barraVidaInimigo6de8, (600, 700))
+
+barraVidaInimigo7de8 = pygame.image.load("assets/images/barraVidaInimigo7de8.png")
+barraVidaInimigo7de8 = pygame.transform.scale(barraVidaInimigo7de8, (600, 700))
+
+barraVidaInimigo8de8 = pygame.image.load("assets/images/barraVidaInimigo8de8.png")
+barraVidaInimigo8de8 = pygame.transform.scale(barraVidaInimigo8de8, (600, 700))
+
+
 def fade_out(velocidade=5, fundo = frame1):
     fade = pygame.Surface((largura, altura))
     fade.fill((0, 0, 0))
