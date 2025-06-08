@@ -8,6 +8,7 @@ from resources.duel import duel
 from assets.config import Char
 
 
+
 # Cores
 BRANCO = (255, 255, 255)
 PRETO = (0, 0, 0)
@@ -97,6 +98,7 @@ def menuEldoria():
         pygame.display.update()
 
 def introDuelos():
+    from menus.areas import explorar
     screen.blit(casteloPrincipal, (0, 0))
     screen.blit(filtro_preto, (0, 0))
     screen.blit(cavaleiro, (0, 0))
@@ -114,7 +116,8 @@ def introDuelos():
         pygame.display.update()
         screen.fill((0,0,0))
         pygame.time.wait(60)
-    duel("Goblin", 100, 100, 1, 5, "magoFrame1.png", "mago", 3)
+    duel("CavaleiroTreino", 100, 100, 1, 1, "Cavaleiroframe1.png", "espada", 3)
+    explorar()
 
 def interagirEldoria():
     rodando = True

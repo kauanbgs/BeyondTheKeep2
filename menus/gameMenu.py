@@ -1,6 +1,7 @@
 import pygame
 import sys
 from assets.screenConfig import screen, praiaBack, mainClock, backSemMarcacao, backMarcacaoInventario1, backMarcacaoInventario2, backMarcacaoExplorar1, backMarcacaoExplorar2
+from player.inventory import inventario
 
 
 
@@ -29,7 +30,7 @@ def gameMenu():
                     selecionado_inventario = False  # Deseleciona o outro
 
                 if selecionado_inventario and botao_rect.collidepoint(evento.pos):
-                    abrirPraia()  # Aqui entraria o inventário
+                    inventario()
 
                 if selecionado_explorar and botao_rect.collidepoint(evento.pos):
                     explorar()  # Aqui entraria a exploração

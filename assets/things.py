@@ -5,7 +5,7 @@ import time
 import pygame
 from assets.config import Char
 from assets.itens import Village
-# from player.inventory import weaponsInventory
+from player.inventory import weaponsInventory
 
 from assets.screenConfig import screen
 

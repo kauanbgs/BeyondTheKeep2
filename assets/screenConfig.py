@@ -181,12 +181,25 @@ atonEspada5 = pygame.transform.scale(atonEspada5, (250, 250))
 atonEspada6 = pygame.image.load("assets/images/atonEspada6.png")
 atonEspada6 = pygame.transform.scale(atonEspada6, (250, 250))
 
-framesEspada = [
-    atonEspada3,
-    atonEspada4,
-    atonEspada5,
-    atonEspada6
-]
+cavaleiroFrame1 = pygame.image.load("assets/images/Cavaleiroframe1.png")
+cavaleiroFrame1 = pygame.transform.scale(cavaleiroFrame1, (500, 500))
+
+cavaleiroFrame2 = pygame.image.load("assets/images/Cavaleiroframe2.png")
+cavaleiroFrame2 = pygame.transform.scale(cavaleiroFrame2, (500, 500))
+
+cavaleiroFrame3 = pygame.image.load("assets/images/Cavaleiroframe3.png") 
+cavaleiroFrame3 = pygame.transform.scale(cavaleiroFrame3, (500, 500))
+
+cavaleiroFrame4 = pygame.image.load("assets/images/Cavaleiroframe4.png")
+cavaleiroFrame4 = pygame.transform.scale(cavaleiroFrame4, (500, 500))
+
+cavaleiroFrame5 = pygame.image.load("assets/images/Cavaleiroframe5.png")
+cavaleiroFrame5 = pygame.transform.scale(cavaleiroFrame5, (500, 500))
+
+cavaleiroFrame6 = pygame.image.load("assets/images/Cavaleiroframe6.png")
+cavaleiroFrame6 = pygame.transform.scale(cavaleiroFrame6, (500, 500))
+
+goblinMago = pygame.image.load("assets/images/goblinMago.png")
 
 barraVida1de8 = pygame.image.load("assets/images/barraVida1de8.png")
 barraVida1de8 = pygame.transform.scale(barraVida1de8, (600, 700))
@@ -235,6 +248,12 @@ barraVidaInimigo7de8 = pygame.transform.scale(barraVidaInimigo7de8, (600, 700))
 
 barraVidaInimigo8de8 = pygame.image.load("assets/images/barraVidaInimigo8de8.png")
 barraVidaInimigo8de8 = pygame.transform.scale(barraVidaInimigo8de8, (600, 700))
+
+cavaleiroEspada1 = pygame.image.load("assets/images/cavaleiroEspada1.png")
+cavaleiroEspada1 = pygame.transform.scale(cavaleiroEspada1, (180, 180))
+
+cavaleiroEspada2 = pygame.image.load("assets/images/cavaleiroEspada2.png")
+cavaleiroEspada2 = pygame.transform.scale(cavaleiroEspada2, (180, 180))
 
 
 def fade_out(velocidade=5, fundo = frame1):

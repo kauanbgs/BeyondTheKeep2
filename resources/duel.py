@@ -4,7 +4,7 @@ import random
 import sys
 from assets.things import escrever_texto_animado
 from assets.config import Char
-from assets.screenConfig import screen, font, backDuelo, aton, nextage, barraVida1de8, barraVida2de8, barraVida3de8, barraVida4de8, barraVida5de8, barraVida6de8, barraVida7de8, barraVida8de8, barraVidaInimigo1de8, barraVidaInimigo2de8, barraVidaInimigo3de8, barraVidaInimigo4de8, barraVidaInimigo5de8, barraVidaInimigo6de8, barraVidaInimigo7de8, barraVidaInimigo8de8, atonEspada3, atonEspada4, atonEspada5, atonEspada6
+from assets.screenConfig import screen, font, backDuelo, aton, nextage, barraVida1de8, barraVida2de8, barraVida3de8, barraVida4de8, barraVida5de8, barraVida6de8, barraVida7de8, barraVida8de8, barraVidaInimigo1de8, barraVidaInimigo2de8, barraVidaInimigo3de8, barraVidaInimigo4de8, barraVidaInimigo5de8, barraVidaInimigo6de8, barraVidaInimigo7de8, barraVidaInimigo8de8, atonEspada3, atonEspada4, atonEspada5, atonEspada6, cavaleiroFrame1, cavaleiroFrame2, cavaleiroFrame3, cavaleiroFrame4, cavaleiroFrame5, cavaleiroFrame6, goblinMago, cavaleiro, cavaleiroEspada1, cavaleiroEspada2
 from assets.things import d20
 from resources.gameOver import gameOver
 
@@ -71,7 +71,7 @@ class Projetil:
 
 
 def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enemyImage, enemyType, coinsForWin):
-
+    
     class ProjetilInimigo:
         def __init__(self, x, y, velocidade):
             self.x = x
@@ -95,9 +95,28 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
         def desenhar(self, tela):
             pygame.draw.circle(tela, self.cor, (int(self.x), int(self.y)), self.raio)
 
+    pygame.mixer.init()
+    som_espada = pygame.mixer.Sound("assets/sounds/espadaAtacando.mp3")
+    som_espada.set_volume(0.15)
+    som_magia = pygame.mixer.Sound("assets/sounds/somMagia.mp3")
+    som_magia.set_volume(0.08)
+    global musica
+    musica = d20()
+    if musica <= 16:
+        pygame.mixer.music.load("assets/sounds/musicaBatalha.mp3")
+        pygame.mixer.music.set_volume(0.15)
+    elif musica > 7 and musica <= 12:
+        pygame.mixer.music.load("assets/sounds/musicaBatalha2.mp3")
+        pygame.mixer.music.set_volume(0.03)
+    else:
+        pygame.mixer.music.load("assets/sounds/musicaBatalha3.mp3")
+        pygame.mixer.music.set_volume(0.02)
+    pygame.mixer.music.play(-1)
+    
+
     projeteis_inimigo = []
     tempo_ultimo_ataque_mago = 0
-    cooldown_mago = 1200  # em milissegundos
+    cooldown_mago = 1200
     projeteis = []
 
     if Char.classplayer == 1:
@@ -110,11 +129,29 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
         player_y = 250
 
     espada_cooldown = 0
+    cooldownAtaqueEspadaInimigo = 0
     enemy_x = 500
-    enemy_y = 250
+    enemy_y = 25
+    if enemyName == "Cavaleiro":
+        enemy_x = 350
+        enemy_y = 90
     enemyImage = pygame.image.load(f"assets/images/{enemyImage}").convert_alpha()
     enemyImage = pygame.transform.scale(enemyImage, (250, 250))
+
+    if enemyName == "Cavaleiro":
+        enemyImage = pygame.transform.scale(enemyImage, (500, 500))
     player_speed = 1.5
+
+    if enemyName == "Goblin":
+        enemyImage = pygame.transform.scale(goblinMago, (500, 500))
+        enemy_x = 350
+        enemy_y = 117
+
+    if enemyName == "CavaleiroTreino":
+        enemyImage = pygame.transform.scale(cavaleiro, (180, 180))
+        enemy_x = 350
+        enemy_y = 290
+
     while Char.health > 0 and enemyHealth > 0:
 
         for evento in pygame.event.get():
@@ -126,6 +163,7 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
                     return
                 if evento.key == pygame.K_SPACE:
                     if Char.classplayer == 1 and espada_cooldown == 0:
+                        som_espada.play()
                         espada_cooldown = 45
                         screen.blit(backDuelo, (0, 0))
                         desenhar_barra_vida(Char.health, Char.max_health, -125, -290, "player")
@@ -167,29 +205,137 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
                 if evento.key == pygame.K_t:
                     Char.health -= 5
                 
+        
         if enemyType == "mago":
             tempo_atual = pygame.time.get_ticks()
             if tempo_atual - tempo_ultimo_ataque_mago > cooldown_mago:
-                novo_proj = ProjetilInimigo(enemy_x, enemy_y + 100, 3)
-                projeteis_inimigo.append(novo_proj)
-                tempo_ultimo_ataque_mago = tempo_atual
-        
-        if Char.health >= Char.health * 0.75:
-            if enemyHealth >= enemyMaxHealth * 0.75:
-                enemy_x += 0.5
-            else:
+                som_magia.play()
+                if enemyName == "Goblin":
+                    novo_proj = ProjetilInimigo(enemy_x + 175, enemy_y + 237, 3)
+                    projeteis_inimigo.append(novo_proj)
+                    tempo_ultimo_ataque_mago = tempo_atual
+                else:
+                    novo_proj = ProjetilInimigo(enemy_x, enemy_y + 100, 3)
+                    projeteis_inimigo.append(novo_proj)
+                    tempo_ultimo_ataque_mago = tempo_atual
+
+    
+        elif enemyType == "espada":
+            if enemyName == "Cavaleiro":
+                if cooldownAtaqueEspadaInimigo == 0:
+                    som_espada.play()
+
+                    screen.blit(backDuelo, (0, 0))
+                    desenhar_barra_vida(Char.health, Char.max_health, -125, -290, "player")
+                    desenhar_barra_vida(enemyHealth, enemyMaxHealth, 325, -290, "inimigo")
+                    screen.blit(enemyImage, (enemy_x, enemy_y))
+                    screen.blit(playerImage, (player_x, player_y))
+                    pygame.display.update()
+                    pygame.time.wait(15)
+
+                    screen.blit(backDuelo, (0, 0))
+                    desenhar_barra_vida(Char.health, Char.max_health, -125, -290, "player")
+                    desenhar_barra_vida(enemyHealth, enemyMaxHealth, 325, -290, "inimigo")
+                    screen.blit(cavaleiroFrame2, (enemy_x, enemy_y))
+                    screen.blit(playerImage, (player_x, player_y))
+                    pygame.display.update()
+                    pygame.time.wait(15)
+
+                    screen.blit(backDuelo, (0, 0))
+                    desenhar_barra_vida(Char.health, Char.max_health, -125, -290, "player")
+                    desenhar_barra_vida(enemyHealth, enemyMaxHealth, 325, -290, "inimigo")
+                    screen.blit(cavaleiroFrame3, (enemy_x, enemy_y))
+                    screen.blit(playerImage, (player_x, player_y))
+                    pygame.display.update()
+                    pygame.time.wait(15)
+
+                    screen.blit(backDuelo, (0, 0))
+                    desenhar_barra_vida(Char.health, Char.max_health, -125, -290, "player")
+                    desenhar_barra_vida(enemyHealth, enemyMaxHealth, 325, -290, "inimigo")
+                    screen.blit(cavaleiroFrame4, (enemy_x, enemy_y))
+                    screen.blit(playerImage, (player_x, player_y))
+                    pygame.display.update()
+                    pygame.time.wait(15)
+
+                    screen.blit(backDuelo, (0, 0))
+                    desenhar_barra_vida(Char.health, Char.max_health, -125, -290, "player")
+                    desenhar_barra_vida(enemyHealth, enemyMaxHealth, 325, -290, "inimigo")
+                    screen.blit(cavaleiroFrame5, (enemy_x, enemy_y))
+                    screen.blit(playerImage, (player_x, player_y))
+                    pygame.display.update()
+                    pygame.time.wait(15)
+
+                    screen.blit(backDuelo, (0, 0))
+                    desenhar_barra_vida(Char.health, Char.max_health, -125, -290, "player")
+                    desenhar_barra_vida(enemyHealth, enemyMaxHealth, 325, -290, "inimigo")
+                    screen.blit(cavaleiroFrame6, (enemy_x, enemy_y))
+                    screen.blit(playerImage, (player_x, player_y))
+                    pygame.display.update()
+                    pygame.time.wait(15)
+
+                    cooldownAtaqueEspadaInimigo = 120
+
+                    if player_x + 150 > enemy_x and player_x - 150 < enemy_x:
+                        dano = enemyAttack * d20() - Char.defense
+                        if dano > 0:
+                            Char.health -= dano
+
+            elif enemyName == "CavaleiroTreino":
+                if cooldownAtaqueEspadaInimigo == 0:
+                    som_espada.play()
+
+                    screen.blit(backDuelo, (0, 0))
+                    desenhar_barra_vida(Char.health, Char.max_health, -125, -290, "player")
+                    desenhar_barra_vida(enemyHealth, enemyMaxHealth, 325, -290, "inimigo")
+                    screen.blit(enemyImage, (enemy_x, enemy_y))
+                    screen.blit(playerImage, (player_x, player_y))
+                    pygame.display.update()
+                    pygame.time.wait(15)
+
+                    screen.blit(backDuelo, (0, 0))
+                    desenhar_barra_vida(Char.health, Char.max_health, -125, -290, "player")
+                    desenhar_barra_vida(enemyHealth, enemyMaxHealth, 325, -290, "inimigo")
+                    screen.blit(cavaleiroEspada1, (enemy_x, enemy_y))
+                    screen.blit(playerImage, (player_x, player_y))
+                    pygame.display.update()
+                    pygame.time.wait(15)
+
+                    screen.blit(backDuelo, (0, 0))
+                    desenhar_barra_vida(Char.health, Char.max_health, -125, -290, "player")
+                    desenhar_barra_vida(enemyHealth, enemyMaxHealth, 325, -290, "inimigo")
+                    screen.blit(cavaleiroEspada2, (enemy_x, enemy_y))
+                    screen.blit(playerImage, (player_x, player_y))
+                    pygame.time.wait(15)
+
+                    cooldownAtaqueEspadaInimigo = 160
+
+                    if player_x + 150 > enemy_x and player_x - 150 < enemy_x:
+                        dano = enemyAttack * d20() - Char.defense
+                        print(dano)
+                        if dano > 0:
+                            Char.health -= dano
+        if enemyType == "mago":
+            if Char.health >= Char.health * 0.75:
+                if enemyHealth >= enemyMaxHealth * 0.75:
+                    enemy_x += 0.5
+                else:
+                    enemy_x -= 0.5
+            
+            elif Char.health >= Char.health * 0.5:
+                if enemyHealth >= enemyMaxHealth * 0.5:
+                    enemy_x += 0.75
+                else:
+                    enemy_x -= 0.75
+            elif Char.health >= Char.health * 0.25:
+                if enemyHealth >= enemyMaxHealth * 0.25:
+                    enemy_x += 1
+                else:
+                    enemy_x -= 1
+        elif enemyType == "espada":
+            if player_x - 100 < enemy_x:
                 enemy_x -= 0.5
-        
-        elif Char.health >= Char.health * 0.5:
-            if enemyHealth >= enemyMaxHealth * 0.5:
-                enemy_x += 0.75
-            else:
-                enemy_x -= 0.75
-        elif Char.health >= Char.health * 0.25:
-            if enemyHealth >= enemyMaxHealth * 0.25:
-                enemy_x += 1
-            else:
-                enemy_x -= 1
+            elif player_x + 100 > enemy_x:
+                enemy_x += 0.5
         
                     
 
@@ -203,11 +349,32 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
             player_x = -50
         if player_x > 800 - 175:
             player_x = 800 - 175
-
         if enemy_x < -50:
             enemy_x = -50
         if enemy_x > 800 - 175:
             enemy_x = 800 - 175
+        if enemyName == "Cavaleiro":
+            if enemy_x < 100:
+                enemy_x = 100
+            if enemy_x > 700:
+                enemy_x = 700
+            if player_x > enemy_x + 130:
+                player_x = enemy_x + 130
+        if enemyName == "CavaleiroTreino":
+            if enemy_x < 100:
+                enemy_x = 100
+            if enemy_x > 700:
+                enemy_x = 700
+            if player_x > enemy_x - 50:
+                player_x = enemy_x - 50
+        if enemyName == "Goblin":
+            if enemy_x < 100:
+                enemy_x = 100
+            if enemy_x > 525:
+                enemy_x = 525
+            if player_x > enemy_x + 80:
+                player_x = enemy_x + 80
+        
 
 
         
@@ -244,14 +411,19 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
 
         if espada_cooldown > 0:
             espada_cooldown -= 1
+        if cooldownAtaqueEspadaInimigo > 0:
+            cooldownAtaqueEspadaInimigo -= 1
 
         pygame.display.update()
 
 
     if Char.health <= 0:
+        pygame.mixer.music.stop()
         gameOver(enemyName)
 
+
     elif enemyHealth <= 0:
+        pygame.mixer.music.stop()
         screen.fill((0, 0, 0))
         Char.coins += coinsForWin
         escrever_texto_animado(f"{Char.Name} derrotou {enemyName}, e ganhou {coinsForWin} moedas!", font, (255, 255, 255), 100, 100, 50, screen)
