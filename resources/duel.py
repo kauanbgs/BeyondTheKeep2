@@ -1,228 +1,110 @@
 import pygame
 import math
 import sys
+from assets.config import Char
+from assets.screenConfig import screen, font, praiaBack, filtro_preto, mainClock, mago_frames_parado, mago_frames, praia, espada, cajado, fundo, botaoPlay, botaoPlayHover, botaoSaves, botaoSavesHover, botaoQuit, botaoQuitHover, fade_out, play_rect, quit_rect, saves_rect, casteloZoom3, casteloZoom2, casteloZoom1, casteloZoom0, casteloPortaZoom1, casteloPortaZoom0, casteloPortaZoom2, casteloPrincipal, backDuelo, aton, nextage, barraVida1de8, barraVida2de8, barraVida3de8, barraVida4de8, barraVida5de8, barraVida6de8, barraVida7de8, barraVida8de8, barraVidaInimigo1de8, barraVidaInimigo2de8, barraVidaInimigo3de8, barraVidaInimigo4de8, barraVidaInimigo5de8, barraVidaInimigo6de8, barraVidaInimigo7de8, barraVidaInimigo8de8
 
-def duel():
-    from assets.config import Char
-    import random
+class Projetil:
+    def __init__(self, x, y, velocidade):
+        self.x = x
+        self.y = y
+        self.velocidade = velocidade
+        self.raio = 6
+        self.cor = (75, 150, 255)  # vermelho
+        self.ativo = True
 
-# clock = pygame.time.Clock()
+    def mover(self):
+        self.x += self.velocidade
+        if self.x > 800:  # saiu da tela
+            self.ativo = False
 
-# # Imagens
-# player_img = pygame.image.load("assets/images/magoParado.gif").convert_alpha()
-# player_img = pygame.transform.scale(player_img, (150, 150))
+    def desenhar(self, tela):
+        pygame.draw.circle(tela, self.cor, (int(self.x), int(self.y)), self.raio)
 
-# enemy_img = pygame.image.load("assets/images/magoParado.gif").convert_alpha()
-# enemy_img = pygame.transform.scale(enemy_img, (150, 150))
 
-# background = pygame.image.load("assets/images/background.jpg").convert()
-# background = pygame.transform.scale(background, (WIDTH, HEIGHT))
-#     mago_frames = [
-#     pygame.transform.scale(pygame.image.load("assets/images/magoFrame1.png").convert_alpha(), (128, 128)),
-#     pygame.transform.scale(pygame.image.load("assets/images/magoFrame2.png").convert_alpha(), (128, 128)),
-#     pygame.transform.scale(pygame.image.load("assets/images/magoFrame3.png").convert_alpha(), (128, 128)),
-#     pygame.transform.scale(pygame.image.load("assets/images/magoFrame4.png").convert_alpha(), (128, 128)),
-# ]
+def duel(enemyName, enemyHealth, enemyAttack, enemyDefense, enemyImage):
+    rodando = True
+    projeteis = []
 
-#     mago_frames_parado = [
-#     pygame.transform.scale(pygame.image.load(f"assets/images/magoParadoframe1.png").convert_alpha(), (128, 128)),
-#     pygame.transform.scale(pygame.image.load(f"assets/images/magoParadoframe2.png").convert_alpha(), (128, 128)),
-#     pygame.transform.scale(pygame.image.load(f"assets/images/magoParadoframe3.png").convert_alpha(), (128, 128)),
-#     pygame.transform.scale(pygame.image.load(f"assets/images/magoParadoframe4.png").convert_alpha(), (128, 128)),
-#     ]
+    if Char.classplayer == 1:
+        playerImage = aton
+    else:
+        playerImage = nextage
 
-# player_x, player_y = 200, HEIGHT - 190
-# enemy_x, enemy_y = WIDTH - 200, HEIGHT - 190
+    player_x = 100
+    player_y = 250
+    player_speed = 1
+    while rodando:
 
-# player_speed = 5
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if evento.type == pygame.KEYDOWN:
+                if evento.key == pygame.K_ESCAPE:
+                    return
+                if evento.key == pygame.K_SPACE and len(projeteis) == 0:
+                    novo_proj = Projetil(player_x + 170, player_y + 100, 4)
+                    projeteis.append(novo_proj)
+                if evento.key == pygame.K_t:
+                    Char.health -= 5
 
-# class Magia:
-#     def __init__(self, x, y, alvo_x, alvo_y, cor, dano, tipo='reta'):
-#         self.x = x
-#         self.y = y
-#         self.alvo_x = alvo_x
-#         self.alvo_y = alvo_y
-#         self.cor = cor
-#         self.dano = dano
-#         self.tipo = tipo
-#         self.fase = 'subindo' if tipo == 'ender_eye' else 'andando'
-#         self.velocidade = 5
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_d]:
+            player_x += player_speed
+        if keys[pygame.K_a]:
+            player_x -= player_speed
 
-#     def mover(self):
-#         if self.tipo == 'ender_eye':
-#             if self.fase == 'subindo':
-#                 self.y -= self.velocidade
-#                 if self.y <= self.alvo_y - 100:
-#                     self.fase = 'seguindo'
-#             elif self.fase == 'seguindo':
-#                 dx = self.alvo_x - self.x
-#                 dy = self.alvo_y - self.y
-#                 dist = math.hypot(dx, dy)
-#                 if dist != 0:
-#                     self.x += (dx / dist) * self.velocidade
-#                     self.y += (dy / dist) * self.velocidade
-#         elif self.tipo == 'reta':
-#             dx = self.alvo_x - self.x
-#             dy = self.alvo_y - self.y
-#             dist = math.hypot(dx, dy)
-#             if dist != 0:
-#                 self.x += (dx / dist) * self.velocidade
-#                 self.y += (dy / dist) * self.velocidade
 
-# <<<<<<< HEAD
-#     def desenhar(self, screen):
-#         pygame.draw.circle(screen, self.cor, (int(self.x), int(self.y)), 8)
+        
+            
+        # Desenhar fundo e jogador
+        screen.blit(backDuelo, (0, 0))
+        screen.blit(filtro_preto, (0, 0))
+        screen.blit(playerImage, (player_x, player_y))
+        screen.blit(aton, (player_x + 500, player_y + 60))
 
-#     def saiu_da_tela(self, largura, altura):
-#         return self.x < 0 or self.x > largura or self.y < 0 or self.y > altura
-# =======
-#     max_hp = 100
+        # Atualizar e desenhar projéteis
+        for p in projeteis:
+            p.mover()
+            p.desenhar(screen)
 
-#     enemy_x = WIDTH - 200
-#     enemy_y = HEIGHT - 110
-#     enemy_hp = 100
+        # Remover projéteis fora da tela
+        projeteis = [p for p in projeteis if p.ativo]
 
-#     # Velocidade
-#     player_speed = 5
-#     # Controle da animação
-#     current_frame = 0
-#     frame_timer = 0
-#     frame_delay = 10  # troca de imagem a cada 10 frames
-# >>>>>>> 6df707ee969f364ae0b69945220cdc464f24c348
+        if Char.health > 88:
+            screen.blit(barraVida8de8, (-125, -290))
+        elif Char.health > 77:
+            screen.blit(barraVida7de8, (-125, -290))
+        elif Char.health > 66:
+            screen.blit(barraVida6de8, (-125, -290))
+        elif Char.health > 55:
+            screen.blit(barraVida5de8, (-125, -290))
+        elif Char.health > 44:
+            screen.blit(barraVida4de8, (-125, -290))
+        elif Char.health > 33:
+            screen.blit(barraVida3de8, (-125, -290))
+        elif Char.health > 22:
+            screen.blit(barraVida2de8, (-125, -290))
+        elif Char.health > 11:
+            screen.blit(barraVida1de8, (-125, -290))
 
-# # Variáveis do jogo
-# magias = []
-# magia_selecionada = 0  # índice da magia selecionada
-# magias_disponiveis = [
-#     {'nome': 'Olho Etéreo', 'cor': (0, 0, 255), 'dano': 20, 'tipo': 'ender_eye'},
-#     {'nome': 'Bola de Fogo', 'cor': (255, 0, 0), 'dano': 30, 'tipo': 'reta'}
-# ]
+        if enemyHealth > 88:
+            screen.blit(barraVidaInimigo8de8, (325, -290))
+        elif enemyHealth > 77:
+            screen.blit(barraVidaInimigo7de8, (325, -290))
+        elif enemyHealth > 66:
+            screen.blit(barraVidaInimigo6de8, (325, -290))
+        elif enemyHealth > 55:
+            screen.blit(barraVidaInimigo5de8, (325, -290))
+        elif enemyHealth > 44:
+            screen.blit(barraVidaInimigo4de8, (325, -290))
+        elif enemyHealth > 33:
+            screen.blit(barraVidaInimigo3de8, (325, -290))
+        elif enemyHealth > 22:
+            screen.blit(barraVidaInimigo2de8, (325, -290))
+        elif enemyHealth > 11:
+            screen.blit(barraVidaInimigo1de8, (325, -290))
 
-# modo_selecao = False  # Se está no menu/modal de seleção
+        pygame.display.update()
 
-# running = True
-# while running:
-#     clock.tick(60)
-
-# <<<<<<< HEAD
-#     for event in pygame.event.get():
-#         if event.type == pygame.QUIT:
-#             running = False
-# =======
-#     def draw_health_bar(surface, x, y, w, h, hp, max_hp, color):
-#         pygame.draw.rect(surface, (50, 50, 50), (x, y, w, h))  # fundo
-#         hp_width = int(w * (hp / max_hp))
-#         pygame.draw.rect(surface, color, (x, y, hp_width, h))  # vida
-#         pygame.draw.rect(surface, (0, 0, 0), (x, y, w, h), 2)  # borda
-
-#     # Loop principal
-#     running = True
-#     while running:
-#         clock.tick(60)
-#         screen.fill((255, 255, 255))  # Limpa a tela
-# >>>>>>> 6df707ee969f364ae0b69945220cdc464f24c348
-
-#         if modo_selecao:
-#             if event.type == pygame.KEYDOWN:
-#                 if event.key == pygame.K_UP:
-#                     magia_selecionada = (magia_selecionada - 1) % len(magias_disponiveis)
-#                 elif event.key == pygame.K_DOWN:
-#                     magia_selecionada = (magia_selecionada + 1) % len(magias_disponiveis)
-#                 elif event.key == pygame.K_RETURN:
-#                     modo_selecao = False
-#         else:
-#             if event.type == pygame.KEYDOWN:
-#                 if event.key == pygame.K_m:
-#                     modo_selecao = True
-#                 elif event.key == pygame.K_SPACE:
-#                     if len(magias) == 0:
-#                         magia_info = magias_disponiveis[magia_selecionada]
-#                         magias.append(Magia(player_x + 75, player_y + 50, enemy_x + 75, enemy_y + 50,
-#                                             magia_info['cor'], magia_info['dano'], magia_info['tipo']))
-
-#                 # Movimento e animação
-#         keys = pygame.key.get_pressed()
-#         moving = False
-
-#         if keys[pygame.K_q]:
-#             Char.health = max(0, Char.health - 1)
-#         if keys[pygame.K_e]:
-#             enemy_hp = max(0, enemy_hp - 1)
-#         if keys[pygame.K_d]:
-#             player_x += player_speed
-#             moving = True
-#         if keys[pygame.K_a]:
-#             player_x -= player_speed
-#             moving = True
-
-#         # Atualizar frame
-#         frame_timer += 1
-#         if frame_timer >= frame_delay:
-#             frame_timer = 0
-#             current_frame += 1
-
-#         # Decide qual animação usar
-#         if moving:
-#             frame_list = mago_frames
-#         else:
-#             frame_list = mago_frames_parado
-
-#         current_frame = current_frame % len(frame_list)
-
-#         # Desenhar tudo
-#         screen.blit(background, (0, 0))  # fundo
-#         screen.blit(frame_list[current_frame], (player_x, player_y))  # player animado
-#         screen.blit(enemy_img, (enemy_x, enemy_y))  # inimigo
-
-#         # Barra de vida do jogador
-#         draw_health_bar(screen, 50, 20, 200, 20, Char.health, max_hp, (0, 200, 0))
-
-#         # Barra de vida do inimigo (lado direito)
-#         draw_health_bar(screen, WIDTH - 250, 20, 200, 20, enemy_hp, max_hp, (200, 0, 0))
-
-#         pygame.display.flip()
-
-# <<<<<<< HEAD
-#     # Atualiza magias
-#     for magia in magias[:]:
-#         magia.mover()
-# =======
-# >>>>>>> 6df707ee969f364ae0b69945220cdc464f24c348
-
-#         if (enemy_x < magia.x < enemy_x + 150) and (enemy_y < magia.y < enemy_y + 150):
-#             print(f"Acertou com {magia.tipo}!")
-#             magias.remove(magia)
-
-#         elif magia.saiu_da_tela(WIDTH, HEIGHT):
-#             magias.remove(magia)
-
-#     # Desenho
-#     screen.blit(background, (0, 0))
-#     screen.blit(player_img, (player_x, player_y))
-#     screen.blit(enemy_img, (enemy_x, enemy_y))
-
-#     for magia in magias:
-#         magia.desenhar(screen)
-
-#     # Se estiver no modo seleção, desenha o menu modal
-#     if modo_selecao:
-#         # Fundo semi-transparente
-#         s = pygame.Surface((WIDTH, HEIGHT))
-#         s.set_alpha(180)
-#         s.fill((0, 0, 0))
-#         screen.blit(s, (0, 0))
-
-#         fonte = pygame.font.SysFont(None, 40)
-#         texto_titulo = fonte.render("Escolha a magia", True, (255, 255, 255))
-#         screen.blit(texto_titulo, (WIDTH // 2 - texto_titulo.get_width() // 2, 50))
-
-#         # Lista de magias disponíveis
-#         for i, magia in enumerate(magias_disponiveis):
-#             cor = (255, 255, 0) if i == magia_selecionada else (255, 255, 255)
-#             texto = fonte.render(magia['nome'], True, cor)
-#             screen.blit(texto, (WIDTH // 2 - texto.get_width() // 2, 120 + i * 50))
-
-#     pygame.display.flip()
-
-# pygame.quit()
-# sys.exit()

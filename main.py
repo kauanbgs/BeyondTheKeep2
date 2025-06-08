@@ -15,9 +15,7 @@ from menus.menu import menu
 # from history.villages.villageRavenspire import apostasMenu
 # from history.villages.villageEldoria import menuEldoria
 # from assets.areas.tavern import desenhar_tela
+from resources.duel import duel
 
-
-
-
-# desenhar_tela()
-menu()
+# menu()
+duel("Goblin", 100, 10, 5, "npcEldoria.png")
