@@ -35,6 +35,7 @@ class Char:
   veioCalthera = False
   conversouCarlinhoOi = False
   conversouCarlinhoOuro = False
+  derrotouCavaleiroTreino = False
 
 
 

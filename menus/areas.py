@@ -4,6 +4,7 @@ from history.villages.villageEldoria import introEldoria
 from history.villages.villageEldoria import menuEldoria
 from assets.config import Char
 from assets.screenConfig import screen, mainClock, explorarVilas
+from assets.things import escrever_texto_animado
 
 def explorar():
     from menus.gameMenu import gameMenu
