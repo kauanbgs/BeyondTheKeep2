@@ -1,35 +1,70 @@
+import imageio
 import pygame
+import numpy as np
 import sys
 from menus.gameMenu import gameMenu
 from assets.config import Char
-from assets.things import draw_text
 from assets.things import escrever_texto_animado
 from assets.things import classUpdate
-from assets.screenConfig import screen, font, praiaBack, filtro_preto, mainClock, mago_frames_parado, mago_frames, praia, espada, cajado, fundo, botaoPlay, botaoPlayHover, botaoSaves, botaoSavesHover, botaoQuit, botaoQuitHover, fade_out, play_rect, quit_rect, saves_rect, fontBold, persoBase
+from assets.screenConfig import screen, font, praiaBack, filtro_preto, mainClock, mago_frames_parado, praia, espada, cajado, fontBold, persoBase
 
 def introJogo():
+    reader = imageio.get_reader("assets/videos/BTKapresentacao.mp4")
+    frames = [np.array(frame) for frame in reader]
+    reader.close()
+
+    total_frames = len(frames)
+    frame_index = 0
+    fps = 24 
+    rodando = True
     pygame.mixer.init()
-    pygame.mixer.music.load("assets/sounds/tecladoDigitando.mp3")
-    pygame.mixer.music.play(-1)
-    pygame.mixer.music.set_volume(.15)
-    screen.fill ((0, 0, 0))
-    pygame.time.wait(500)
-    escrever_texto_animado("Um jogo feito por Kauan, Rafael e Davi.", fontBold, (255, 255, 255), 0, 50, 25, screen)
-    pygame.mixer.music.pause()
-    pygame.time.wait(3000)
-    screen.fill((0, 0, 0))
-    pygame.display.update()
-    pygame.mixer.music.unpause()
-    escrever_texto_animado("Agradecimentos especiais a Euller e Adriano.", fontBold, (255, 255, 255), 0, 50, 25, screen)
-    pygame.mixer.music.pause()
-    pygame.time.wait(3000)
-    screen.fill((0, 0, 0))
-    pygame.display.update()
-    pygame.mixer.music.unpause()
-    escrever_texto_animado("Espero que gostem!", fontBold, (255, 255, 255), 0, 50, 25, screen)
-    pygame.mixer.music.pause()
-    pygame.time.wait(2000)
-    screen.fill((0, 0, 0))
+    pygame.mixer.music.load("assets/sounds/musicaApresentacao.mp3")
+    pygame.mixer.music.set_volume(0.20)
+    pygame.mixer.music.play(1)
+
+    while rodando:
+        dt = mainClock.tick(fps)
+
+        for evento in pygame.event.get():
+            if evento.type == pygame.QUIT:
+                rodando = False
+            elif evento.type == pygame.KEYDOWN and evento.key == pygame.K_ESCAPE:
+                rodando = False
+
+        frame = frames[frame_index]
+        surface = pygame.surfarray.make_surface(np.transpose(frame, (1, 0, 2)))
+        surface = pygame.transform.scale(surface, screen.get_size())
+        screen.blit(surface, (0, 0))
+        pygame.display.flip()  # ← atualiza a tela
+
+        frame_index += 1
+        if frame_index >= total_frames:
+            rodando = False
+
+
+        # Avança ou volta frame para fazer looping "ping-pong"
+    # pygame.mixer.init()
+    # pygame.mixer.music.load("assets/sounds/tecladoDigitando.mp3")
+    # pygame.mixer.music.play(-1)
+    # pygame.mixer.music.set_volume(.15)
+    # screen.fill ((0, 0, 0))
+    # pygame.time.wait(500)
+    # escrever_texto_animado("Um jogo feito por Kauan, Rafael e Davi.", fontBold, (255, 255, 255), 0, 50, 25, screen)
+    # pygame.mixer.music.pause()
+    # pygame.time.wait(3000)
+    # screen.fill((0, 0, 0))
+    # pygame.display.update()
+    # pygame.mixer.music.unpause()
+    # escrever_texto_animado("Agradecimentos especiais a Euller e Adriano.", fontBold, (255, 255, 255), 0, 50, 25, screen)
+    # pygame.mixer.music.pause()
+    # pygame.time.wait(3000)
+    # screen.fill((0, 0, 0))
+    # pygame.display.update()
+    # pygame.mixer.music.unpause()
+    # escrever_texto_animado("Espero que gostem!", fontBold, (255, 255, 255), 0, 50, 25, screen)
+    # pygame.mixer.music.pause()
+    # pygame.time.wait(2000)
+    # screen.fill((0, 0, 0))
     intro()
 
 def introTexto():

@@ -113,6 +113,9 @@ botaoEldoriaExplorar = pygame.transform.scale(botaoEldoriaExplorar, (250, 250))
 botaoEldoriaInteragir = pygame.image.load("assets/images/botaoEldoriaInteragir.png")
 botaoEldoriaInteragir = pygame.transform.scale(botaoEldoriaInteragir, (250, 250))
 
+fundoEldoria = pygame.image.load("assets/images/fundoEldoria.png")
+fundoEldoria = pygame.transform.scale(fundoEldoria, (largura, altura))
+
 filtro_preto = pygame.Surface((800, 600)) 
 filtro_preto.set_alpha(200) 
 filtro_preto.fill((0, 0, 0)) 
@@ -159,6 +162,7 @@ cajado = pygame.transform.scale(cajado, (200, 200))
 
 font = pygame.font.Font("assets/fonts/Minecraft.ttf", 16) 
 fontBold = pygame.font.Font("assets/fonts/Minecraft.ttf", 22) 
+fontBoldGiga = pygame.font.Font("assets/fonts/Minecraft.ttf", 75) 
 
 backDuelo = pygame.image.load("assets/images/backDuelo.jpg")
 backDuelo = pygame.transform.scale(backDuelo, (largura, altura))
@@ -167,7 +171,39 @@ nextage = pygame.image.load("assets/images/magoFrame1.png")
 nextage = pygame.transform.scale(nextage, (250, 250))
 
 aton = pygame.image.load("assets/images/aton.png")
-aton = pygame.transform.scale(aton, (150, 150))
+aton = pygame.transform.scale(aton, (250, 250))
+
+atonEspada3 = pygame.image.load("assets/images/atonEspada3.png")
+atonEspada3 = pygame.transform.scale(atonEspada3, (250, 250))
+
+atonEspada4 = pygame.image.load("assets/images/atonEspada4.png")
+atonEspada4 = pygame.transform.scale(atonEspada4, (250, 250))
+
+atonEspada5 = pygame.image.load("assets/images/atonEspada5.png")
+atonEspada5 = pygame.transform.scale(atonEspada5, (250, 250))
+
+atonEspada6 = pygame.image.load("assets/images/atonEspada6.png")
+atonEspada6 = pygame.transform.scale(atonEspada6, (250, 250))
+
+cavaleiroFrame1 = pygame.image.load("assets/images/Cavaleiroframe1.png")
+cavaleiroFrame1 = pygame.transform.scale(cavaleiroFrame1, (500, 500))
+
+cavaleiroFrame2 = pygame.image.load("assets/images/Cavaleiroframe2.png")
+cavaleiroFrame2 = pygame.transform.scale(cavaleiroFrame2, (500, 500))
+
+cavaleiroFrame3 = pygame.image.load("assets/images/Cavaleiroframe3.png") 
+cavaleiroFrame3 = pygame.transform.scale(cavaleiroFrame3, (500, 500))
+
+cavaleiroFrame4 = pygame.image.load("assets/images/Cavaleiroframe4.png")
+cavaleiroFrame4 = pygame.transform.scale(cavaleiroFrame4, (500, 500))
+
+cavaleiroFrame5 = pygame.image.load("assets/images/Cavaleiroframe5.png")
+cavaleiroFrame5 = pygame.transform.scale(cavaleiroFrame5, (500, 500))
+
+cavaleiroFrame6 = pygame.image.load("assets/images/Cavaleiroframe6.png")
+cavaleiroFrame6 = pygame.transform.scale(cavaleiroFrame6, (500, 500))
+
+goblinMago = pygame.image.load("assets/images/goblinMago.png")
 
 barraVida1de8 = pygame.image.load("assets/images/barraVida1de8.png")
 barraVida1de8 = pygame.transform.scale(barraVida1de8, (600, 700))
@@ -217,6 +253,35 @@ barraVidaInimigo7de8 = pygame.transform.scale(barraVidaInimigo7de8, (600, 700))
 barraVidaInimigo8de8 = pygame.image.load("assets/images/barraVidaInimigo8de8.png")
 barraVidaInimigo8de8 = pygame.transform.scale(barraVidaInimigo8de8, (600, 700))
 
+cavaleiroEspada1 = pygame.image.load("assets/images/cavaleiroEspada1.png")
+cavaleiroEspada1 = pygame.transform.scale(cavaleiroEspada1, (180, 180))
+
+cavaleiroEspada2 = pygame.image.load("assets/images/cavaleiroEspada2.png")
+cavaleiroEspada2 = pygame.transform.scale(cavaleiroEspada2, (180, 180))
+
+brumariaImagem1 = pygame.image.load("assets/images/Brumaria1.png")
+brumariaImagem1 = pygame.transform.scale(brumariaImagem1,(largura,altura))
+
+brumariaImagem2 = pygame.image.load("assets/images/Brumaria2.png")
+brumariaImagem2 = pygame.transform.scale(brumariaImagem2,(largura,altura))
+
+brumariaFerreiro = pygame.image.load("assets/images/BrumariaFerreiro.png")
+brumariaFerreiro = pygame.transform.scale(brumariaFerreiro,(largura,altura))
+
+brumariaGuardas = pygame.image.load("assets/images/BrumariaTreino.png")
+brumariaGuardas = pygame.transform.scale(brumariaGuardas,(largura,altura))
+
+brumariaCastelo = pygame.image.load("assets/images/BrumariaCastelo.png")
+brumariaCastelo = pygame.transform.scale(brumariaCastelo,(largura,altura))
+
+brumariaMorador = pygame.image.load("assets/images/BrumariaMorador.png")
+brumariaMorador = pygame.transform.scale(brumariaMorador, (largura,altura))
+
+brumariaJulgamento = pygame.image.load("assets/images/BrumariaJulgamento.png")
+brumariaJulgamento = pygame.transform.scale(brumariaJulgamento, (largura,altura))
+
+brumariaFinal = pygame.image.load("assets/images/BrumariaFinal.png")
+brumariaFinal = pygame.transform.scale(brumariaFinal, (largura,altura))
 
 def fade_out(velocidade=5, fundo = frame1):
     fade = pygame.Surface((largura, altura))

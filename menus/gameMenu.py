@@ -1,11 +1,18 @@
 import pygame
 import sys
-from assets.screenConfig import screen, font, praiaBack, filtro_preto, mainClock, mago_frames_parado, mago_frames, praia, espada, cajado, fundo, botaoPlay, botaoPlayHover, botaoSaves, botaoSavesHover, botaoQuit, botaoQuitHover, fade_out, play_rect, quit_rect, saves_rect, backSemMarcacao, backMarcacaoInventario1, backMarcacaoInventario2, backMarcacaoExplorar1, backMarcacaoExplorar2, explorarVilas
+from assets.screenConfig import screen, praiaBack, mainClock, backSemMarcacao, backMarcacaoInventario1, backMarcacaoInventario2, backMarcacaoExplorar1, backMarcacaoExplorar2
+from player.inventory import inventario
 
 
 
 def gameMenu():
     from menus.areas import explorar
+
+    pygame.mixer.init()
+    pygame.mixer.music.load("assets/sounds/select.mp3")
+    pygame.mixer.music.set_volume(0.20)
+    
+
     inventario_rect = pygame.Rect(325, 30, 200, 150)
     explorar_rect = pygame.Rect(550, 100, 150, 150)
     botao_rect = pygame.Rect(340, 275, 50, 50)
@@ -29,10 +36,10 @@ def gameMenu():
                     selecionado_inventario = False  # Deseleciona o outro
 
                 if selecionado_inventario and botao_rect.collidepoint(evento.pos):
-                    abrirPraia()  # Aqui entraria o inventário
+                    inventario()
 
                 if selecionado_explorar and botao_rect.collidepoint(evento.pos):
-                    explorar()  # Aqui entraria a exploração
+                    explorar()
 
         pos_mouse = pygame.mouse.get_pos()
 
@@ -44,11 +51,12 @@ def gameMenu():
             screen.blit(backMarcacaoInventario2, (0, 0))
         elif inventario_rect.collidepoint(pos_mouse):
             screen.blit(backMarcacaoInventario1, (0, 0))
-
-        if selecionado_explorar:
+            pygame.mixer.music.play(1)
+        if selecionado_explorar:  
             screen.blit(backMarcacaoExplorar2, (0, 0))
         elif explorar_rect.collidepoint(pos_mouse):
             screen.blit(backMarcacaoExplorar1, (0, 0))
+            pygame.mixer.music.play(1)
 
         pygame.display.update()
         mainClock.tick(60)

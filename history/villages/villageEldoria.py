@@ -1,11 +1,12 @@
 import pygame
 import sys
 import os
-from assets.screenConfig import screen, font, praiaBack, filtro_preto, mainClock, mago_frames_parado, mago_frames, praia, espada, cajado, fundo, botaoPlay, botaoPlayHover, botaoSaves, botaoSavesHover, botaoQuit, botaoQuitHover, fade_out, play_rect, quit_rect, saves_rect, backFrames, casteloZoom3, casteloZoom2, casteloZoom1, casteloZoom0, casteloPortaZoom1, casteloPortaZoom0, casteloPortaZoom2, casteloPrincipal, fontBold, altura, largura, fundoEldoria, persoAndando, botaoEldoriaInteragir, botaoEldoriaSair, botaoEldoriaExplorar, cavaleiro, npcEldoria, botaoOiEldoriaNpc, botaoOuroEldoriaNpc
+from assets.screenConfig import screen, font, filtro_preto, casteloZoom3, casteloZoom2, casteloZoom1, casteloZoom0, casteloPortaZoom1, casteloPortaZoom0, casteloPortaZoom2, casteloPrincipal, fontBold, persoAndando, botaoEldoriaInteragir, botaoEldoriaSair, botaoEldoriaExplorar, cavaleiro, npcEldoria, botaoOiEldoriaNpc, botaoOuroEldoriaNpc
 from assets.things import escrever_texto_animado
 from assets.things import fade_transicao
-
+from resources.duel import duel
 from assets.config import Char
+
 
 
 # Cores
@@ -85,7 +86,7 @@ def menuEldoria():
                 if Char.conversouCarlinhoOuro:
                     screen.fill((0, 0, 0))
                     pygame.display.update()
-                    escrever_texto_animado("Aton prometeu nao conversar com carlinho.", font, (255, 255, 255), 275, 200, 25, screen)
+                    escrever_texto_animado("Aton prometeu nao conversar com Carlinho.", font, (255, 255, 255), 275, 200, 25, screen)
                     pygame.time.wait(1000)
                     menuEldoria()
                 interagirEldoria()
@@ -97,6 +98,13 @@ def menuEldoria():
         pygame.display.update()
 
 def introDuelos():
+    if Char.derrotouCavaleiroTreino:
+        screen.fill((0, 0, 0))
+        pygame.display.update()
+        escrever_texto_animado("Aton já treinou com os cavaleiros.", font, (255, 255, 255), 275, 200, 25, screen)
+        pygame.time.wait(1000)
+        menuEldoria()
+    from menus.areas import explorar
     screen.blit(casteloPrincipal, (0, 0))
     screen.blit(filtro_preto, (0, 0))
     screen.blit(cavaleiro, (0, 0))
@@ -114,7 +122,10 @@ def introDuelos():
         pygame.display.update()
         screen.fill((0,0,0))
         pygame.time.wait(60)
-    #INSERIR DUELO AQUI
+    duel("CavaleiroTreino", 100, 100, 1, 1, "Cavaleiroframe1.png", "espada", 3)
+    Char.derrotouCavaleiroTreino = True
+    explorar()
+
 
 def interagirEldoria():
     rodando = True
@@ -123,12 +134,16 @@ def interagirEldoria():
     screen.blit(casteloPrincipal, (0, 0))
     screen.blit(filtro_preto, (0, 0))
     screen.blit(npcEldoria, (0, 0))
-    escrever_texto_animado("???: OLA!!!! BOM DIA!!! AAAAAAA!", font, (255, 255, 255), 375, 50, 25, screen)
-    pygame.time.wait(500)
-    escrever_texto_animado("???: EU SOU O CARLINHO!", font, (255, 255, 255), 375, 75, 25, screen)
-    pygame.time.wait(1500)
-    escrever_texto_animado("Carlinho: O QUE TE TRAZ AQUI?????", font, (255, 255, 255), 375, 100, 25, screen)
-    pygame.time.wait(3000)
+    if not Char.conversouCarlinhoOi and not Char.conversouCarlinhoOuro:
+        escrever_texto_animado("???: OLA!!!! BOM DIA!!! AAAAAAA!", font, (255, 255, 255), 375, 50, 25, screen)
+        pygame.time.wait(500)
+        escrever_texto_animado("???: EU SOU O CARLINHO!", font, (255, 255, 255), 375, 75, 25, screen)
+        pygame.time.wait(1500)
+        escrever_texto_animado("Carlinho: O QUE TE TRAZ AQUI?????", font, (255, 255, 255), 375, 100, 25, screen)
+        pygame.time.wait(3000)
+    else:
+        escrever_texto_animado("Carlinho: O QUE TE TRAZ AQUI?", font, (255, 255, 255), 375, 100, 25, screen)
+        pygame.time.wait(1500)
     pergunta = fontBold.render("O que Aton responde?", True, (255, 255, 255))
     while rodando:
 
@@ -186,7 +201,7 @@ def conversaCarlinhoOuro():
     screen.blit(npcEldoria, (0, 0))
     escrever_texto_animado("Carlinho: VOCE QUER OURO?? EU TENHO OURO!!", font, (255, 255, 255), 300, 50, 25, screen)
     pygame.time.wait(500)
-    escrever_texto_animado("Carlinho: MAS TUDO TEM UM PREcO.", font, (255, 255, 255), 300, 75, 25, screen)
+    escrever_texto_animado("Carlinho: MAS TUDO TEM UM PRECO.", font, (255, 255, 255), 300, 75, 25, screen)
     pygame.time.wait(2000)
     escrever_texto_animado("Carlinho: NUNCA MAIS FALE COMIGO", font, (255, 255, 255), 300, 100, 25, screen)
     escrever_texto_animado("E EM TROCA, PEGUE 3 MOEDAS.", font, (255, 255, 255), 300, 115, 25, screen)

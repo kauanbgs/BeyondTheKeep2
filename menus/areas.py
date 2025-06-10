@@ -3,7 +3,8 @@ import sys
 from history.villages.villageEldoria import introEldoria
 from history.villages.villageEldoria import menuEldoria
 from assets.config import Char
-from assets.screenConfig import screen, font, praiaBack, filtro_preto, mainClock, mago_frames_parado, mago_frames, praia, espada, cajado, fundo, botaoPlay, botaoPlayHover, botaoSaves, botaoSavesHover, botaoQuit, botaoQuitHover, fade_out, play_rect, quit_rect, saves_rect, backSemMarcacao, backMarcacaoInventario1, backMarcacaoInventario2, backMarcacaoExplorar1, backMarcacaoExplorar2, explorarVilas
+from assets.screenConfig import screen, mainClock, explorarVilas
+from assets.things import escrever_texto_animado
 
 def explorar():
     from menus.gameMenu import gameMenu
