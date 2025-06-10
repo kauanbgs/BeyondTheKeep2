@@ -18,19 +18,19 @@ def startTimer():
 
 
 
-def classUpdate():
-  if Char.Name == "Aton":
-    Char.classplayer = 1
-    Char.health = 100
-    Char.mana = 50
-    Char.attack = 1.5
-    # weaponsInventory.append("Espada gasta")
-  else:
-    Char.classplayer = 2
-    Char.health = 120
-    Char.mana = 100
-    Char.attack = 1.3
-    # weaponsInventory.append("Cajado antigo")
+# def classUpdate():
+#   if Char.Name == "Aton":
+#     Char.classplayer = 1
+#     Char.health = 100
+#     Char.mana = 50
+#     Char.attack = 1.5
+#     weaponsInventory.append("Espada gasta")
+#   else:
+#     Char.classplayer = 2
+#     Char.health = 120
+#     Char.mana = 100
+#     Char.attack = 1.3
+#     weaponsInventory.append("Cajado antigo")
 
 def randomVillage():
     if not Village.village_names:

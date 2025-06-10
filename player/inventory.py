@@ -1,5 +1,3 @@
-from assets.screenConfig import screen, largura, altura, fontBold, filtro_preto, pocaovida, pocaoforca
-from assets.config import Char
 import pygame
 import sys
 
@@ -68,6 +66,79 @@ def inventario():
             # HUD - Layout reorganizado
             gold_text = fontBold.render(f"GOLD:  {Char.coins}", True, YELLOW)
             screen.blit(gold_text, (450, 20))
+from assets.screenConfig import screen, largura, altura, fontBold, filtro_preto, pocaovida, pocaoforca
+from assets.config import Char
+def inventory():
+    pygame.init()
+    pygame.mixer.init()
+
+    # Som ao abrir inventário
+    inventory_open_sound = pygame.mixer.Sound("assets/sounds/ziperabrindo.mp3")
+    inventory_open_sound.set_volume(0.5)
+    inventory_open_sound.play()
+
+    # Carregar imagens
+    background_img = pygame.image.load("assets/images/wallpaper.jpg").convert()
+    background_img = pygame.transform.scale(background_img, (800, 450))
+    player_img = pygame.image.load("assets/images/magoFrame1.png").convert_alpha()
+    player_img = pygame.transform.scale(player_img, (300, 375))
+    pocaoforca_img = pygame.image.load("assets/images/Pocaoforca.png").convert_alpha()
+    pocaoforca_img = pygame.transform.scale(pocaoforca_img, (48, 48))
+    pocaovida_img = pygame.image.load("assets/images/Pocaovida.png").convert_alpha()
+    pocaovida_img = pygame.transform.scale(pocaovida_img, (48, 48))
+
+    # Carregar imagens da barra de vida
+    life_bar_imgs = []
+    for i in range(1, 9):
+        img = pygame.image.load(f"assets/images/barraVida{i}de8.png").convert_alpha()
+        img = pygame.transform.scale(img, (325, 290))
+        life_bar_imgs.append(img)
+
+    # Cores
+    WHITE = (255, 255, 255)
+    RED = (255, 100, 100)
+    BLUE = (100, 150, 255)
+    CYAN = (0, 255, 255)
+    YELLOW = (255, 255, 0)
+
+    # Inventário: 3x3
+    inventory = ["Pocaoforca", "Pocaovida", None, None, None, None, None, None, None]
+    selected_slot = 0
+
+    # Slots
+    slots = []
+    slot_size = 64
+    slot_margin = 20
+    start_x = 250
+    start_y = 300
+    for row in range(3):
+        for col in range(3):
+            x = start_x + col * (slot_size + slot_margin)
+            y = start_y + row * (slot_size + slot_margin)
+            slots.append(pygame.Rect(x, y, slot_size, slot_size))
+
+    # Loop principal
+    clock = pygame.time.Clock()
+    running = True
+    while running:
+        screen.blit(background_img, (0, 0))
+        screen.blit(filtro_preto, (0, 0))
+
+        # HUD
+        gold_text = fontBold.render(f"GOLD:  {Char.coins}", True, YELLOW)
+        screen.blit(gold_text, (50, 20))
+
+        atk_text = fontBold.render(f"ATK {Char.attack_base}", True, RED)
+        screen.blit(atk_text, (250, 60))
+
+        def_text = fontBold.render(f"DEF {Char.defense}", True, BLUE)
+        screen.blit(def_text, (250, 100))
+
+        hp_text = fontBold.render(f"HP {Char.health}/{Char.max_health}", True, RED)
+        screen.blit(hp_text, (450, 60))
+
+        mp_text = fontBold.render(f"MP {Char.mana}/{Char.max_mana}", True, BLUE)
+        screen.blit(mp_text, (450, 100))
 
             lvl_text = fontBold.render(f"LVL: {Char.honor}", True, CYAN)
             screen.blit(lvl_text, (250, 20))
@@ -90,6 +161,12 @@ def inventario():
                 index_vida = int(vida_percentual * 7)
                 index_vida = max(0, min(7, index_vida))
                 screen.blit(life_bar_imgs[index_vida], (320, -40))
+        # Barra de vida
+        if Char.max_health > 0:
+            vida_percentual = Char.health / Char.max_health
+            index_vida = int(vida_percentual * 7)
+            index_vida = max(0, min(7, index_vida))
+            screen.blit(life_bar_imgs[index_vida], (320, -40))
 
             # Personagem
             screen.blit(player_img, (0, 100))
@@ -131,3 +208,5 @@ def inventario():
 
         pygame.quit()
         sys.exit()
+    pygame.quit()
+    sys.exit()

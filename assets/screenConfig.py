@@ -289,8 +289,11 @@ brumariaJulgamento = pygame.transform.scale(brumariaJulgamento, (largura,altura)
 brumariaFinal = pygame.image.load("assets/images/BrumariaFinal.png")
 brumariaFinal = pygame.transform.scale(brumariaFinal, (largura,altura))
 
-rei = pygame.image.load("assets/images/rei.png")
-rei = pygame.transform.scale(rei, (largura, altura))
+vardannImagem1 = pygame.image.load("assets/images/Vardann1.png")
+vardannImagem1 = pygame.transform.scale(vardannImagem1, (largura,altura))
+
+vardannImagem2 = pygame.image.load("assets/images/Vardann2.png")
+vardannImagem2 = pygame.transform.scale(vardannImagem2, (largura,altura))
 
 fundoTaverna = pygame.image.load("assets/images/fundo1.jpeg")
 fundoTaverna = pygame.transform.scale(fundoTaverna, (largura, altura))
