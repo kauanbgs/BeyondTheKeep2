@@ -1,4 +1,3 @@
-
 from menus.gameMenu import gameMenu
 from resources.duel import duel
 from history.villages import villageBrumaria

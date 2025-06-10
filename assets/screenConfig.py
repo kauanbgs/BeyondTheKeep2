@@ -261,6 +261,24 @@ brumariaImagem1 = pygame.transform.scale(brumariaImagem1,(largura,altura))
 brumariaImagem2 = pygame.image.load("assets/images/Brumaria2.png")
 brumariaImagem2 = pygame.transform.scale(brumariaImagem2,(largura,altura))
 
+brumariaFerreiro = pygame.image.load("assets/images/BrumariaFerreiro.png")
+brumariaFerreiro = pygame.transform.scale(brumariaFerreiro,(largura,altura))
+
+brumariaGuardas = pygame.image.load("assets/images/BrumariaTreino.png")
+brumariaGuardas = pygame.transform.scale(brumariaGuardas,(largura,altura))
+
+brumariaCastelo = pygame.image.load("assets/images/BrumariaCastelo.png")
+brumariaCastelo = pygame.transform.scale(brumariaCastelo,(largura,altura))
+
+brumariaMorador = pygame.image.load("assets/images/BrumariaMorador.png")
+brumariaMorador = pygame.transform.scale(brumariaMorador, (largura,altura))
+
+brumariaJulgamento = pygame.image.load("assets/images/BrumariaJulgamento.png")
+brumariaJulgamento = pygame.transform.scale(brumariaJulgamento, (largura,altura))
+
+brumariaFinal = pygame.image.load("assets/images/BrumariaFinal.png")
+brumariaFinal = pygame.transform.scale(brumariaFinal, (largura,altura))
+
 def fade_out(velocidade=5, fundo = frame1):
     fade = pygame.Surface((largura, altura))
     fade.fill((0, 0, 0))
