@@ -69,6 +69,12 @@ backMarcacaoExplorar1 = pygame.transform.scale(backMarcacaoExplorar1, (largura, 
 backMarcacaoExplorar2 = pygame.image.load("assets/images/backMarcacaoExplorar2.png")
 backMarcacaoExplorar2 = pygame.transform.scale(backMarcacaoExplorar2, (largura, altura))
 
+backMarcacaoTaverna1 = pygame.image.load("assets/images/backMarcacaoTaverna1.png")
+backMarcacaoTaverna1 = pygame.transform.scale(backMarcacaoTaverna1, (largura, altura))
+
+backMarcacaoTaverna2 = pygame.image.load("assets/images/backMarcacaoTaverna2.png")
+backMarcacaoTaverna2 = pygame.transform.scale(backMarcacaoTaverna2, (largura, altura))
+
 persoBase = pygame.image.load("assets/images/persoBase.png")
 persoBase = pygame.transform.scale(persoBase, (160, 160))
 
@@ -260,6 +266,18 @@ barraVidaInimigo7de8 = pygame.transform.scale(barraVidaInimigo7de8, (600, 700))
 barraVidaInimigo8de8 = pygame.image.load("assets/images/barraVidaInimigo8de8.png")
 barraVidaInimigo8de8 = pygame.transform.scale(barraVidaInimigo8de8, (600, 700))
 
+rei = pygame.image.load("assets/images/rei.png")
+rei = pygame.transform.scale(rei, (200, 200))
+
+botaoTaverna = pygame.image.load("assets/images/botaoTaverna.png")
+botaoTaverna = pygame.transform.scale(botaoTaverna, (330, 250))
+
+botaoTavernaHover = pygame.image.load("assets/images/botaoTavernaHover.png")
+botaoTavernaHover = pygame.transform.scale(botaoTavernaHover, (330, 250))
+
+fundoTaverna = pygame.image.load("assets/images/fundoTaverna.jpeg")
+fundoTaverna = pygame.transform.scale(fundoTaverna, (largura, altura))
+
 cavaleiroEspada1 = pygame.image.load("assets/images/cavaleiroEspada1.png")
 cavaleiroEspada1 = pygame.transform.scale(cavaleiroEspada1, (180, 180))
 
@@ -295,6 +313,15 @@ vardannImagem1 = pygame.transform.scale(vardannImagem1, (largura,altura))
 
 vardannImagem2 = pygame.image.load("assets/images/Vardann2.png")
 vardannImagem2 = pygame.transform.scale(vardannImagem2, (largura,altura))
+
+setaPraTras = pygame.image.load("assets/images/setaPraTras.png")
+setaPraTras = pygame.transform.scale(setaPraTras, (100, 100))
+
+molduraInventario = pygame.image.load("assets/images/molduraInventario.png")
+molduraInventario = pygame.transform.scale(molduraInventario, (90, 90))
+
+modeloBotao = pygame.image.load("assets/images/modeloBotao.png")
+modeloBotao = pygame.transform.scale(modeloBotao, (200, 50))
 
 def fade_out(velocidade=5, fundo = frame1):
     fade = pygame.Surface((largura, altura))

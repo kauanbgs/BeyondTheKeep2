@@ -2,6 +2,8 @@ import pygame
 import sys
 from history.villages.villageEldoria import introEldoria
 from history.villages.villageEldoria import menuEldoria
+from history.villages.villageBrumaria import introBrumaria
+from history.villages.villageBrumaria import menuBrumaria
 from assets.config import Char
 from assets.screenConfig import screen, mainClock, explorarVilas
 from assets.things import escrever_texto_animado
@@ -31,6 +33,11 @@ def explorar():
                     if Char.veioEldoria:
                         menuEldoria()
                     introEldoria()
+            if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
+                if brumaria_rect.collidepoint(evento.pos):
+                    if Char.veioBrumaria:
+                        menuBrumaria()
+                    introBrumaria()
         screen.blit(explorarVilas, (0, 0))
         pygame.draw.rect(screen, (255, 0, 0), calthera_rect, 2) #REMOVE THIS LATER
         pygame.draw.rect(screen, (255, 0, 0), brumaria_rect, 2) #REMOVE THIS LATER

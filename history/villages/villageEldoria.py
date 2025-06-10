@@ -21,13 +21,13 @@ CINZA = (180, 180, 180)
 
 def introEldoria():
     Char.veioEldoria = True
-    screen.blit(persoAndando, (0, 0))
+    screen.fill((0, 0, 0))
     pygame.display.update()
-    escrever_texto_animado("Aton caminha bravamente em direcao ao castelo de Eldoria.", font, (0, 0, 0), 50, 50, 25, screen)
+    escrever_texto_animado(f"{Char.Name} caminha bravamente em direcao ao castelo de Eldoria.", font, (255, 255 ,255), 50, 50, 25, screen)
     pygame.time.wait(1200)
-    escrever_texto_animado("Apos horas de caminhada...", font, (0, 0 ,0), 50, 75, 25, screen)
+    escrever_texto_animado("Apos horas de caminhada...", font, (255, 255, 255), 50, 75, 25, screen)
     pygame.time.wait(1200)
-    escrever_texto_animado("Aton ja começa a sentir o ar frio do castelo.", font, (0, 0 ,0), 50, 100, 25, screen)
+    escrever_texto_animado(f"{Char.Name} ja começa a sentir o ar frio do castelo.", font, (255 ,255, 255), 50, 100, 25, screen)
     pygame.time.wait(1200)
 
 
@@ -86,7 +86,7 @@ def menuEldoria():
                 if Char.conversouCarlinhoOuro:
                     screen.fill((0, 0, 0))
                     pygame.display.update()
-                    escrever_texto_animado("Aton prometeu nao conversar com Carlinho.", font, (255, 255, 255), 275, 200, 25, screen)
+                    escrever_texto_animado(f"{Char.Name} prometeu nao conversar com Carlinho.", font, (255, 255, 255), 275, 200, 25, screen)
                     pygame.time.wait(1000)
                     menuEldoria()
                 interagirEldoria()
@@ -101,7 +101,7 @@ def introDuelos():
     if Char.derrotouCavaleiroTreino:
         screen.fill((0, 0, 0))
         pygame.display.update()
-        escrever_texto_animado("Aton já treinou com os cavaleiros.", font, (255, 255, 255), 275, 200, 25, screen)
+        escrever_texto_animado(f"{Char.Name} já treinou com os cavaleiros.", font, (255, 255, 255), 275, 200, 25, screen)
         pygame.time.wait(1000)
         menuEldoria()
     from menus.areas import explorar
@@ -144,7 +144,7 @@ def interagirEldoria():
     else:
         escrever_texto_animado("Carlinho: O QUE TE TRAZ AQUI?", font, (255, 255, 255), 375, 100, 25, screen)
         pygame.time.wait(1500)
-    pergunta = fontBold.render("O que Aton responde?", True, (255, 255, 255))
+    pergunta = fontBold.render(f"O que {Char.Name} responde?", True, (255, 255, 255))
     while rodando:
 
         for evento in pygame.event.get():
@@ -175,7 +175,7 @@ def conversaCarlinhoOi():
     if Char.conversouCarlinhoOi:
         screen.fill((0, 0, 0))
         pygame.display.update()
-        escrever_texto_animado("Aton ja fez essa interacao.", font, (255, 255, 255), 275, 200, 25, screen)
+        escrever_texto_animado(f"{Char.Name} ja fez essa interacao.", font, (255, 255, 255), 275, 200, 25, screen)
         pygame.time.wait(1000)
         interagirEldoria()
     Char.conversouCarlinhoOi = True
@@ -192,7 +192,7 @@ def conversaCarlinhoOuro():
     if Char.conversouCarlinhoOuro:
         screen.fill((0, 0, 0))
         pygame.display.update()
-        escrever_texto_animado("Aton ja fez essa interacao.", font, (255, 255, 255), 275, 200, 25, screen)
+        escrever_texto_animado(f"{Char.Name} ja fez essa interacao.", font, (255, 255, 255), 275, 200, 25, screen)
         pygame.time.wait(1000)
         interagirEldoria()
     Char.conversouCarlinhoOuro = True
@@ -209,7 +209,7 @@ def conversaCarlinhoOuro():
     Char.coins += 3
     screen.fill((0, 0, 0))
     pygame.display.update()
-    escrever_texto_animado("Aton ganhou 3 moedas.", font, (255, 255, 255), 275, 200, 25, screen)
+    escrever_texto_animado(f"{Char.Name} ganhou 3 moedas.", font, (255, 255, 255), 275, 200, 25, screen)
     pygame.time.wait(1000)
     menuEldoria()
 

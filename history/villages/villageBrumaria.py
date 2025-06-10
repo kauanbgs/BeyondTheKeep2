@@ -1,6 +1,6 @@
 import pygame
 import sys
-from assets.screenConfig import screen, font, brumariaImagem1, brumariaImagem2,brumariaFerreiro,brumariaGuardas,brumariaCastelo,brumariaMorador,brumariaJulgamento,brumariaFinal
+from assets.screenConfig import screen, font,fontBold, brumariaImagem1, brumariaImagem2,brumariaFerreiro,brumariaGuardas,brumariaCastelo,brumariaMorador,brumariaJulgamento,brumariaFinal, modeloBotao
 from assets.things import escrever_texto_animado
 from assets.config import Char
 from assets.screenConfig import  filtro_preto
@@ -31,10 +31,9 @@ def desenhar_botao(texto, fonte, cor_texto, cor_fundo, rect, tela):
     tela.blit(texto_surf, texto_rect)
 
 def introBrumaria():
-    screen.blit(brumariaImagem1, (0, 0))
-    screen.blit(filtro_preto,(0,0))
+    screen.fill((0, 0, 0))
     pygame.display.update()
-    escrever_texto_animado(f"{Char.name} chega a fria e sombria Brumaria. Seus muros sao altos", font, BRANCO, 50, 50, 25, screen)
+    escrever_texto_animado(f"{Char.Name} chega a fria e sombria Brumaria. Seus muros sao altos", font, BRANCO, 50, 50, 25, screen)
     pygame.time.wait(1000)
     escrever_texto_animado("O ceu encoberto e a tensao e palpavel.", font, BRANCO, 50, 75, 25, screen)
     pygame.time.wait(1000)
@@ -42,88 +41,102 @@ def introBrumaria():
     pygame.time.wait(2000)
     menuBrumaria()
 
+
 def menuBrumaria():
-    global fez_mercador, fez_castelo, fez_treinamento, fez_moradores, fez_julgamento
-    global tem_pista_mercador, tem_pista_moradores
-
-    opcoes = [
-        "Falar com o mercador mais proximo",
-        "Ir ao castelo falar com o Lorde",
-        "Treinar com os soldados no campo",
-        "Conversar com os moradores",
-        "Ir ao Tribunal"
-    ]
-
-    selecionado = 0
+    opcao1 = fontBold.render("Falar com o mercador", True, (255, 255, 255))
+    opcao2 = fontBold.render("Ir ao castelo falar com o Lorde", True, (255, 255, 255))
+    opcao3 = fontBold.render("Treinar com os soldados no campo", True, (255, 255, 255))
+    opcao4 = fontBold.render("Conversar com os moradores", True, (255, 255, 255))
+    opcao5 = fontBold.render("Ir ao Tribunal", True, (255, 255, 255))
     rodando = True
-
-    largura_botao = 500
-    altura_botao = 40
-    margem = 10
-    x_botao = 50
-    y_inicial = 50
-
     while rodando:
-        screen.fill(PRETO)
-        screen.blit(brumariaImagem2, (0, 0))
-        screen.blit(filtro_preto,(0,0))
+        screen.blit(brumariaImagem1, (0, 0))
+        screen.blit(filtro_preto, (0, 0))
+        screen.blit(modeloBotao, (50, 50))
+    
 
-        for i, texto in enumerate(opcoes):
-            texto_display = texto
-            if i == 0 and fez_mercador:
-                texto_display += " - FEITO"
-            elif i == 1 and fez_castelo:
-                texto_display += " - FEITO"
-            elif i == 2 and fez_treinamento:
-                texto_display += " - FEITO"
-            elif i == 3 and fez_moradores:
-                texto_display += " - FEITO"
-            if i == 4 and not (tem_pista_mercador and tem_pista_moradores):
-                texto_display += " (nao recomendado sem pistas suficientes)"
+# def menuBrumaria():
+#     global fez_mercador, fez_castelo, fez_treinamento, fez_moradores, fez_julgamento
+#     global tem_pista_mercador, tem_pista_moradores
 
-            if i == selecionado:
-                cor_fundo = DOURADO
-                cor_texto = BRANCO
-            else:
-                cor_fundo = CINZA
-                cor_texto = BRANCO
+#     opcoes = [
+#         "Falar com o mercador mais proximo",
+#         "Ir ao castelo falar com o Lorde",
+#         "Treinar com os soldados no campo",
+#         "Conversar com os moradores",
+#         "Ir ao Tribunal"
+#     ]
 
-            rect = pygame.Rect(x_botao, y_inicial + i * (altura_botao + margem), largura_botao, altura_botao)
-            desenhar_botao(texto_display, font, cor_texto, cor_fundo, rect, screen)
+#     selecionado = 0
+#     rodando = True
 
-        pygame.display.update()
+#     largura_botao = 500
+#     altura_botao = 40
+#     margem = 10
+#     x_botao = 50
+#     y_inicial = 50
 
-        for evento in pygame.event.get():
-            if evento.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if evento.type == pygame.KEYDOWN:
-                if evento.key == pygame.K_DOWN:
-                    selecionado = (selecionado + 1) % len(opcoes)
-                elif evento.key == pygame.K_UP:
-                    selecionado = (selecionado - 1) % len(opcoes)
-                elif evento.key in [pygame.K_RETURN, pygame.K_KP_ENTER]:
-                    if selecionado == 0 and not fez_mercador:
-                        falar_mercador()
-                        fez_mercador = True
-                    elif selecionado == 1 and not fez_castelo:
-                        ir_castelo()
-                        fez_castelo = True
-                    elif selecionado == 2 and not fez_treinamento:
-                        campo_treinamento()
-                        fez_treinamento = True
-                    elif selecionado == 3 and not fez_moradores:
-                        falar_moradores()
-                        fez_moradores = True
-                    elif selecionado == 4 and not fez_julgamento:
-                        if tem_pista_mercador and tem_pista_moradores:
-                            tribunalBrumaria_func()
-                            fez_julgamento = True
-                            rodando = False
-                        else:
-                            escrever_texto_animado("Voce nao tem pistas suficientes...", font, BRANCO, 50, 300, 25, screen)
-                            pygame.time.wait(1500)
-                    break
+#     while rodando:
+#         screen.fill(PRETO)
+#         screen.blit(brumariaImagem2, (0, 0))
+#         screen.blit(filtro_preto,(0,0))
+
+#         for i, texto in enumerate(opcoes):
+#             texto_display = texto
+#             if i == 0 and fez_mercador:
+#                 texto_display += " - FEITO"
+#             elif i == 1 and fez_castelo:
+#                 texto_display += " - FEITO"
+#             elif i == 2 and fez_treinamento:
+#                 texto_display += " - FEITO"
+#             elif i == 3 and fez_moradores:
+#                 texto_display += " - FEITO"
+#             if i == 4 and not (tem_pista_mercador and tem_pista_moradores):
+#                 texto_display += " (nao recomendado sem pistas suficientes)"
+
+#             if i == selecionado:
+#                 cor_fundo = DOURADO
+#                 cor_texto = BRANCO
+#             else:
+#                 cor_fundo = CINZA
+#                 cor_texto = BRANCO
+
+#             rect = pygame.Rect(x_botao, y_inicial + i * (altura_botao + margem), largura_botao, altura_botao)
+#             desenhar_botao(texto_display, font, cor_texto, cor_fundo, rect, screen)
+
+#         pygame.display.update()
+
+#         for evento in pygame.event.get():
+#             if evento.type == pygame.QUIT:
+#                 pygame.quit()
+#                 sys.exit()
+#             if evento.type == pygame.KEYDOWN:
+#                 if evento.key == pygame.K_DOWN:
+#                     selecionado = (selecionado + 1) % len(opcoes)
+#                 elif evento.key == pygame.K_UP:
+#                     selecionado = (selecionado - 1) % len(opcoes)
+#                 elif evento.key in [pygame.K_RETURN, pygame.K_KP_ENTER]:
+#                     if selecionado == 0 and not fez_mercador:
+#                         falar_mercador()
+#                         fez_mercador = True
+#                     elif selecionado == 1 and not fez_castelo:
+#                         ir_castelo()
+#                         fez_castelo = True
+#                     elif selecionado == 2 and not fez_treinamento:
+#                         campo_treinamento()
+#                         fez_treinamento = True
+#                     elif selecionado == 3 and not fez_moradores:
+#                         falar_moradores()
+#                         fez_moradores = True
+#                     elif selecionado == 4 and not fez_julgamento:
+#                         if tem_pista_mercador and tem_pista_moradores:
+#                             tribunalBrumaria_func()
+#                             fez_julgamento = True
+#                             rodando = False
+#                         else:
+#                             escrever_texto_animado("Voce nao tem pistas suficientes...", font, BRANCO, 50, 300, 25, screen)
+#                             pygame.time.wait(1500)
+#                     break
 
 def falar_mercador():
 
@@ -131,7 +144,7 @@ def falar_mercador():
     screen.fill(PRETO)
     screen.blit(brumariaFerreiro, (0, 0))
     screen.blit(filtro_preto,(0,0))
-    escrever_texto_animado(f"{Char.name} se entra na ferraria de um homem nervoso.", font, BRANCO, 50, 50, 25, screen)
+    escrever_texto_animado(f"{Char.Name} se entra na ferraria de um homem nervoso.", font, BRANCO, 50, 50, 25, screen)
     escrever_texto_animado('"Voce... e de Skalice, nao?"', font, BRANCO, 50, 80, 25, screen)
     escrever_texto_animado('"Ouvi passos apressados na noite do crime... Depois, silencio."', font, BRANCO, 50, 110, 25, screen)
     tem_pista_mercador = True
@@ -152,7 +165,7 @@ def campo_treinamento():
     screen.blit(filtro_preto,(0,0))
     escrever_texto_animado("Soldados treinam sob o vento gelido.", font, BRANCO, 50, 50, 25, screen)
     escrever_texto_animado('"Mostre-nos como se luta, cidadao de Skalice!"', font, BRANCO, 50, 80, 25, screen)
-    escrever_texto_animado(f"{Char.name} vence o treino e ganha respeito.", font, BRANCO, 50, 110, 25, screen)
+    escrever_texto_animado(f"{Char.Name} vence o treino e ganha respeito.", font, BRANCO, 50, 110, 25, screen)
     pygame.time.wait(1500)
 
 def falar_moradores():
@@ -160,7 +173,7 @@ def falar_moradores():
     screen.fill(PRETO)
     screen.blit(brumariaMorador, (0, 0))
     screen.blit(filtro_preto,(0,0))
-    escrever_texto_animado(f"{Char.name} caminha pelas ruas e ouve relatos.", font, BRANCO, 50, 50, 25, screen)
+    escrever_texto_animado(f"{Char.Name} caminha pelas ruas e ouve relatos.", font, BRANCO, 50, 50, 25, screen)
     escrever_texto_animado('"Ouvi barulhos pesados... Era um guarda, com botas."', font, BRANCO, 50, 80, 25, screen)
     escrever_texto_animado('"Vi um guarda sair da muralha... Usava capa."', font, BRANCO, 50, 110, 25, screen)
     tem_pista_moradores = True
@@ -234,7 +247,7 @@ def julgamento_final():
     screen.fill(PRETO)
     screen.blit(brumariaFinal,(0,0))
     screen.blit(filtro_preto,(0,0))
-    escrever_texto_animado(f"{Char.name} conclui seu julgamento e traz paz para Brumaria.", font, BRANCO, 50, 50, 25, screen)
+    escrever_texto_animado(f"{Char.Name} conclui seu julgamento e traz paz para Brumaria.", font, BRANCO, 50, 50, 25, screen)
     pygame.time.wait(1000)
     escrever_texto_animado("Agora essa vila aparenta ter mais vida ",font,BRANCO,50,75,25,screen)
     pygame.time.wait(2500)

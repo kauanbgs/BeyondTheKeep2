@@ -8,24 +8,21 @@ class Config:
 class Char:
   classplayer = 2
   Name = "Nextage"
-  mana = 200 #CHANGE THIS
-  max_mana = 200
-  health = 100 # CHANGE THIS
+  health = 100
   max_health = 100
-  attack = 25
-  attack_base = 1.3
+  attack = 1.0
+  attack_base = 1.0
   weapon = "garbage"
   defense = 1.0
-  coins = 6
+  coins = 60
   honor = 0
   option = 0
   deadEnemy = False
   deadPlayer = False
   where = "garbage"
   item = "garbage"
-  spells = ["bola de fogo", "seta arcana", "grito psiquico", "evocacao de mortos"] # CHANGE THIS
-  status = []
-  summons = []
+  aumentoVida = 40
+  aumentoAtaque = 0.3
 
   villagesVisited = 0
   veioFerreiro = False

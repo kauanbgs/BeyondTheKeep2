@@ -1,6 +1,6 @@
 import pygame
 import sys
-from assets.screenConfig import screen, praiaBack, mainClock, backSemMarcacao, backMarcacaoInventario1, backMarcacaoInventario2, backMarcacaoExplorar1, backMarcacaoExplorar2
+from assets.screenConfig import screen, praiaBack, mainClock, backSemMarcacao, backMarcacaoInventario1, backMarcacaoInventario2, backMarcacaoExplorar1, backMarcacaoExplorar2, backMarcacaoTaverna1, backMarcacaoTaverna2
 from player.inventory import inventario
 
 
@@ -15,10 +15,12 @@ def gameMenu():
 
     inventario_rect = pygame.Rect(325, 30, 200, 150)
     explorar_rect = pygame.Rect(550, 100, 150, 150)
+    taverna_rect = pygame.Rect(80, 125, 200, 150)
     botao_rect = pygame.Rect(340, 275, 50, 50)
     rodando = True
     selecionado_inventario = False
     selecionado_explorar = False
+    selecionado_taverna = False
 
     while rodando:
         for evento in pygame.event.get():
@@ -30,16 +32,27 @@ def gameMenu():
                 if inventario_rect.collidepoint(evento.pos):
                     selecionado_inventario = not selecionado_inventario
                     selecionado_explorar = False  # Deseleciona o outro
+                    selecionado_taverna = False  # Deseleciona o outro
 
                 if explorar_rect.collidepoint(evento.pos):
                     selecionado_explorar = not selecionado_explorar
-                    selecionado_inventario = False  # Deseleciona o outro
+                    selecionado_inventario = False 
+                    selecionado_taverna = False
+                
+                if taverna_rect.collidepoint(evento.pos):
+                    selecionado_taverna = not selecionado_taverna
+                    selecionado_inventario = False
+                    selecionado_explorar = False
 
                 if selecionado_inventario and botao_rect.collidepoint(evento.pos):
                     inventario()
 
                 if selecionado_explorar and botao_rect.collidepoint(evento.pos):
                     explorar()
+
+                if selecionado_taverna and botao_rect.collidepoint(evento.pos):
+                    from assets.areas.tavern import tavern
+                    tavern()
 
         pos_mouse = pygame.mouse.get_pos()
 
@@ -57,23 +70,12 @@ def gameMenu():
         elif explorar_rect.collidepoint(pos_mouse):
             screen.blit(backMarcacaoExplorar1, (0, 0))
             pygame.mixer.music.play(1)
-
+        if selecionado_taverna:
+            screen.blit(backMarcacaoTaverna2, (0, 0))
+        elif taverna_rect.collidepoint(pos_mouse):
+            screen.blit(backMarcacaoTaverna1, (0, 0))
+            pygame.mixer.music.play(1)
         pygame.display.update()
         mainClock.tick(60)
 
-def abrirPraia():
-    rodando = True
-    while rodando:
-        for evento in pygame.event.get():
-            if evento.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-
-            if evento.type == pygame.KEYDOWN:
-                if evento.key == pygame.K_ESCAPE:
-                    rodando = False  # Volta para o menu
-
-        screen.blit(praiaBack, (0, 0))
-        pygame.display.update()
-        mainClock.tick(60)
 
