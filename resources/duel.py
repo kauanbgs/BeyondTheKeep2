@@ -61,7 +61,7 @@ class Projetil:
             self.ativo = False
 
     def colidir(self, enemy_x):
-        if abs(self.x - enemy_x) < 30:
+        if self.x > enemy_x + 175:
             self.ativo = False
             return Char.attack * d20()
         return 0
@@ -116,7 +116,7 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
 
     projeteis_inimigo = []
     tempo_ultimo_ataque_mago = 0
-    cooldown_mago = 1200
+    cooldown_mago = 1500
     projeteis = []
 
     if Char.classplayer == 1:
@@ -128,6 +128,7 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
         player_x = 100
         player_y = 250
 
+    tempoCooldownMago = 0
     espada_cooldown = 0
     cooldownAtaqueEspadaInimigo = 0
     enemy_x = 500
@@ -199,7 +200,8 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
                         if player_x > enemy_x - 150 and player_x < enemy_x + 150:
                             enemyHealth -= Char.attack * d20()
                     elif Char.classplayer == 2:
-                        if len(projeteis) == 0:
+                        if len(projeteis) == 0 and tempoCooldownMago == 0:
+                            tempoCooldownMago = 150
                             novo_proj = Projetil(player_x + 170, player_y + 100, 4)
                             projeteis.append(novo_proj)
                 if evento.key == pygame.K_t:
@@ -309,7 +311,7 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
 
                     cooldownAtaqueEspadaInimigo = 160
 
-                    if player_x + 150 > enemy_x and player_x - 150 < enemy_x:
+                    if player_x + 220 > enemy_x and player_x - 220 < enemy_x:
                         dano = enemyAttack * d20() - Char.defense
                         print(dano)
                         if dano > 0:
@@ -386,12 +388,11 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
 
         # Atualizar e desenhar projéteis
         for p in projeteis:
-            p.mover()
-            p.desenhar(screen)
-            p.colidir(enemy_x)
-            dano = p.colidir(enemy_x)
-            enemyHealth -= dano
-        
+                p.mover()
+                p.desenhar(screen)
+                dano = p.colidir(enemy_x)
+                enemyHealth -= dano
+            
         for p in projeteis_inimigo:
             p.mover()
             p.desenhar(screen)
@@ -413,6 +414,8 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
             espada_cooldown -= 1
         if cooldownAtaqueEspadaInimigo > 0:
             cooldownAtaqueEspadaInimigo -= 1
+        if tempoCooldownMago > 0:
+            tempoCooldownMago -= 1
 
         pygame.display.update()
 
