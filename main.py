@@ -16,4 +16,5 @@ from history.villages.villageEldoria import menuEldoria
 
 # menu()
 # inventory()
+menuEldoria()
 # villageVardann.intro_vardann()

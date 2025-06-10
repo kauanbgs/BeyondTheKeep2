@@ -4,7 +4,7 @@ import random
 import sys
 from assets.things import escrever_texto_animado
 from assets.config import Char
-from assets.screenConfig import screen, font, backDuelo, aton, nextage, barraVida1de8, barraVida2de8, barraVida3de8, barraVida4de8, barraVida5de8, barraVida6de8, barraVida7de8, barraVida8de8, barraVidaInimigo1de8, barraVidaInimigo2de8, barraVidaInimigo3de8, barraVidaInimigo4de8, barraVidaInimigo5de8, barraVidaInimigo6de8, barraVidaInimigo7de8, barraVidaInimigo8de8, atonEspada3, atonEspada4, atonEspada5, atonEspada6, cavaleiroFrame1, cavaleiroFrame2, cavaleiroFrame3, cavaleiroFrame4, cavaleiroFrame5, cavaleiroFrame6, goblinMago, cavaleiro, cavaleiroEspada1, cavaleiroEspada2
+from assets.screenConfig import screen, font, backDuelo, aton, rei, nextage, barraVida1de8, barraVida2de8, barraVida3de8, barraVida4de8, barraVida5de8, barraVida6de8, barraVida7de8, barraVida8de8, barraVidaInimigo1de8, barraVidaInimigo2de8, barraVidaInimigo3de8, barraVidaInimigo4de8, barraVidaInimigo5de8, barraVidaInimigo6de8, barraVidaInimigo7de8, barraVidaInimigo8de8, atonEspada3, atonEspada4, atonEspada5, atonEspada6, cavaleiroFrame1, cavaleiroFrame2, cavaleiroFrame3, cavaleiroFrame4, cavaleiroFrame5, cavaleiroFrame6, goblinMago, cavaleiro, cavaleiroEspada1, cavaleiroEspada2
 from assets.things import d20
 from resources.gameOver import gameOver
 
@@ -152,6 +152,11 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
         enemyImage = pygame.transform.scale(cavaleiro, (180, 180))
         enemy_x = 350
         enemy_y = 290
+
+    if enemyName == "Rei":
+        enemyImage = pygame.transform.scale(rei, (230, 230))
+        enemy_x = 350
+        enemy_y = 255
 
     while Char.health > 0 and enemyHealth > 0:
 
