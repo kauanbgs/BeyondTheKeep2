@@ -5,7 +5,7 @@ import time
 import pygame
 from assets.config import Char
 from assets.itens import Village
-from player.inventory import weaponsInventory
+# from player.inventory import weaponsInventory
 
 from assets.screenConfig import screen
 
@@ -24,13 +24,13 @@ def classUpdate():
     Char.health = 100
     Char.mana = 50
     Char.attack = 1.5
-    weaponsInventory.append("Espada gasta")
+    # weaponsInventory.append("Espada gasta")
   else:
     Char.classplayer = 2
     Char.health = 120
     Char.mana = 100
     Char.attack = 1.3
-    weaponsInventory.append("Cajado antigo")
+    # weaponsInventory.append("Cajado antigo")
 
 def randomVillage():
     if not Village.village_names:
