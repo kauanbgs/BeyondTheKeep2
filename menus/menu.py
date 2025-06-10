@@ -20,7 +20,7 @@ def menu():
     # Música de fundo
     pygame.mixer.init()
     pygame.mixer.music.load("assets/sounds/musicaMenu.mp3")
-    pygame.mixer.music.set_volume(0.08)
+    pygame.mixer.music.set_volume(0.14)
     pygame.mixer.music.play(-1)
 
     while rodando:
