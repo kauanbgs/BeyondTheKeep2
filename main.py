@@ -1,8 +1,5 @@
-import curses
-import time
-
-
-from player.inventory import inventory
+from history.villages import villageVardann
+# from player.inventory import inventory
 # from history.introduction import intro
 # from menus.areas import areas
 # from history.villages.villageCalthera import calthera
@@ -13,9 +10,10 @@ from player.inventory import inventory
 # from areas.tavern import desenhar_tela
 # from menus.areas import explorar
 # from history.villages.villageRavenspire import apostasMenu
-# from history.villages.villageEldoria import menuEldoria
+from history.villages.villageEldoria import menuEldoria
 # from assets.areas.tavern import desenhar_tela
 # rom resources.duel import duel
 
 # menu()
-inventory()
+# inventory()
+# villageVardann.intro_vardann()

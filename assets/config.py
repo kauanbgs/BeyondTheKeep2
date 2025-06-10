@@ -9,6 +9,7 @@ class Char:
   classplayer = 2
   Name = "Nextage"
   mana = 200 #CHANGE THIS
+  max_mana = 200
   health = 100 # CHANGE THIS
   max_health = 100
   attack = 1

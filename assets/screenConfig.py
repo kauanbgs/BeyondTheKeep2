@@ -283,6 +283,12 @@ brumariaJulgamento = pygame.transform.scale(brumariaJulgamento, (largura,altura)
 brumariaFinal = pygame.image.load("assets/images/BrumariaFinal.png")
 brumariaFinal = pygame.transform.scale(brumariaFinal, (largura,altura))
 
+vardannImagem1 = pygame.image.load("assets/images/Vardann1.png")
+vardannImagem1 = pygame.transform.scale(vardannImagem1, (largura,altura))
+
+vardannImagem2 = pygame.image.load("assets/images/Vardann2.png")
+vardannImagem2 = pygame.transform.scale(vardannImagem2, (largura,altura))
+
 def fade_out(velocidade=5, fundo = frame1):
     fade = pygame.Surface((largura, altura))
     fade.fill((0, 0, 0))
