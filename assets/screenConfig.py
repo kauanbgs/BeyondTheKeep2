@@ -255,6 +255,11 @@ cavaleiroEspada1 = pygame.transform.scale(cavaleiroEspada1, (180, 180))
 cavaleiroEspada2 = pygame.image.load("assets/images/cavaleiroEspada2.png")
 cavaleiroEspada2 = pygame.transform.scale(cavaleiroEspada2, (180, 180))
 
+brumariaImagem1 = pygame.image.load("assets/images/Brumaria1.png")
+brumariaImagem1 = pygame.transform.scale(brumariaImagem1,(largura,altura))
+
+brumariaImagem2 = pygame.image.load("assets/images/Brumaria2.png")
+brumariaImagem2 = pygame.transform.scale(brumariaImagem2,(largura,altura))
 
 def fade_out(velocidade=5, fundo = frame1):
     fade = pygame.Surface((largura, altura))
