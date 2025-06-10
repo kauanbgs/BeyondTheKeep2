@@ -218,15 +218,16 @@ def tribunalBrumaria_func():
                     if selecionado == 1:
                         screen.fill(PRETO)
                         screen.blit(filtro_preto,(0,0))
-                        escrever_texto_animado('"Exatamente. Está apto para julgar."', font, BRANCO, 50, 150, 25, screen)
+                        escrever_texto_animado('"Exatamente. Esta apto para julgar."', font, BRANCO, 50, 150, 25, screen)
                         pygame.time.wait(1500)
                         julgamento_final()
                         rodando = False
                     else:
                         screen.fill(PRETO)
                         screen.blit(filtro_preto,(0,0))
-                        escrever_texto_animado("O Lorde nao parece convencido com essa acusação.", font, BRANCO, 50, 150, 25, screen)
+                        escrever_texto_animado("O Lorde nao parece convencido com essa acusacao.", font, BRANCO, 50, 150, 25, screen)
                         pygame.time.wait(1500)
+                        menuBrumaria()
                         rodando = False
                     break
 
