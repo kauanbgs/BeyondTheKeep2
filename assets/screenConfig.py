@@ -156,6 +156,12 @@ pocaovida = pygame.image.load("assets/images/pocaovida.png")
 pocaovida = pygame.transform.scale(pocaovida, (250, 250))
 pocaoforca = pygame.image.load("assets/images/pocaoforca.png")
 pocaoforca = pygame.transform.scale(pocaoforca, (250, 250))
+
+pocaovida2 = pygame.image.load("assets/images/pocaovida.png")
+pocaovida2 = pygame.transform.scale(pocaovida2, (100, 100))
+pocaoforca2 = pygame.image.load("assets/images/pocaoforca.png")
+pocaoforca2 = pygame.transform.scale(pocaoforca2, (100, 100))
+
 espada = pygame.image.load("assets/images/espada.png")
 espada = pygame.transform.scale(espada, (250, 250))
 cajado = pygame.image.load("assets/images/cajado.png")
@@ -289,21 +295,6 @@ vardannImagem1 = pygame.transform.scale(vardannImagem1, (largura,altura))
 
 vardannImagem2 = pygame.image.load("assets/images/Vardann2.png")
 vardannImagem2 = pygame.transform.scale(vardannImagem2, (largura,altura))
-
-vardannPatrulha = pygame.image.load("assets/images/VardannPatrulha.png")
-vardannPatrulha = pygame.transform.scale(vardannPatrulha, (largura,altura))
-
-vardannVigia = pygame.image.load("assets/images/VardannVigia.png")
-vardannVigia = pygame.transform.scale(vardannVigia, (largura,altura))
-
-vardannGnomo = pygame.image.load("assets/images/VardannGnomo.png")
-vardannGnomo = pygame.transform.scale(vardannGnomo, (largura,altura))
-
-avancouVardann = pygame.image.load("assets/images/AvancouVardann.png")
-avancouVardann = pygame.transform.scale(avancouVardann, (largura,altura))
-
-rei = pygame.image.load("assets/images/rei.png")
-rei = pygame.transform.scale(rei, (largura,altura))
 
 def fade_out(velocidade=5, fundo = frame1):
     fade = pygame.Surface((largura, altura))

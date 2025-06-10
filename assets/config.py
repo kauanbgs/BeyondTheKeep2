@@ -12,7 +12,7 @@ class Char:
   max_mana = 200
   health = 100 # CHANGE THIS
   max_health = 100
-  attack = 1
+  attack = 25
   attack_base = 1.3
   weapon = "garbage"
   defense = 1.0
