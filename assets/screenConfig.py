@@ -321,7 +321,16 @@ molduraInventario = pygame.image.load("assets/images/molduraInventario.png")
 molduraInventario = pygame.transform.scale(molduraInventario, (90, 90))
 
 modeloBotao = pygame.image.load("assets/images/modeloBotao.png")
-modeloBotao = pygame.transform.scale(modeloBotao, (200, 50))
+modeloBotao = pygame.transform.scale(modeloBotao, (500, 400))
+
+modeloBotaoHover = pygame.image.load("assets/images/modeloBotaoHover.png")
+modeloBotaoHover = pygame.transform.scale(modeloBotaoHover, (500, 400))
+
+modeloBotao2 = pygame.image.load("assets/images/modeloBotao2.png")
+modeloBotao2 = pygame.transform.scale(modeloBotao2, (500, 400))
+
+modeloBotao2Hover = pygame.image.load("assets/images/modeloBotao2Hover.png")
+modeloBotao2Hover = pygame.transform.scale(modeloBotao2Hover, (500, 400))
 
 def fade_out(velocidade=5, fundo = frame1):
     fade = pygame.Surface((largura, altura))

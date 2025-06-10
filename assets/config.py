@@ -35,6 +35,12 @@ class Char:
   conversouCarlinhoOuro = False
   derrotouCavaleiroTreino = False
 
+  fez_mercador = False
+  fez_castelo = False
+  falou_moradores = False
+  fez_brumaria = False
+  
+
 
 
 

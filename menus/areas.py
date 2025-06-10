@@ -5,7 +5,7 @@ from history.villages.villageEldoria import menuEldoria
 from history.villages.villageBrumaria import introBrumaria
 from history.villages.villageBrumaria import menuBrumaria
 from assets.config import Char
-from assets.screenConfig import screen, mainClock, explorarVilas
+from assets.screenConfig import screen, mainClock, explorarVilas, font
 from assets.things import escrever_texto_animado
 
 def explorar():
@@ -35,6 +35,11 @@ def explorar():
                     introEldoria()
             if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
                 if brumaria_rect.collidepoint(evento.pos):
+                    if Char.fez_brumaria:
+                        screen.fill((0, 0, 0))
+                        escrever_texto_animado(f"{Char.Name} já completou Brumaria.", font, (255, 255, 255), 275, 200, 25, screen)
+                        pygame.time.wait(1000)
+                        explorar()
                     if Char.veioBrumaria:
                         menuBrumaria()
                     introBrumaria()

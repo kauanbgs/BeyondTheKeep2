@@ -15,6 +15,8 @@ from history.villages.villageEldoria import menuEldoria
 # rom resources.duel import duel
 from assets.areas.tavern import tavern
 from history.villages.villageBrumaria import introBrumaria
+from history.villages.villageBrumaria import menuBrumaria
+from history.villages.villageBrumaria import tribunalBrumaria
 
 # menu()
 # duel("Goblin", 100, 100, 1, 1, "Cavaleiroframe1.png", "mago", 3)
@@ -22,5 +24,6 @@ from history.villages.villageBrumaria import introBrumaria
 # duel("Rei", 100, 100, 1, 1, "Cavaleiroframe1.png", "mago", 5)
 # introBrumaria()
 # inventario()
-tavern()
+# tavern()
 # menuEldoria()
+menuBrumaria()
