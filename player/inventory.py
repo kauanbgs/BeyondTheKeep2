@@ -1,6 +1,5 @@
- from assets.screenConfig import screen, largura, altura, fontBold, filtro_preto, pocaovida, pocaoforca
+from assets.screenConfig import screen, largura, altura, fontBold, filtro_preto, pocaovida, pocaoforca
 from assets.config import Char
-from resources.duel import barraVida1de8, barraVida2de8, barraVida3de8, barraVida4de8
 import pygame
 import sys
 
