@@ -155,6 +155,12 @@ pocaovida = pygame.image.load("assets/images/pocaovida.png")
 pocaovida = pygame.transform.scale(pocaovida, (250, 250))
 pocaoforca = pygame.image.load("assets/images/pocaoforca.png")
 pocaoforca = pygame.transform.scale(pocaoforca, (250, 250))
+
+pocaovida2 = pygame.image.load("assets/images/pocaovida.png")
+pocaovida2 = pygame.transform.scale(pocaovida2, (100, 100))
+pocaoforca2 = pygame.image.load("assets/images/pocaoforca.png")
+pocaoforca2 = pygame.transform.scale(pocaoforca2, (100, 100))
+
 espada = pygame.image.load("assets/images/espada.png")
 espada = pygame.transform.scale(espada, (250, 250))
 cajado = pygame.image.load("assets/images/cajado.png")
@@ -285,6 +291,18 @@ brumariaFinal = pygame.transform.scale(brumariaFinal, (largura,altura))
 
 rei = pygame.image.load("assets/images/rei.png")
 rei = pygame.transform.scale(rei, (largura, altura))
+
+fundoTaverna = pygame.image.load("assets/images/fundo1.jpeg")
+fundoTaverna = pygame.transform.scale(fundoTaverna, (largura, altura))
+
+botaoTaverna = pygame.image.load("assets/images/botaoTaverna.png")
+botaoTaverna = pygame.transform.scale(botaoTaverna, (300, 220))
+
+botaoTavernaHover = pygame.image.load("assets/images/botaoTavernaHover.png")
+botaoTavernaHover = pygame.transform.scale(botaoTavernaHover, (300, 220))
+
+
+
 
 def fade_out(velocidade=5, fundo = frame1):
     fade = pygame.Surface((largura, altura))

@@ -5,7 +5,6 @@ from assets.things import escrever_texto_animado
 from assets.config import Char
 from assets.screenConfig import  filtro_preto
 
-Char.name = "Nextage"
 
 # Cores
 BRANCO = (255, 255, 255)
