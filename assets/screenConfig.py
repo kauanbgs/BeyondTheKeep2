@@ -1,6 +1,7 @@
 #File made by: Kauan
 
 import pygame
+import pygame.locals
 
 #Main settings of pygame
 
@@ -288,6 +289,21 @@ vardannImagem1 = pygame.transform.scale(vardannImagem1, (largura,altura))
 
 vardannImagem2 = pygame.image.load("assets/images/Vardann2.png")
 vardannImagem2 = pygame.transform.scale(vardannImagem2, (largura,altura))
+
+vardannPatrulha = pygame.image.load("assets/images/VardannPatrulha.png")
+vardannPatrulha = pygame.transform.scale(vardannPatrulha, (largura,altura))
+
+vardannVigia = pygame.image.load("assets/images/VardannVigia.png")
+vardannVigia = pygame.transform.scale(vardannVigia, (largura,altura))
+
+vardannGnomo = pygame.image.load("assets/images/VardannGnomo.png")
+vardannGnomo = pygame.transform.scale(vardannGnomo, (largura,altura))
+
+avancouVardann = pygame.image.load("assets/images/AvancouVardann.png")
+avancouVardann = pygame.transform.scale(avancouVardann, (largura,altura))
+
+rei = pygame.image.load("assets/images/rei.png")
+rei = pygame.transform.scale(rei, (largura,altura))
 
 def fade_out(velocidade=5, fundo = frame1):
     fade = pygame.Surface((largura, altura))
