@@ -23,8 +23,8 @@ fundo = pygame.transform.scale(fundo, (largura, altura))
 botaoPlay = pygame.image.load("assets/images/botaoPlay.png")
 botaoPlay = pygame.transform.scale(botaoPlay, (450, 450))
 
-botaoSaves = pygame.image.load("assets/images/botaoSaves.png")
-botaoSaves = pygame.transform.scale(botaoSaves, (450, 450))
+botaoConfig = pygame.image.load("assets/images/botaoConfig.png")
+botaoConfig = pygame.transform.scale(botaoConfig, (450, 450))
 
 botaoQuit = pygame.image.load("assets/images/botaoQuit.png")
 botaoQuit = pygame.transform.scale(botaoQuit, (450, 450))
@@ -33,8 +33,8 @@ botaoQuit = pygame.transform.scale(botaoQuit, (450, 450))
 botaoPlayHover = pygame.image.load("assets/images/botaoPlayHover.png")
 botaoPlayHover = pygame.transform.scale(botaoPlayHover, (450, 450))
 
-botaoSavesHover = pygame.image.load("assets/images/botaoSavesHover.png")
-botaoSavesHover = pygame.transform.scale(botaoSavesHover, (450, 450))
+botaoConfigHover = pygame.image.load("assets/images/botaoConfigHover.png")
+botaoConfigHover = pygame.transform.scale(botaoConfigHover, (450, 450))
 
 botaoQuitHover = pygame.image.load("assets/images/botaoQuitHover.png")
 botaoQuitHover = pygame.transform.scale(botaoQuitHover, (450, 450))
@@ -48,6 +48,9 @@ praia = pygame.transform.scale(praia, (largura, altura))
 
 praiaBack = pygame.image.load("assets/images/praiaBack.png")
 praiaBack = pygame.transform.scale(praiaBack, (largura, altura))
+
+backFrame1 = pygame.image.load("assets/images/backFrame1.jpg")
+backFrame1 = pygame.transform.scale(backFrame1, (largura, altura))
 
 explorarVilas = pygame.image.load("assets/images/explorarVilas.jpg")
 explorarVilas = pygame.transform.scale(explorarVilas, (largura, altura))
@@ -117,6 +120,15 @@ botaoEldoriaExplorar = pygame.transform.scale(botaoEldoriaExplorar, (250, 250))
 
 botaoEldoriaInteragir = pygame.image.load("assets/images/botaoEldoriaInteragir.png")
 botaoEldoriaInteragir = pygame.transform.scale(botaoEldoriaInteragir, (250, 250))
+
+botaoEldoriaLeft = pygame.image.load("assets/images/botaoEldoriaLeft.png")
+botaoEldoriaLeft = pygame.transform.scale(botaoEldoriaLeft, (250, 250))
+
+botaoEldoriaExplore = pygame.image.load("assets/images/botaoEldoriaExplore.png")
+botaoEldoriaExplore = pygame.transform.scale(botaoEldoriaExplore, (250, 250))
+
+botaoEldoriaInteract = pygame.image.load("assets/images/botaoEldoriaInteract.png")
+botaoEldoriaInteract = pygame.transform.scale(botaoEldoriaInteract, (250, 250))
 
 fundoEldoria = pygame.image.load("assets/images/fundoEldoria.png")
 fundoEldoria = pygame.transform.scale(fundoEldoria, (largura, altura))

@@ -22,15 +22,24 @@ def introBrumaria():
     screen.fill((0, 0, 0))
     pygame.display.update()
     pygame.mixer.music.unpause()
-    escrever_texto_animado(f"{Char.Name} chega a fria e sombria Brumaria. Seus muros sao altos,", font, BRANCO, 50, 50, 25, screen)
+    if Char.language == "ptbr":
+        escrever_texto_animado(f"{Char.Name} chega a fria e sombria Brumaria. Seus muros sao altos,", font, BRANCO, 50, 50, 25, screen)
+    else:
+        escrever_texto_animado(f"{Char.Name} arrives at the cold and dark Brumaria. Its walls are high,", font, BRANCO, 50, 50, 25, screen)
     pygame.mixer.music.pause()
     pygame.time.wait(1000)
     pygame.mixer.music.unpause()
-    escrever_texto_animado("O ceu encoberto e a tensao e palpavel.", font, BRANCO, 50, 75, 25, screen)
+    if Char.language == "ptbr":
+        escrever_texto_animado("O ceu encoberto e a tensao e palpavel.", font, BRANCO, 50, 75, 25, screen)
+    else:
+        escrever_texto_animado("The overcast sky and the tension are palpable.", font, BRANCO, 50, 75, 25, screen)
     pygame.mixer.music.pause()
     pygame.time.wait(1000)
     pygame.mixer.music.unpause()
-    escrever_texto_animado("A cidade aguarda respostas.", font, BRANCO, 50, 100, 25, screen)
+    if Char.language == "ptbr":
+        escrever_texto_animado("A cidade aguarda respostas.", font, BRANCO, 50, 100, 25, screen)
+    else:
+        escrever_texto_animado("The city awaits answers.", font, BRANCO, 50, 100, 25, screen)
     pygame.mixer.music.pause()
     pygame.time.wait(2000)
     menuBrumaria()
@@ -42,10 +51,16 @@ def menuBrumaria():
     opcao2_rect = pygame.Rect(245, 130, 300, 80)
     opcao3_rect = pygame.Rect(245, 230, 300, 80)
     opcao4_rect = pygame.Rect(245, 330, 300, 80)
-    opcao1 = fontBold.render("Falar com o mercador", True, (255, 255, 255))
-    opcao2 = fontBold.render("Ir ao castelo", True, (255, 255, 255))
-    opcao3 = fontBold.render("Falar com moradores", True, (255, 255, 255))
-    opcao4 = fontBold.render("Ir ao Tribunal", True, (255, 255, 255))
+    if Char.language == "ptbr":
+        opcao1 = fontBold.render("Falar com o mercador", True, (255, 255, 255))
+        opcao2 = fontBold.render("Ir ao castelo", True, (255, 255, 255))
+        opcao3 = fontBold.render("Falar com moradores", True, (255, 255, 255))
+        opcao4 = fontBold.render("Ir ao Tribunal", True, (255, 255, 255))
+    else:
+        opcao1 = fontBold.render("Talk to the merchant", True, (255, 255, 255))
+        opcao2 = fontBold.render("Go to the castle", True, (255, 255, 255))
+        opcao3 = fontBold.render("Talk to the villagers", True, (255, 255, 255))
+        opcao4 = fontBold.render("Go to the Tribunal", True, (255, 255, 255))
     rodando = True
     while rodando:
         for evento in pygame.event.get():
@@ -58,7 +73,10 @@ def menuBrumaria():
                         falar_mercador()
                     else:
                         screen.fill((0, 0, 0))
-                        escrever_texto_animado(f"{Char.Name} ja falou com o mercador.", font, BRANCO, 50, 50, 25, screen)
+                        if Char.language == "ptbr":
+                            escrever_texto_animado(f"{Char.Name} ja falou com o mercador.", font, BRANCO, 50, 50, 25, screen)
+                        else:
+                            escrever_texto_animado(f"{Char.Name} has already talked to the merchant.", font, BRANCO, 50, 50, 25, screen)
                         pygame.time.wait(1500)
 
             if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
@@ -67,7 +85,10 @@ def menuBrumaria():
                         ir_castelo()
                     else:
                         screen.fill((0, 0, 0))
-                        escrever_texto_animado(f"{Char.Name} ja foi ao castelo.", font, BRANCO, 50, 50, 25, screen)
+                        if Char.language == "ptbr":
+                            escrever_texto_animado(f"{Char.Name} ja foi ao castelo.", font, BRANCO, 50, 50, 25, screen)
+                        else:
+                            escrever_texto_animado(f"{Char.Name} has already been to the castle.", font, BRANCO, 50, 50, 25, screen)
                         pygame.time.wait(1500)
 
             if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
@@ -76,7 +97,10 @@ def menuBrumaria():
                         falar_moradores()
                     else:
                         screen.fill((0, 0, 0))
-                        escrever_texto_animado(f"{Char.Name} ja falou com os moradores.", font, BRANCO, 50, 50, 25, screen)
+                        if Char.language == "ptbr":
+                            escrever_texto_animado(f"{Char.Name} ja falou com os moradores.", font, BRANCO, 50, 50, 25, screen)
+                        else:
+                            escrever_texto_animado(f"{Char.Name} has already talked to the villagers.", font, BRANCO, 50, 50, 25, screen)
                         pygame.time.wait(1500)
             if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
                 if opcao4_rect.collidepoint(evento.pos):
@@ -84,7 +108,10 @@ def menuBrumaria():
                         tribunalBrumaria()
                     else:
                         screen.fill((0, 0, 0))
-                        escrever_texto_animado(f"{Char.Name} nao coletou todas as dicas disponiveis.", font, BRANCO, 50, 50, 25, screen)
+                        if Char.language == "ptbr":
+                            escrever_texto_animado(f"{Char.Name} nao coletou todas as dicas disponiveis.", font, BRANCO, 50, 50, 25, screen)
+                        else:
+                            escrever_texto_animado(f"{Char.Name} has not collected all available clues.", font, BRANCO, 50, 50, 25, screen)
                         pygame.time.wait(1500)
             if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
                 if voltarBrumaria_rect.collidepoint(evento.pos):
@@ -128,9 +155,14 @@ def falar_mercador():
     screen.blit(brumariaFerreiro, (0, 0))
     screen.blit(filtro_preto,(0,0))
     pygame.mixer.music.unpause()
-    escrever_texto_animado(f"{Char.Name} entra na ferraria de um homem nervoso.", font, BRANCO, 50, 50, 25, screen)
-    escrever_texto_animado('"Voce... e de Skalice, nao?"', font, BRANCO, 50, 80, 25, screen)
-    escrever_texto_animado('"Ouvi passos apressados na noite do crime... Depois, silencio."', font, BRANCO, 50, 110, 25, screen)
+    if Char.language == "ptbr":
+        escrever_texto_animado(f"{Char.Name} entra na ferraria de um homem nervoso.", font, BRANCO, 50, 50, 25, screen)
+        escrever_texto_animado('"Voce... e de Skalice, nao?"', font, BRANCO, 50, 80, 25, screen)
+        escrever_texto_animado('"Ouvi passos apressados na noite do crime... Depois, silencio."', font, BRANCO, 50, 110, 25, screen)
+    else:
+        escrever_texto_animado(f"{Char.Name} enters the blacksmith's shop of a nervous man", font, BRANCO, 50, 50, 25, screen)
+        escrever_texto_animado('"You... are from Skalice, arent you?"', font, BRANCO, 50, 80, 25, screen)
+        escrever_texto_animado('"I heard hurried footsteps on the night of the crime... Then, silence."', font, BRANCO, 50, 110, 25, screen)
     pygame.mixer.music.pause()
     pygame.time.wait(1500)
     Char.tem_pista_mercador = True
@@ -147,9 +179,14 @@ def ir_castelo():
     screen.blit(brumariaCastelo, (0, 0))
     screen.blit(filtro_preto,(0,0))
     pygame.mixer.music.unpause()
-    escrever_texto_animado("Guardas escoltam Aton até o salao principal do castelo.", font, BRANCO, 50, 50, 25, screen)
-    escrever_texto_animado('"Preciso de olhos confiaveis esta noite. Vigie meus corredores."', font, BRANCO, 50, 80, 25, screen)
-    escrever_texto_animado("Durante a patrulha, Aton ve uma sombra e percebe que armaduras sumiram.", font, BRANCO, 50, 110, 25, screen)
+    if Char.language == "ptbr":
+        escrever_texto_animado("Guardas escoltam Aton até o salao principal do castelo.", font, BRANCO, 50, 50, 25, screen)
+        escrever_texto_animado('"Preciso de olhos confiaveis esta noite. Vigie meus corredores."', font, BRANCO, 50, 80, 25, screen)
+        escrever_texto_animado("Durante a patrulha, Aton ve uma sombra e percebe que armaduras sumiram.", font, BRANCO, 50, 110, 25, screen)
+    else:
+        escrever_texto_animado("Guards escort Aton to the main hall of the castle.", font, BRANCO, 50, 50, 25, screen)
+        escrever_texto_animado('"I need trustworthy eyes tonight. Watch my corridors."', font, BRANCO, 50, 80, 25, screen)
+        escrever_texto_animado("During the patrol, Aton sees a shadow and notices that armors have disappeared.", font, BRANCO, 50, 110, 25, screen)
     pygame.mixer.music.pause()
     pygame.time.wait(1500)
 
@@ -164,9 +201,14 @@ def falar_moradores():
     screen.blit(brumariaMorador, (0, 0))
     screen.blit(filtro_preto,(0,0))
     pygame.mixer.music.unpause()
-    escrever_texto_animado(f"{Char.Name} caminha pelas ruas e ouve relatos.", font, BRANCO, 50, 50, 25, screen)
-    escrever_texto_animado('"Ouvi barulhos pesados... Era um guarda, com botas."', font, BRANCO, 50, 80, 25, screen)
-    escrever_texto_animado('"Vi um guarda sair da muralha... Usava capa."', font, BRANCO, 50, 110, 25, screen)
+    if Char.language == "ptbr":
+        escrever_texto_animado(f"{Char.Name} caminha pelas ruas e ouve relatos.", font, BRANCO, 50, 50, 25, screen)
+        escrever_texto_animado('"Ouvi barulhos pesados... Era um guarda, com botas."', font, BRANCO, 50, 80, 25, screen)
+        escrever_texto_animado('"Vi um guarda sair da muralha... Usava capa."', font, BRANCO, 50, 110, 25, screen)
+    else:
+        escrever_texto_animado(f"{Char.Name} walks through the streets and hears reports.", font, BRANCO, 50, 50, 25, screen)
+        escrever_texto_animado('"I heard heavy noises... It was a guard, with boots."', font, BRANCO, 50, 80, 25, screen)
+        escrever_texto_animado('"I saw a guard leaving the wall... He was wearing a cape."', font, BRANCO, 50, 110, 25, screen)
     pygame.mixer.music.pause()
     pygame.time.wait(1500)
     
@@ -179,15 +221,24 @@ def tribunalBrumaria():
     opcao1_rect = pygame.Rect(245, 30, 300, 80)
     opcao2_rect = pygame.Rect(245, 130, 300, 80)
     opcao3_rect = pygame.Rect(245, 230, 300, 80)
-    opcao1 = fontBold.render("Guarda matou alguem", True, (255, 255, 255))
-    opcao2 = fontBold.render("Guarda roubou itens", True, (255, 255, 255))
-    opcao3 = fontBold.render("Guarda nao fez turno", True, (255, 255, 255))
+    if Char.language == "ptbr":
+        opcao1 = fontBold.render("Guarda matou alguem", True, (255, 255, 255))
+        opcao2 = fontBold.render("Guarda roubou itens", True, (255, 255, 255))
+        opcao3 = fontBold.render("Guarda nao fez turno", True, (255, 255, 255))
+    else:
+        opcao1 = fontBold.render("Guard killed someone", True, (255, 255, 255))
+        opcao2 = fontBold.render("Guard stole items", True, (255, 255, 255))
+        opcao3 = fontBold.render("Guard not did his shift", True, (255, 255, 255))
     rodando = True
     screen.blit(brumariaJulgamento,(0,0))
     screen.blit(filtro_preto,(0,0))
     pygame.mixer.music.unpause()
-    escrever_texto_animado("O salao do castelo esta lotado. O Lorde quer respostas.", font, BRANCO, 50, 50, 25, screen)
-    escrever_texto_animado('"O que ocorreu em Brumaria?"', font, BRANCO, 50, 80, 25, screen)
+    if Char.language == "ptbr":
+        escrever_texto_animado("O salao do castelo esta lotado. O Lorde quer respostas.", font, BRANCO, 50, 50, 25, screen)
+        escrever_texto_animado('"O que ocorreu em Brumaria?"', font, BRANCO, 50, 80, 25, screen)
+    else:
+        escrever_texto_animado("The castle hall is crowded. The Lord wants answers.", font, BRANCO, 50, 50, 25, screen)
+        escrever_texto_animado('"What happened in Brumaria?"', font, BRANCO, 50, 80, 25, screen)
     pygame.mixer.music.pause()
     pygame.time.wait(1500)
     while rodando:
@@ -200,7 +251,10 @@ def tribunalBrumaria():
                     screen.fill(PRETO)
                     screen.blit(filtro_preto,(0,0))
                     pygame.mixer.music.unpause()
-                    escrever_texto_animado("O Lorde nao parece convencido com essa acusacao.", font, BRANCO, 50, 150, 25, screen)
+                    if Char.language == "ptbr":
+                        escrever_texto_animado("O Lorde nao parece convencido com essa acusacao.", font, BRANCO, 50, 150, 25, screen)
+                    else:
+                        escrever_texto_animado("The Lord does not seem convinced by this accusation.", font, BRANCO, 50, 150, 25, screen)
                     pygame.mixer.music.pause()
                     pygame.time.wait(1500)
                     menuBrumaria()
@@ -210,7 +264,10 @@ def tribunalBrumaria():
                     screen.fill(PRETO)
                     screen.blit(filtro_preto,(0,0))
                     pygame.mixer.music.unpause()
-                    escrever_texto_animado(f'"Exatamente, {Char.Name}! PRENDAM-O!"', font, BRANCO, 50, 150, 25, screen)
+                    if Char.language == "ptbr":
+                        escrever_texto_animado(f'"Exatamente, {Char.Name}! PRENDAM-O!"', font, BRANCO, 50, 150, 25, screen)
+                    else:
+                        escrever_texto_animado(f'"Exactly, {Char.Name}! ARREST HIM!"', font, BRANCO, 50, 150, 25, screen)
                     pygame.mixer.music.pause()
                     pygame.time.wait(2500)
                     julgamento_final()
@@ -220,7 +277,10 @@ def tribunalBrumaria():
                     screen.fill(PRETO)
                     screen.blit(filtro_preto,(0,0))
                     pygame.mixer.music.unpause()
-                    escrever_texto_animado("O Lorde nao parece convencido com essa acusacao.", font, BRANCO, 50, 150, 25, screen)
+                    if Char.language == "ptbr":
+                        escrever_texto_animado("O Lorde nao parece convencido com essa acusacao.", font, BRANCO, 50, 150, 25, screen)
+                    else:
+                        escrever_texto_animado("The Lord does not seem convinced by this accusation.", font, BRANCO, 50, 150, 25, screen)
                     pygame.mixer.music.pause()
                     pygame.time.wait(1500)
                     menuBrumaria()
@@ -259,11 +319,17 @@ def julgamento_final():
     screen.blit(brumariaFinal,(0,0))
     screen.blit(filtro_preto,(0,0))
     pygame.mixer.music.unpause()
-    escrever_texto_animado(f"{Char.Name} conclui seu julgamento e traz paz para Brumaria.", font, BRANCO, 50, 50, 25, screen)
+    if Char.language == "ptbr":
+        escrever_texto_animado(f"{Char.Name} conclui seu julgamento e traz paz para Brumaria.", font, BRANCO, 50, 50, 25, screen)
+    else:
+        escrever_texto_animado(f"{Char.Name} concludes his trial and brings peace to Brumaria.", font, BRANCO, 50, 50, 25, screen)
     pygame.mixer.music.pause()
     pygame.time.wait(1000)
     pygame.mixer.music.unpause()
-    escrever_texto_animado("Agora essa vila aparenta ter mais vida. ",font,BRANCO,50,75,25,screen)
+    if Char.language == "ptbr":
+        escrever_texto_animado("Agora essa vila aparenta ter mais vida. ",font,BRANCO,50,75,25,screen)
+    else:
+        escrever_texto_animado("Now this village seems to have more life.", font, BRANCO, 50, 75, 25, screen)
     pygame.mixer.music.pause()
     pygame.time.wait(2500)
     gameMenu()

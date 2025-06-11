@@ -6,6 +6,7 @@ class Config:
   
 #Player settings, only change if you're a developer or tester. (CHANGING THIS WILL MAKE YOUR GAMEPLAY BORING!)
 class Char:
+  language = "en"
   classplayer = 2
   Name = "Nextage"
   health = 100
@@ -23,6 +24,7 @@ class Char:
   item = "garbage"
   aumentoVida = 40
   aumentoAtaque = 0.3
+  dificuldade = 1
 
   villagesVisited = 0
   veioFerreiro = False
@@ -44,6 +46,7 @@ class Char:
   fezGerenciar = False
   fezVigiasVardann = False
   fezVardann = False
+  veioVardann = False
   
 
 

@@ -112,8 +112,17 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
         pygame.mixer.music.load("assets/sounds/musicaBatalha3.mp3")
         pygame.mixer.music.set_volume(0.02)
     pygame.mixer.music.play(-1)
-    
 
+    if Char.dificuldade == 1:
+        enemyHealth += 10
+        enemyAttack += 0.1
+    elif Char.dificuldade == 2:
+        enemyHealth += 20
+        enemyAttack += 0.2
+    elif Char.dificuldade == 3:
+        enemyHealth += 30
+        enemyAttack += 0.3
+    
     projeteis_inimigo = []
     tempo_ultimo_ataque_mago = 0
     cooldown_mago = 1500

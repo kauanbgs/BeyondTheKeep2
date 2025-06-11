@@ -38,7 +38,10 @@ def explorar():
                 if vardann_rect.collidepoint(evento.pos):
                     if Char.fezVardann:
                         screen.fill((0, 0, 0))
-                        escrever_texto_animado(f"{Char.Name} já completou Vardann.", font, (255, 255, 255), 275, 200, 25, screen)
+                        if Char.language == "ptbr":
+                            escrever_texto_animado(f"{Char.Name} já completou Vardann.", font, (255, 255, 255), 275, 200, 25, screen)
+                        else:
+                            escrever_texto_animado(f"{Char.Name} has already completed Vardann.", font, (255, 255, 255), 275, 200, 25, screen)
                         pygame.time.wait(1000)
                         explorar()
                     if Char.veioVardann:
@@ -49,7 +52,10 @@ def explorar():
                 if brumaria_rect.collidepoint(evento.pos):
                     if Char.fez_brumaria:
                         screen.fill((0, 0, 0))
-                        escrever_texto_animado(f"{Char.Name} já completou Brumaria.", font, (255, 255, 255), 275, 200, 25, screen)
+                        if Char.language == "ptbr":
+                            escrever_texto_animado(f"{Char.Name} já completou Brumaria.", font, (255, 255, 255), 275, 200, 25, screen)
+                        else:
+                            escrever_texto_animado(f"{Char.Name} has already completed Brumaria.", font, (255, 255, 255), 275, 200, 25, screen)
                         pygame.time.wait(1000)
                         explorar()
                     if Char.veioBrumaria:

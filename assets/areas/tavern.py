@@ -10,10 +10,16 @@ from player.inventory import inventory
 
 def tavern():
     rodando = True
-    pocaoDeVida = fontBold.render("Pocao de Vida", True, (255, 255, 255))
+    if Char.language == "ptbr":
+        pocaoDeVida = fontBold.render("Pocao de Vida", True, (255, 255, 255))
+    else:
+        pocaoDeVida = fontBold.render("Health Potion", True, (255, 255, 255))
     infosPocaoVida = font.render(f"+{Char.aumentoVida}HP", True, (255, 255, 255))
     infosPocaoAtaque = font.render(f"+{Char.aumentoAtaque}ATK", True, (255, 255, 255))
-    pocaoDeAtaque = fontBold.render(f"Pocao de Ataque", True, (255, 255, 255))
+    if Char.language == "ptbr":
+        pocaoDeAtaque = fontBold.render(f"Pocao de Ataque", True, (255, 255, 255))
+    else:
+        pocaoDeAtaque = fontBold.render(f"Attack Potion", True, (255, 255, 255))
     voltarTaverna_rect = pygame.Rect(25, 25, 100, 100)
     pocaoAtaque_rect = pygame.Rect(80, 225, 250, 50)
     pocaoVida_rect = pygame.Rect(80, 300, 250, 50)
@@ -31,13 +37,19 @@ def tavern():
                     if Char.coins < 5:
                         screen.fill((0, 0, 0))
                         pygame.display.update()
-                        escrever_texto_animado("Nao tem moedas suficientes.", font, (255, 255, 255), 275, 200, 25, screen)
+                        if Char.language == "ptbr":
+                            escrever_texto_animado("Nao tem moedas suficientes.", font, (255, 255, 255), 275, 200, 25, screen)
+                        else:
+                            escrever_texto_animado("Not enough coins.", font, (255, 255, 255), 275, 200, 25, screen)
                         pygame.time.wait(1500)
                         tavern()
                     elif inventory[5] is not None:
                         screen.fill((0, 0, 0))
                         pygame.display.update()
-                        escrever_texto_animado("Nao ha espaco suficiente.", font, (255, 255, 255), 275, 200, 25, screen)
+                        if Char.language == "ptbr":
+                            escrever_texto_animado("Nao ha espaco suficiente.", font, (255, 255, 255), 275, 200, 25, screen)
+                        else:
+                            escrever_texto_animado("Not enough space.", font, (255, 255, 255), 275, 200, 25, screen)
                         pygame.time.wait(1500)
                         tavern()
 
@@ -45,7 +57,10 @@ def tavern():
                         Char.coins -= 5
                         screen.fill((0, 0, 0))
                         pygame.display.update()
-                        escrever_texto_animado("Comprou Pocao de vida!.", font, (255, 255, 255), 275, 200, 25, screen)
+                        if Char.language == "ptbr":
+                            escrever_texto_animado("Comprou Pocao de vida!.", font, (255, 255, 255), 275, 200, 25, screen)
+                        else:
+                            escrever_texto_animado("Bought Health Potion!", font, (255, 255, 255), 275, 200, 25, screen)
                         pygame.time.wait(1500)
                         for i in range(len(inventory)):
                             if inventory[i] is None:
@@ -55,20 +70,29 @@ def tavern():
                     if Char.coins < 3:
                         screen.fill((0, 0, 0))
                         pygame.display.update()
-                        escrever_texto_animado("Nao tem moedas suficientes.", font, (255, 255, 255), 275, 200, 25, screen)
+                        if Char.language == "ptbr":
+                            escrever_texto_animado("Nao tem moedas suficientes.", font, (255, 255, 255), 275, 200, 25, screen)
+                        else:
+                            escrever_texto_animado("Not enough coins.", font, (255, 255, 255), 275, 200, 25, screen)
                         pygame.time.wait(1500)
                         tavern()
                     elif inventory[5] is not None:
                         screen.fill((0, 0, 0))
                         pygame.display.update()
-                        escrever_texto_animado("Nao ha espaco suficiente.", font, (255, 255, 255), 275, 200, 25, screen)
+                        if Char.language == "ptbr":
+                            escrever_texto_animado("Nao ha espaco suficiente.", font, (255, 255, 255), 275, 200, 25, screen)
+                        else:
+                            escrever_texto_animado("Not enough space.", font, (255, 255, 255), 275, 200, 25, screen)
                         pygame.time.wait(1500)
                         tavern()
                     else:
                         Char.coins -= 3
                         screen.fill((0, 0, 0))
                         pygame.display.update()
-                        escrever_texto_animado("Comprou Pocao de Ataque!.", font, (255, 255, 255), 275, 200, 25, screen)
+                        if Char.language == "ptbr":
+                            escrever_texto_animado("Comprou Pocao de Ataque!.", font, (255, 255, 255), 275, 200, 25, screen)
+                        else:
+                            escrever_texto_animado("Bought Attack Potion!", font, (255, 255, 255), 275, 200, 25, screen)
                         pygame.time.wait(1500)
                         for i in range(len(inventory)):
                             if inventory[i] is None:

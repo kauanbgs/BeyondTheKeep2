@@ -3,7 +3,7 @@ import pygame
 import numpy as np
 import sys
 from history.introduction import introJogo
-from assets.screenConfig import screen, mainClock, botaoPlay, botaoPlayHover, botaoSaves, botaoSavesHover, botaoQuit, botaoQuitHover, fade_out, play_rect, quit_rect, saves_rect
+from assets.screenConfig import screen, mainClock, botaoPlay, botaoPlayHover, botaoConfig, botaoConfigHover, botaoQuit, botaoQuitHover, fade_out, play_rect, quit_rect, saves_rect
 
 
 def menu():
@@ -57,9 +57,12 @@ def menu():
             screen.blit(botaoPlay, (160, -160))
 
         if saves_rect.collidepoint(pos_mouse):
-            screen.blit(botaoSavesHover, (0, -160))
+            screen.blit(botaoConfigHover, (0, -160))
+            if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
+                from menus.menuConfig import menuConfig
+                menuConfig()
         else:
-            screen.blit(botaoSaves, (0, -160))
+            screen.blit(botaoConfig, (0, -160))
 
         if quit_rect.collidepoint(pos_mouse):
             screen.blit(botaoQuitHover, (320, -160))
