@@ -1,8 +1,7 @@
 import pygame
 import sys
-from assets.screenConfig import screen, largura, altura, fontBold, filtro_preto, pocaovida, pocaoforca, molduraInventario, font, setaPraTras
+from assets.screenConfig import screen, fontBold, filtro_preto, molduraInventario, setaPraTras
 from assets.config import Char
-from assets.things import escrever_texto_animado
 
 inventory = ["Pocaoforca", "Pocaovida", None, None, None, None]
 

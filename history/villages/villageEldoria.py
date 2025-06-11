@@ -1,7 +1,6 @@
 import pygame
 import sys
-import os
-from assets.screenConfig import screen, font, filtro_preto, casteloZoom3, casteloZoom2, casteloZoom1, casteloZoom0, casteloPortaZoom1, casteloPortaZoom0, casteloPortaZoom2, casteloPrincipal, fontBold, persoAndando, botaoEldoriaInteragir, botaoEldoriaSair, botaoEldoriaExplorar, cavaleiro, npcEldoria, botaoOiEldoriaNpc, botaoOuroEldoriaNpc
+from assets.screenConfig import screen, font, filtro_preto, casteloZoom3, casteloZoom2, casteloZoom1, casteloZoom0, casteloPortaZoom1, casteloPortaZoom0, casteloPortaZoom2, casteloPrincipal, fontBold, botaoEldoriaInteragir, botaoEldoriaSair, botaoEldoriaExplorar, cavaleiro, npcEldoria, botaoOiEldoriaNpc, botaoOuroEldoriaNpc
 from assets.things import escrever_texto_animado
 from assets.things import fade_transicao
 from resources.duel import duel
@@ -20,14 +19,25 @@ CINZA = (180, 180, 180)
 
 
 def introEldoria():
+    pygame.mixer.init()
+    pygame.mixer.music.load("assets/sounds/tecladoDigitando.mp3")
+    pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(.15)
+    pygame.mixer.music.pause()
     Char.veioEldoria = True
     screen.fill((0, 0, 0))
     pygame.display.update()
+    pygame.mixer.music.unpause()
     escrever_texto_animado(f"{Char.Name} caminha bravamente em direcao ao castelo de Eldoria.", font, (255, 255 ,255), 50, 50, 25, screen)
+    pygame.mixer.music.pause()
     pygame.time.wait(1200)
+    pygame.mixer.music.unpause()
     escrever_texto_animado("Apos horas de caminhada...", font, (255, 255, 255), 50, 75, 25, screen)
+    pygame.mixer.music.pause()
     pygame.time.wait(1200)
+    pygame.mixer.music.unpause()
     escrever_texto_animado(f"{Char.Name} ja começa a sentir o ar frio do castelo.", font, (255 ,255, 255), 50, 100, 25, screen)
+    pygame.mixer.music.pause()
     pygame.time.wait(1200)
 
 
@@ -42,13 +52,21 @@ def introEldoria():
 
     screen.blit(filtro_preto, (0, 0))
     pygame.display.update()
+    pygame.mixer.music.unpause()
     escrever_texto_animado("Logo apos sua chegada, um cavaleiro vem ate seu encontro", font, (255, 255, 255), 50, 50, 25, screen)
+    pygame.mixer.music.pause()
     pygame.time.wait(1000)
+    pygame.mixer.music.unpause()
     escrever_texto_animado(f"CAVALEIRO: -Voce e {Char.Name} de Skalice ?", font, (255, 255, 255), 50, 75, 25, screen)
+    pygame.mixer.music.pause()
     pygame.time.wait(1000)
+    pygame.mixer.music.unpause()
     escrever_texto_animado("-Sim, sou eu...", font, (255, 255, 255), 50, 100, 25, screen)
+    pygame.mixer.music.pause()
     pygame.time.wait(1000)
+    pygame.mixer.music.unpause()
     escrever_texto_animado("CAVALEIRO: -Entre, esperavamos sua visita...", font, (255, 255, 255), 50, 125, 25, screen)
+    pygame.mixer.music.pause()
     menuEldoria()
 
 def menuEldoria():
@@ -57,8 +75,6 @@ def menuEldoria():
     interagirEldoriaRect = pygame.Rect(325, 200, 150, 50)
     sairEldoriaRect = pygame.Rect(325, 320, 150, 50)
     rodando = True
-    selecionado_inventario = False
-    selecionado_explorar = False
 
     while rodando:
         for evento in pygame.event.get():
@@ -98,6 +114,11 @@ def menuEldoria():
         pygame.display.update()
 
 def introDuelos():
+    pygame.mixer.init()
+    pygame.mixer.music.load("assets/sounds/tecladoDigitando.mp3")
+    pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(.15)
+    pygame.mixer.music.pause()
     if Char.derrotouCavaleiroTreino:
         screen.fill((0, 0, 0))
         pygame.display.update()
@@ -108,11 +129,17 @@ def introDuelos():
     screen.blit(casteloPrincipal, (0, 0))
     screen.blit(filtro_preto, (0, 0))
     screen.blit(cavaleiro, (0, 0))
+    pygame.mixer.music.unpause()
     escrever_texto_animado("O que achou do castelo? hahaha!", font, (255, 255, 255), 375, 50, 25, screen)
+    pygame.mixer.music.pause()
     pygame.time.wait(1000)
+    pygame.mixer.music.unpause()
     escrever_texto_animado("Nosso treinamento comeca em 60 minutos.", font, (255, 255, 255), 375, 75, 25, screen)
+    pygame.mixer.music.pause()
     pygame.time.wait(1500)
+    pygame.mixer.music.unpause()
     escrever_texto_animado("Te espero la!", font, (255, 255, 255), 375, 100, 25, screen)
+    pygame.mixer.music.pause()
     pygame.time.wait(3000)
     fixo = fontBold.render(" Minutos depois...", True, (255, 255, 255))
     for i in range(60):
@@ -122,12 +149,17 @@ def introDuelos():
         pygame.display.update()
         screen.fill((0,0,0))
         pygame.time.wait(60)
-    duel("CavaleiroTreino", 100, 100, 1, 1, "Cavaleiroframe1.png", "espada", 3)
+    duel("CavaleiroTreino", 40, 40, .5, .5, "Cavaleiroframe1.png", "espada", 5)
     Char.derrotouCavaleiroTreino = True
     explorar()
 
 
 def interagirEldoria():
+    pygame.mixer.init()
+    pygame.mixer.music.load("assets/sounds/tecladoDigitando.mp3")
+    pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(.15)
+    pygame.mixer.music.pause()
     rodando = True
     botaoOiRect = pygame.Rect(315, 290, 150, 45)
     botaoOuroRect = pygame.Rect(490, 290, 150, 45)
@@ -135,14 +167,22 @@ def interagirEldoria():
     screen.blit(filtro_preto, (0, 0))
     screen.blit(npcEldoria, (0, 0))
     if not Char.conversouCarlinhoOi and not Char.conversouCarlinhoOuro:
+        pygame.mixer.music.unpause()
         escrever_texto_animado("???: OLA!!!! BOM DIA!!! AAAAAAA!", font, (255, 255, 255), 375, 50, 25, screen)
+        pygame.mixer.music.pause()
         pygame.time.wait(500)
+        pygame.mixer.music.unpause()
         escrever_texto_animado("???: EU SOU O CARLINHO!", font, (255, 255, 255), 375, 75, 25, screen)
+        pygame.mixer.music.pause()
         pygame.time.wait(1500)
+        pygame.mixer.music.unpause()
         escrever_texto_animado("Carlinho: O QUE TE TRAZ AQUI?????", font, (255, 255, 255), 375, 100, 25, screen)
+        pygame.mixer.music.pause()
         pygame.time.wait(3000)
     else:
+        pygame.mixer.music.unpause()
         escrever_texto_animado("Carlinho: O QUE TE TRAZ AQUI?", font, (255, 255, 255), 375, 100, 25, screen)
+        pygame.mixer.music.pause()
         pygame.time.wait(1500)
     pergunta = fontBold.render(f"O que {Char.Name} responde?", True, (255, 255, 255))
     while rodando:
@@ -172,6 +212,11 @@ def interagirEldoria():
     
 
 def conversaCarlinhoOi():
+    pygame.mixer.init()
+    pygame.mixer.music.load("assets/sounds/tecladoDigitando.mp3")
+    pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(.15)
+    pygame.mixer.music.pause()
     if Char.conversouCarlinhoOi:
         screen.fill((0, 0, 0))
         pygame.display.update()
@@ -182,13 +227,22 @@ def conversaCarlinhoOi():
     screen.blit(casteloPrincipal, (0, 0))
     screen.blit(filtro_preto, (0, 0))
     screen.blit(npcEldoria, (0, 0))
+    pygame.mixer.music.unpause()
     escrever_texto_animado("Carlinho: CALTHERA! PERIGO!!!", font, (255, 255, 255), 375, 50, 25, screen)
+    pygame.mixer.music.pause()
     pygame.time.wait(500)
+    pygame.mixer.music.unpause()
     escrever_texto_animado("Carlinho: CUIDADO POR LA.", font, (255, 255, 255), 375, 75, 25, screen)
+    pygame.mixer.music.pause()
     pygame.time.wait(2000)
     interagirEldoria()
 
 def conversaCarlinhoOuro():
+    pygame.mixer.init()
+    pygame.mixer.music.load("assets/sounds/tecladoDigitando.mp3")
+    pygame.mixer.music.play(-1)
+    pygame.mixer.music.set_volume(.15)
+    pygame.mixer.music.pause()
     if Char.conversouCarlinhoOuro:
         screen.fill((0, 0, 0))
         pygame.display.update()
@@ -199,12 +253,18 @@ def conversaCarlinhoOuro():
     screen.blit(casteloPrincipal, (0, 0))
     screen.blit(filtro_preto, (0, 0))
     screen.blit(npcEldoria, (0, 0))
+    pygame.mixer.music.unpause()
     escrever_texto_animado("Carlinho: VOCE QUER OURO?? EU TENHO OURO!!", font, (255, 255, 255), 300, 50, 25, screen)
+    pygame.mixer.music.pause()
     pygame.time.wait(500)
+    pygame.mixer.music.unpause()
     escrever_texto_animado("Carlinho: MAS TUDO TEM UM PRECO.", font, (255, 255, 255), 300, 75, 25, screen)
+    pygame.mixer.music.pause()
     pygame.time.wait(2000)
+    pygame.mixer.music.unpause()
     escrever_texto_animado("Carlinho: NUNCA MAIS FALE COMIGO", font, (255, 255, 255), 300, 100, 25, screen)
     escrever_texto_animado("E EM TROCA, PEGUE 3 MOEDAS.", font, (255, 255, 255), 300, 115, 25, screen)
+    pygame.mixer.music.pause()
     pygame.time.wait(2000)
     Char.coins += 3
     screen.fill((0, 0, 0))

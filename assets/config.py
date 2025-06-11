@@ -1,4 +1,4 @@
-#File made by: Kauan
+
 
 #All configs 
 class Config:
@@ -39,6 +39,11 @@ class Char:
   fez_castelo = False
   falou_moradores = False
   fez_brumaria = False
+
+  fezPatrulha = False
+  fezGerenciar = False
+  fezVigiasVardann = False
+  fezVardann = False
   
 
 

@@ -1,7 +1,5 @@
-#File made by: Kauan
 
 import pygame
-import pygame.locals
 
 #Main settings of pygame
 
@@ -314,6 +312,9 @@ vardannImagem1 = pygame.transform.scale(vardannImagem1, (largura,altura))
 vardannImagem2 = pygame.image.load("assets/images/Vardann2.png")
 vardannImagem2 = pygame.transform.scale(vardannImagem2, (largura,altura))
 
+vardannVigia = pygame.image.load("assets/images/VardannVigia.png")
+vardannVigia = pygame.transform.scale(vardannVigia, (largura,altura))
+
 setaPraTras = pygame.image.load("assets/images/setaPraTras.png")
 setaPraTras = pygame.transform.scale(setaPraTras, (100, 100))
 
@@ -331,6 +332,15 @@ modeloBotao2 = pygame.transform.scale(modeloBotao2, (500, 400))
 
 modeloBotao2Hover = pygame.image.load("assets/images/modeloBotao2Hover.png")
 modeloBotao2Hover = pygame.transform.scale(modeloBotao2Hover, (500, 400))
+
+modeloBotao3 = pygame.image.load("assets/images/modeloBotao3.png")
+modeloBotao3 = pygame.transform.scale(modeloBotao3, (500, 400))
+
+modeloBotao3Hover = pygame.image.load("assets/images/modeloBotao3Hover.png")
+modeloBotao3Hover = pygame.transform.scale(modeloBotao3Hover, (500, 400))
+
+paredeSangueVardann = pygame.image.load("assets/images/paredeSangueVardann.jpg")
+paredeSangueVardann = pygame.transform.scale(paredeSangueVardann, (largura, altura))
 
 def fade_out(velocidade=5, fundo = frame1):
     fade = pygame.Surface((largura, altura))

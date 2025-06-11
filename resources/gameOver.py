@@ -1,12 +1,11 @@
 import pygame
-import math
-import random
 import sys
 import time
 from assets.things import escrever_texto_animado
 from assets.config import Char
 from assets.screenConfig import screen, font, filtro_preto, fontBoldGiga, fundoEldoria
-from assets.things import d20
+from resources.final import final
+
 import assets.things
 
 def gameOver(enemyName):
@@ -35,6 +34,5 @@ def gameOver(enemyName):
                 sys.exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    pygame.quit()
-                    sys.exit()
+                    final()
 

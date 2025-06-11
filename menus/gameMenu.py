@@ -1,6 +1,6 @@
 import pygame
 import sys
-from assets.screenConfig import screen, praiaBack, mainClock, backSemMarcacao, backMarcacaoInventario1, backMarcacaoInventario2, backMarcacaoExplorar1, backMarcacaoExplorar2, backMarcacaoTaverna1, backMarcacaoTaverna2
+from assets.screenConfig import screen, mainClock, backSemMarcacao, backMarcacaoInventario1, backMarcacaoInventario2, backMarcacaoExplorar1, backMarcacaoExplorar2, backMarcacaoTaverna1, backMarcacaoTaverna2
 from player.inventory import inventario
 
 

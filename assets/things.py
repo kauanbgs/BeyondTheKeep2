@@ -4,8 +4,6 @@ import time
 
 import pygame
 from assets.config import Char
-from assets.itens import Village
-# from player.inventory import weaponsInventory
 
 from assets.screenConfig import screen
 
@@ -30,20 +28,7 @@ def classUpdate():
     Char.mana = 100
     Char.attack = 1.3
 
-def randomVillage():
-    if not Village.village_names:
-        return "Você não pode mais visitar vilas."
-    
-    choice = random.choice(Village.village_names)
-    Village.village_names.remove(choice)
-    return choice
 
-
-def draw_text(text, font, color, surface, x, y):
-    textobject = font.render(text, 1, color)
-    textrect = textobject.get_rect()
-    textrect.topleft = (x, y)
-    surface.blit(textobject, textrect)
 
 def escrever_texto_animado(texto, fonte, cor, x, y, velocidade, superficie):
     texto_renderizado = ''

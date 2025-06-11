@@ -1,4 +1,4 @@
-from assets.screenConfig import screen, largura, altura, fontBold, botaoTavernaHover, botaoTaverna, setaPraTras, filtro_preto, pocaovida2, font, fontBold, pocaoforca2, fundoTaverna
+from assets.screenConfig import screen, fontBold, botaoTavernaHover, botaoTaverna, setaPraTras, filtro_preto, pocaovida2, font, fontBold, pocaoforca2, fundoTaverna
 from assets.config import Char
 import pygame
 import sys
