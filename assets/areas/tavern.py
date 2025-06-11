@@ -28,11 +28,13 @@ def tavern():
             if evento.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-
+            #Voltar pro menu
             if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
                 if voltarTaverna_rect.collidepoint(evento.pos):
                     gameMenu()
+            #Verifica pocoes
             if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
+                #ve a quantidade de moedas 
                 if pocaoVida_rect.collidepoint(evento.pos):
                     if Char.coins < 5:
                         screen.fill((0, 0, 0))
@@ -43,6 +45,7 @@ def tavern():
                             escrever_texto_animado("Not enough coins.", font, (255, 255, 255), 275, 200, 25, screen)
                         pygame.time.wait(1500)
                         tavern()
+                        #Verifica se o jogador tem espaco o suficiente
                     elif inventory[5] is not None:
                         screen.fill((0, 0, 0))
                         pygame.display.update()

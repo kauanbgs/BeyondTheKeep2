@@ -293,6 +293,7 @@ def final_batalha():
         opcao2 = fontBold.render("Eliminate the king", True, (255, 255, 255))
     rodando = True
     while rodando:
+        #Verifica se o jogador clicou em alguma opção
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
                 pygame.quit()

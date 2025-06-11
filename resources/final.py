@@ -23,9 +23,9 @@ def final():
         "Level Design / Dificuldade: Kauan"
         "",
         ""
-        "Vila Brumaria:",
+        "Vila Brumaria: Rafael",
         "Vila Eldoria: Kauan",
-        "Vila Vardann:",
+        "Vila Vardann: Rafael",
         "",
         "",
         "Introducao: Kauan",
@@ -34,7 +34,7 @@ def final():
         "",
         "",
         "Menus: Kauan",
-        "Taverna:",
+        "Taverna: Rafael",
         "Inventario:",
         ""
         "",
