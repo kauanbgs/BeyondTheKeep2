@@ -1,6 +1,8 @@
+#Esse arquive representa o sistema de duelo no jogo, onde o jogador pode lutar contra inimigos
+#This file represents the duel system in the game, where the player can fight against enemies.
+
+
 import pygame
-import math
-import random
 import sys
 from assets.things import escrever_texto_animado
 from assets.config import Char
@@ -46,8 +48,8 @@ def desenhar_barra_vida(vida_atual, vida_maxima, x, y, tipo):
             screen.blit(barraVidaInimigo1de8, (x, y))
 
 
-class Projetil:
-    def __init__(self, x, y, velocidade):
+class Projetil: #Classe para o projétil do jogador
+    def __init__(self, x, y, velocidade): #atributos do projétil
         self.x = x
         self.y = y
         self.velocidade = velocidade
@@ -55,18 +57,18 @@ class Projetil:
         self.cor = (75, 150, 255)  # vermelho
         self.ativo = True
 
-    def mover(self):
+    def mover(self): #mover o projétil
         self.x += self.velocidade
         if self.x > 800:  # saiu da tela
             self.ativo = False
 
-    def colidir(self, enemy_x):
+    def colidir(self, enemy_x): #Verifica se eixo X do projetil colidiu com o eixo X do inimigo
         if self.x > enemy_x + 175:
             self.ativo = False
             return Char.attack * d20()
         return 0
 
-    def desenhar(self, tela):
+    def desenhar(self, tela): #Formula para desenhar o projétil
         pygame.draw.circle(tela, self.cor, (int(self.x), int(self.y)), self.raio)
 
 
@@ -107,12 +109,14 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
         pygame.mixer.music.set_volume(0.15)
     elif musica > 7 and musica <= 12:
         pygame.mixer.music.load("assets/sounds/musicaBatalha2.mp3")
-        pygame.mixer.music.set_volume(0.03)
+        pygame.mixer.music.set_volume(0.03) #Algumas musicas são mais altas, entao abaixei o volume
     else:
         pygame.mixer.music.load("assets/sounds/musicaBatalha3.mp3")
-        pygame.mixer.music.set_volume(0.02)
-    pygame.mixer.music.play(-1)
+        pygame.mixer.music.set_volume(0.02) #Algumas musicas são mais altas, entao abaixei o volume
+    pygame.mixer.music.play(-1) #Toca a musica em loop
 
+
+    #Aumenta os atributos do inimigo de acordo com a dificuldade
     if Char.dificuldade == 1:
         enemyHealth += 10
         enemyAttack += 0.1
@@ -123,7 +127,7 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
         enemyHealth += 30
         enemyAttack += 0.3
     
-    projeteis_inimigo = []
+    projeteis_inimigo = [] 
     tempo_ultimo_ataque_mago = 0
     cooldown_mago = 1500
     projeteis = []
@@ -142,7 +146,7 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
     cooldownAtaqueEspadaInimigo = 0
     enemy_x = 500
     enemy_y = 25
-    if enemyName == "Cavaleiro":
+    if enemyName == "Cavaleiro": #Cada imagem tem um tamanho diferente e está em um lugar diferente do tamanho, então é necessario ajustar a posição para cada inimigo.
         enemy_x = 350
         enemy_y = 90
     enemyImage = pygame.image.load(f"assets/images/{enemyImage}").convert_alpha()
@@ -176,8 +180,8 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
             if evento.type == pygame.KEYDOWN:
                 if evento.key == pygame.K_ESCAPE:
                     return
-                if evento.key == pygame.K_SPACE:
-                    if Char.classplayer == 1 and espada_cooldown == 0:
+                if evento.key == pygame.K_SPACE: #Espaço para atacar
+                    if Char.classplayer == 1 and espada_cooldown == 0: #Esse tanto de blit é para fazer a animação do ataque com espada
                         som_espada.play()
                         espada_cooldown = 45
                         screen.blit(backDuelo, (0, 0))
@@ -211,17 +215,15 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
                         screen.blit(atonEspada6, (player_x, player_y))
                         pygame.display.update()
                         pygame.time.wait(15)
-                        if player_x > enemy_x - 150 and player_x < enemy_x + 150:
+                        if player_x > enemy_x - 150 and player_x < enemy_x + 150: #Se o jogador está perto o suficiente do inimigo, ele recebe dano
                             enemyHealth -= Char.attack * d20()
                     elif Char.classplayer == 2:
                         if len(projeteis) == 0 and tempoCooldownMago == 0:
                             tempoCooldownMago = 150
-                            novo_proj = Projetil(player_x + 170, player_y + 100, 4)
-                            projeteis.append(novo_proj)
-                if evento.key == pygame.K_t:
-                    Char.health -= 5
+                            novo_proj = Projetil(player_x + 170, player_y + 100, 4) #Cria um novo projétil
+                            projeteis.append(novo_proj) #Adiciona o projétil à lista de projéteis
                 
-        
+        #Se o inimigo é um mago, ele ataca com magia
         if enemyType == "mago":
             tempo_atual = pygame.time.get_ticks()
             if tempo_atual - tempo_ultimo_ataque_mago > cooldown_mago:
@@ -235,7 +237,7 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
                     projeteis_inimigo.append(novo_proj)
                     tempo_ultimo_ataque_mago = tempo_atual
 
-    
+        # Se o inimigo é um espadachim, ele ataca com espada
         elif enemyType == "espada":
             if enemyName == "Cavaleiro":
                 if cooldownAtaqueEspadaInimigo == 0:
@@ -325,11 +327,12 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
 
                     cooldownAtaqueEspadaInimigo = 160
 
-                    if player_x + 220 > enemy_x and player_x - 220 < enemy_x:
+                    if player_x + 220 > enemy_x and player_x - 220 < enemy_x: #Só da o dano se o jogador estiver perto o suficiente do inimigo
                         dano = enemyAttack * d20() - Char.defense
                         print(dano)
                         if dano > 0:
                             Char.health -= dano
+        #Se o inimigo é um mago, ele vai pra frente se a vida está alta e pra trás se a vida está baixa.
         if enemyType == "mago":
             if Char.health >= Char.health * 0.75:
                 if enemyHealth >= enemyMaxHealth * 0.75:
@@ -347,6 +350,7 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
                     enemy_x += 1
                 else:
                     enemy_x -= 1
+        #Se o inimigo é um espadachim, ele vai pra frente se o jogador está longe e pra trás se o jogador está perto, para acertar com a espada.
         elif enemyType == "espada":
             if player_x - 100 < enemy_x:
                 enemy_x -= 0.5
@@ -354,13 +358,14 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
                 enemy_x += 0.5
         
                     
-
+        #Logica de movimentação
         keys = pygame.key.get_pressed()
         if keys[pygame.K_d]:
             player_x += player_speed
         if keys[pygame.K_a]:
             player_x -= player_speed
 
+        #Verifica se o jogador está no limite da tela, e se ele for sair o "trava", apenas sempre voltando a variavel X para o maximo permitido
         if player_x < -50:
             player_x = -50
         if player_x > 800 - 175:
@@ -400,20 +405,20 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
         screen.blit(playerImage, (player_x, player_y))
         screen.blit(enemyImage, (enemy_x, enemy_y))
 
-        # Atualizar e desenhar projéteis
-        for p in projeteis:
-                p.mover()
-                p.desenhar(screen)
-                dano = p.colidir(enemy_x)
-                enemyHealth -= dano
-            
+        #Projeteis do jogador
+        for p in projeteis: #Para cada projétil na lista de projéteis
+                p.mover() #Move o projétil
+                p.desenhar(screen)#Desenha o projétil
+                dano = p.colidir(enemy_x) #Calcula o dano se o projétil colidiu com o inimigo
+                enemyHealth -= dano #Diminui a vida do inimigo
+        
         for p in projeteis_inimigo:
             p.mover()
             p.desenhar(screen)
             dano = p.colidir(player_x)
             Char.health -= dano
 
-        projeteis_inimigo = [p for p in projeteis_inimigo if p.ativo]
+        projeteis_inimigo = [p for p in projeteis_inimigo if p.ativo] #verifica se o projétil do inimigo ainda está ativo
 
         
 
@@ -423,7 +428,7 @@ def duel(enemyName, enemyHealth, enemyMaxHealth, enemyAttack, enemyDefense, enem
 
         desenhar_barra_vida(Char.health, Char.max_health, -125, -290, "player")
         desenhar_barra_vida(enemyHealth, enemyMaxHealth, 325, -290, "inimigo")
-
+        
         if espada_cooldown > 0:
             espada_cooldown -= 1
         if cooldownAtaqueEspadaInimigo > 0:

@@ -1,9 +1,8 @@
-import imageio
+#Esse arquivo representa o menu de configurações do jogo, onde o jogador pode alterar a linguagem e a dificuldade
+#This file represents the game settings menu, where the player can change the language and difficulty
 import pygame
-import numpy as np
 import sys
 from assets.config import Char
-from history.introduction import introJogo
 from assets.screenConfig import screen, backFrame1, setaPraTras, filtro_preto, font, fontBold, fontBoldGiga
 from menus.menu import menu
 

@@ -1,9 +1,4 @@
-
-
-#All configs 
-class Config:
-  speed = 0.045 #Set here the text speed.
-  
+#Configuracoes do jogador, apenas mude se for um desenvolvedor ou tester. (MUDAR ISSO VAI DEIXAR SEU JOGO CHATO!)
 #Player settings, only change if you're a developer or tester. (CHANGING THIS WILL MAKE YOUR GAMEPLAY BORING!)
 class Char:
   language = "en"

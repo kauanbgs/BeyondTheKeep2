@@ -1,3 +1,6 @@
+#Esse arquivo representa o inventário do jogador, onde ele pode usar poções e ver suas estatísticas
+#This file represents the player's inventory, where they can use potions and view their stats
+
 import pygame
 import sys
 from assets.screenConfig import screen, fontBold, filtro_preto, molduraInventario, setaPraTras

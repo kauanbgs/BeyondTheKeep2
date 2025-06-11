@@ -1,3 +1,6 @@
+#Esse arquivo representa a area de explorar, onde o jogador pode visitar as vilas do jogo
+#This file represents the explore area, where the player can visit the villages in the game
+
 import pygame
 import sys
 from history.villages.villageEldoria import introEldoria

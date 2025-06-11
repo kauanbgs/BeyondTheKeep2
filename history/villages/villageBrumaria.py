@@ -1,3 +1,5 @@
+#Esse arquivo representa a vila de Brumaria.
+#This file represents the village of Brumaria.
 import pygame
 import sys
 from assets.screenConfig import screen, font,fontBold, brumariaImagem2,brumariaFerreiro,brumariaCastelo,brumariaMorador,brumariaJulgamento,brumariaFinal, modeloBotao, modeloBotaoHover, modeloBotao2, modeloBotao2Hover, setaPraTras

@@ -1,3 +1,6 @@
+#Esse arquivo representa o menu do jogo, onde o jogador pode acessar o inventário, explorar ou ir para a taverna
+#This file represents the game menu, where the player can access the inventory, explore or go to the tavern
+
 import pygame
 import sys
 from assets.screenConfig import screen, mainClock, backSemMarcacao, backMarcacaoInventario1, backMarcacaoInventario2, backMarcacaoExplorar1, backMarcacaoExplorar2, backMarcacaoTaverna1, backMarcacaoTaverna2

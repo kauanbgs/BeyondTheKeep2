@@ -1,3 +1,6 @@
+#Esse arquivo representa a vila de Vardann.
+#This file represents the village of Vardann.
+
 import pygame
 import sys
 from assets.screenConfig import screen, font, filtro_preto, vardannImagem1, vardannImagem2, modeloBotao3, modeloBotao3Hover, setaPraTras, fontBold, paredeSangueVardann, vardannVigia

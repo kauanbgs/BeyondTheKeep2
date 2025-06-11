@@ -1,3 +1,6 @@
+#Esse arquivo representa a introducao do jogo, onde o jogador e apresentado a historia e escolhe uma classe
+#This file represents the introduction of the game, where the player is introduced to the story and chooses a class.
+
 import imageio
 import pygame
 import numpy as np
@@ -9,13 +12,13 @@ from assets.things import classUpdate
 from assets.screenConfig import screen, font, praiaBack, filtro_preto, mainClock, mago_frames_parado, praia, espada, cajado, persoBase
 
 def introJogo():
-    reader = imageio.get_reader("assets/videos/BTKapresentacao.mp4")
-    frames = [np.array(frame) for frame in reader]
-    reader.close()
+    reader = imageio.get_reader("assets/videos/BTKapresentacao.mp4") #Abre o video que será exibvido
+    frames = [np.array(frame) for frame in reader] #Pega cada frame do video e transforma em um array
+    reader.close() #Fecha o video
 
-    total_frames = len(frames)
-    frame_index = 0
-    fps = 24 
+    total_frames = len(frames) #Mostra o total de frames do video
+    frame_index = 0 #Começa do primeiro frame
+    fps = 24 #24 frames por segundo
     rodando = True
     pygame.mixer.init()
     pygame.mixer.music.load("assets/sounds/musicaApresentacao.mp3")
@@ -31,14 +34,14 @@ def introJogo():
             elif evento.type == pygame.KEYDOWN and evento.key == pygame.K_ESCAPE:
                 rodando = False
 
-        frame = frames[frame_index]
-        surface = pygame.surfarray.make_surface(np.transpose(frame, (1, 0, 2)))
-        surface = pygame.transform.scale(surface, screen.get_size())
-        screen.blit(surface, (0, 0))
-        pygame.display.flip()  # ← atualiza a tela
+        frame = frames[frame_index] #Pega o frame atual do video[frame_index]
+        surface = pygame.surfarray.make_surface(np.transpose(frame, (1, 0, 2))) #Cria uma superfície do Pygame a partir do frame atual, transpondo as dimensões para (largura, altura, canais de cor)
+        surface = pygame.transform.scale(surface, screen.get_size()) #Transforma o tamanho da superfície para o tamanho da tela do Pygame
+        screen.blit(surface, (0, 0)) #Desenha a superfície na tela do Pygame
+        pygame.display.flip()
 
-        frame_index += 1
-        if frame_index >= total_frames:
+        frame_index += 1 #Avança para o próximo frame
+        if frame_index >= total_frames: #Se o frame atual for maior que o total de frames, fecha o while e vai pra intro
             rodando = False
 
     intro()
@@ -108,18 +111,7 @@ def introTexto():
         pygame.time.wait(2500)
         pygame.display.update()
         gameMenu()
-
-    while True:
-        for evento in pygame.event.get():
-            if evento.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if evento.type == pygame.KEYDOWN:
-                if evento.key == pygame.K_ESCAPE:
-                    return
       
-
-
 def intro():
     pygame.mixer.init()
     pygame.mixer.music.load("assets/sounds/tecladoDigitando.mp3")
@@ -170,60 +162,48 @@ def intro():
         pygame.mixer.music.pause()
         pygame.time.delay(2000)
     
- 
-    frame_index = 0
-    frame_timer = 0
-    frame_delay = 200
-    player_x, player_y = 340, 300
-    player_speed = 5
-    current_frame = 0
+    player_x, player_y = 340, 300 #Ess
+    player_speed = 5 
 
 
-    while True:
-        for evento in pygame.event.get():
+    while True: #isso tudo vai dentro do loop, entao a tela é simplesmente atualizada a cada frame, o que da a impressao de animação.
+        for evento in pygame.event.get(): #Pega os eventos do pygame
             if evento.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-            if evento.type == pygame.KEYDOWN:
-                if evento.key == pygame.K_ESCAPE:
+            if evento.type == pygame.KEYDOWN: #Se uma tecla for pressionada
+                if evento.key == pygame.K_ESCAPE: #Se a tecla ESC for pressionada, fecha o jogo. isso funciona com qualquer tecla.
                     return
-
-        frame_timer += mainClock.get_time()
-        if frame_timer >= frame_delay:
-            frame_timer = 0
-            frame_index = (frame_index + 1) % len(mago_frames_parado)
 
 
         # Movimento e animação
-        keys = pygame.key.get_pressed()
-        moving = False
+        keys = pygame.key.get_pressed() #Pega as teclas pressionadas
 
-        if keys[pygame.K_d]:
+        if keys[pygame.K_d]: #Se a tecla D for pressionada, aumenta o eixo X ("anda" pra direita)
             player_x += player_speed
-            moving = True
-        if keys[pygame.K_a]:
+        if keys[pygame.K_a]: #Se a tecla A for pressionada, diminui o eixo X ("anda" pra esquerda)
             player_x -= player_speed
-            moving = True
             
 
-        # Define a Rect for the player and the sword for collision detection
+        #Um rect é como uma caixa invisivel que detecta colisões, deve ser colocada em uma coordenada X e Y, e ter uma largura e altura
         player_rect = pygame.Rect(player_x, player_y, 128, 128)
-        if player_rect.colliderect(pygame.Rect(650, 250, 250, 250)):
+        if player_rect.colliderect(pygame.Rect(650, 250, 250, 250)): #Se o rect do player colidir com o rect da espada, muda a classe e continua
             Char.Name = "Aton"
             classUpdate()
             introTexto()            
-        if player_rect.colliderect(pygame.Rect(-100, 250, 250, 250)):
+        if player_rect.colliderect(pygame.Rect(-100, 250, 250, 250)): #Se o rect do player colidir com o rect do cajado, muda a classe e continua
             Char.Name = "Nextage"
             classUpdate()
             introTexto()
 
-
+        #Blit é a função que desenha as imagens na tela, o primeiro parametro é a imagem, o segundo é a coordenada X e Y
         screen.blit(praia, (0, 0))
         screen.blit(persoBase, (player_x, player_y))
         screen.blit(espada, (600, 250))
         screen.blit(cajado, (50, 250))
         
+        #Update é a função que atualiza a tela, ou seja, desenha tudo o que foi blitado na tela
         pygame.display.update()
-        mainClock.tick(60)
+        mainClock.tick(60) #Define o FPS do jogo, ou seja, quantos frames por segundo o jogo vai rodar
 
 

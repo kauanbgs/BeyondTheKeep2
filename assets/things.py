@@ -1,4 +1,5 @@
-#File made by: Kauan
+#Coisas em geral que serao utilizadas ao longo do código
+#General things that will be used throughout the code
 import random
 import time
 
@@ -9,7 +10,6 @@ from assets.screenConfig import screen
 
 startTime = 0
 
-#Starts an timer (it will be used on the saved games, at the game over and at the final page.)
 def startTimer():
   global startTime
   startTime = time.time()

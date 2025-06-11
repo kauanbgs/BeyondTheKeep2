@@ -1,3 +1,6 @@
+#Esse arquivo representa a tela de Game Over, onde o jogador é informado que foi derrotado e pode ir para os creditos.
+#This file represents the Game Over screen, where the player is informed that they were defeated and can go to the credits.
+
 import pygame
 import sys
 import time

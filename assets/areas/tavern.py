@@ -1,3 +1,6 @@
+#Esse arquivo representa a taverna do jogo, onde o jogador pode comprar pocao de vida e pocao de ataque
+#This file represents the tavern in the game, where the player can buy health potion and attack potion
+
 from assets.screenConfig import screen, fontBold, botaoTavernaHover, botaoTaverna, setaPraTras, filtro_preto, pocaovida2, font, fontBold, pocaoforca2, fundoTaverna
 from assets.config import Char
 import pygame

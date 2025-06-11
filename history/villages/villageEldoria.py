@@ -1,3 +1,6 @@
+#Esse arquivo representa a vila de Eldoria.
+#This file represents the village of Eldoria.
+
 import pygame
 import sys
 from assets.screenConfig import screen, font, filtro_preto, casteloZoom3, casteloZoom2, casteloZoom1, casteloZoom0, casteloPortaZoom1, casteloPortaZoom0, casteloPortaZoom2, casteloPrincipal, fontBold, botaoEldoriaInteragir, botaoEldoriaSair, botaoEldoriaExplorar, cavaleiro, npcEldoria, botaoOiEldoriaNpc, botaoOuroEldoriaNpc, botaoEldoriaExplore, botaoEldoriaInteract, botaoEldoriaLeft

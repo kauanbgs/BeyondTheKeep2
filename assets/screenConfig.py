@@ -1,14 +1,13 @@
+#Esse arquivo representa a configuracao principal do jogo, incluindo o tamanho da tela, imagens e outras configuracoes
+#This file represents the main configuration of the game, including the screen size, images, and other settings.
 
 import pygame
-
-#Main settings of pygame
-
 mainClock = pygame.time.Clock()
 pygame.init()
 
 #---------------------------------------------------------------------#
 largura = 800 #PLEASE DONT CHANGE THIS!
-altura = 450 #PLEASE DONT CHANGE THIS!
+altura = 450 #POR FAVOR NAO MUDAR ISSO!
 #---------------------------------------------------------------------#
 
 

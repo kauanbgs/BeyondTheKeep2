@@ -1,3 +1,6 @@
+#Esse arquivo representa a tela final do jogo, onde os créditos são exibidos
+#This file represents the final screen of the game, where the credits are displayed
+
 import pygame
 import sys
 from assets.screenConfig import screen, font, filtro_preto, vardannVigia
@@ -10,23 +13,24 @@ def final():
   pygame.mixer.music.load("assets/sounds/musicaApresentacao.mp3")
   pygame.mixer.music.play(1)
   pygame.mixer.music.set_volume(.15)
-  creditos = [
+  if Char.language == "ptbr":
+    creditos = [
         "                Beyond The Keep",
         "Desenvolvido por Kauan, Rafael e Davi",
         "",
         "",
-        "Narrativa: Kauan",
+        "Narrativa: Kauan, Rafael, Davi",
         "",
         "",
-        "Programacao: Kauan",
+        "Programacao: Kauan, Rafael, Davi",
         "",
         "",
         "Level Design / Dificuldade: Kauan"
         "",
         ""
-        "Vila Brumaria:",
+        "Vila Brumaria: Rafael",
         "Vila Eldoria: Kauan",
-        "Vila Vardann:",
+        "Vila Vardann: Rafael",
         "",
         "",
         "Introducao: Kauan",
@@ -35,60 +39,60 @@ def final():
         "",
         "",
         "Menus: Kauan",
-        "Taverna:",
+        "Taverna: Rafael",
         "Inventario:",
         ""
         "",
         "Creditos: Kauan",
-        "Final:",
-        "QA: Kauan",
+        "Final: Rafael",
+        "QA: Kauan, Rafael, Davi",
 
-          "Design: Kauan, LeonardoAI, RaphaelAI",
-          "Design de personagens:",
-          "Animacoes de personagens:",
-          "Videos: Kauan",
-          "",
-          ""
-          "Som: Kauan, Pixabay"
-          "",
-          ""
-          "Trilha sonora: Kauan, Pixabay",
-          "",
-          "",
-          "Ferramentas:",
-          "Python, Pygame, Vscode, Photoshop, Piskel, Libresprite, Github, Trello",
-          "",
-          "",
-          "Inspirado por:",
-          "Game Of Thrones, Kingdom Come: Deliverance.",
-          "",
-          "",
-          "Agradecimentos especiais:",
-          "Professores: Euller e Adriano",
-          "",
-          "",
-          "Feito com bugs, mas com amor.",
-          "",
-          "Obrigado por jogar Beyond The Keep!"
-      ]
+        "Design: Kauan, LeonardoAI, RaphaelAI",
+        "Design de personagens:",
+        "Animacoes de personagens:",
+        "Videos: Kauan",
+        "",
+        ""
+        "Som: Kauan, Pixabay"
+        "",
+        ""
+        "Trilha sonora: Kauan, Pixabay",
+        "",
+        "",
+        "Ferramentas:",
+        "Python, Pygame, Vscode, Photoshop, Piskel, Libresprite, Github, Trello",
+        "",
+        "",
+        "Inspirado por:",
+        "Game Of Thrones, Kingdom Come: Deliverance.",
+        "",
+        "",
+        "Agradecimentos especiais:",
+        "Professores: Euller e Adriano",
+        "",
+        "",
+        "Feito com bugs, mas com amor.",
+        "",
+        "Obrigado por jogar Beyond The Keep!"
+    ]
   else:
     creditos = [
           "                Beyond The Keep",
           "Developed by Kauan, Rafael and Davi",
           "",
           "",
-          "Narrative: Kauan",
+          "Narrative: Kauan, Rafael, Davi",
           "",
           "",
-          "Programming: Kauan",
+          "Programming: Kauan, Rafael, Davi",
           "",
           "",
           "Level Design / Difficulty: Kauan"
           "",
           ""
-          "Brumaria Village:",
-          "Eldoria Village: Kauan",
-          "Vardann Village:",
+          "Brumaria Village: Rafael",
+          "Eldoria Village: Kauan,",
+          "Vardann Village: Rafael,",
           "",
           "",
           "Introduction: Kauan",
@@ -97,17 +101,16 @@ def final():
           "",
           "",
           "Menus: Kauan",
-          "Tavern:",
-          "Inventory:",
+          "Tavern: Rafael",
+          "Inventory: Davi",
           ""
           "",
           "Credits: Kauan",
-          "Final:",
-          "QA: Kauan",
+          "QA: Kauan, Rafael, Davi",
 
-          "Design: Kauan, LeonardoAI, RaphaelAI",
-          "Character Design:",
-          "Character Animations:",
+          "Design: Kauan, Davi, LeonardoAI, RaphaelAI",
+          "Character Design:Davi, Kauan",
+          "Character Animations: Davi",
           "Videos: Kauan",
           "",
           ""

@@ -1,3 +1,6 @@
+#Esse arquivo representa o menu principal do jogo, onde o jogador pode iniciar o jogo, acessar as configurações ou sair
+#This file represents the main menu of the game, where the player can start the game, access settings or exit
+
 import imageio
 import pygame
 import numpy as np
