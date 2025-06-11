@@ -28,7 +28,6 @@ botaoConfig = pygame.transform.scale(botaoConfig, (450, 450))
 botaoQuit = pygame.image.load("assets/images/botaoQuit.png")
 botaoQuit = pygame.transform.scale(botaoQuit, (450, 450))
 
-
 botaoPlayHover = pygame.image.load("assets/images/botaoPlayHover.png")
 botaoPlayHover = pygame.transform.scale(botaoPlayHover, (450, 450))
 

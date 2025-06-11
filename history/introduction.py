@@ -54,7 +54,7 @@ def introTexto():
     if Char.language == "ptbr":
         screen.fill((0, 0, 0))
         pygame.time.wait(500)
-        escrever_texto_animado("E aqui começa sua historia...", font, (255, 255, 255), 0, 25, 25, screen)
+        escrever_texto_animado("E aqui comeca sua historia...", font, (255, 255, 255), 0, 25, 25, screen)
         pygame.mixer.music.pause()
         pygame.time.wait(1000)
         pygame.mixer.music.unpause()
@@ -76,7 +76,7 @@ def introTexto():
             pygame.mixer.music.pause()
         pygame.time.wait(1000)
         pygame.mixer.music.unpause()
-        escrever_texto_animado("E sua jornada está apenas começando.", font, (255, 255, 255), 0, 200, 25, screen)
+        escrever_texto_animado("E sua jornada esta apenas começando.", font, (255, 255, 255), 0, 200, 25, screen)
         pygame.mixer.music.pause()
         pygame.time.wait(2500)
         pygame.display.update()

@@ -40,16 +40,16 @@ def final():
         "",
         "Menus: Kauan",
         "Taverna: Rafael",
-        "Inventario:",
+        "Inventario: Davi",
         ""
         "",
         "Creditos: Kauan",
         "Final: Rafael",
         "QA: Kauan, Rafael, Davi",
 
-        "Design: Kauan, LeonardoAI, RaphaelAI",
-        "Design de personagens:",
-        "Animacoes de personagens:",
+        "Design: Kauan, Davi, LeonardoAI, RaphaelAI",
+        "Design de personagens: Kauan, Davi",
+        "Animacoes de personagens: Davi",
         "Videos: Kauan",
         "",
         ""
