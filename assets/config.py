@@ -15,7 +15,7 @@ class Char:
   attack_base = 1.0
   weapon = "garbage"
   defense = 1.0
-  coins = 60
+  coins = 6
   honor = 0
   option = 0
   deadEnemy = False

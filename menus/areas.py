@@ -36,6 +36,14 @@ def explorar():
                     introEldoria()
             if evento.type == pygame.MOUSEBUTTONDOWN and evento.button == 1:
                 if vardann_rect.collidepoint(evento.pos):
+                    if not Char.fez_brumaria and not Char.veioEldoria:
+                        screen.fill((0, 0, 0))
+                        if Char.language == "ptbr":
+                            escrever_texto_animado("Voce precisa visitar Brumaria e Eldoria primeiro.", font, (255, 255, 255), 275, 200, 25, screen)
+                        else:
+                            escrever_texto_animado("You need to visit Brumaria and Eldoria first.", font, (255, 255, 255), 275, 200, 25, screen)
+                        pygame.time.wait(1500)
+                        explorar()
                     if Char.fezVardann:
                         screen.fill((0, 0, 0))
                         if Char.language == "ptbr":
