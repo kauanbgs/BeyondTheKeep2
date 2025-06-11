@@ -10,39 +10,38 @@ def final():
   pygame.mixer.music.load("assets/sounds/musicaApresentacao.mp3")
   pygame.mixer.music.play(1)
   pygame.mixer.music.set_volume(.15)
-  if Char.language == "ptbr":
-    creditos = [
-          "                Beyond The Keep",
-          "Desenvolvido por Kauan, Rafael e Davi",
-          "",
-          "",
-          "Narrativa: Kauan",
-          "",
-          "",
-          "Programacao: Kauan",
-          "",
-          "",
-          "Level Design / Dificuldade: Kauan"
-          "",
-          ""
-          "Vila Brumaria:",
-          "Vila Eldoria: Kauan",
-          "Vila Vardann:",
-          "",
-          "",
-          "Introducao: Kauan",
-          "Duelo: Kauan",
-          "GameOver: Kauan",
-          "",
-          "",
-          "Menus: Kauan",
-          "Taverna:",
-          "Inventario:",
-          ""
-          "",
-          "Creditos: Kauan",
-          "Final:",
-          "QA: Kauan",
+  creditos = [
+        "                Beyond The Keep",
+        "Desenvolvido por Kauan, Rafael e Davi",
+        "",
+        "",
+        "Narrativa: Kauan",
+        "",
+        "",
+        "Programacao: Kauan",
+        "",
+        "",
+        "Level Design / Dificuldade: Kauan"
+        "",
+        ""
+        "Vila Brumaria:",
+        "Vila Eldoria: Kauan",
+        "Vila Vardann:",
+        "",
+        "",
+        "Introducao: Kauan",
+        "Duelo: Kauan",
+        "GameOver: Kauan",
+        "",
+        "",
+        "Menus: Kauan",
+        "Taverna:",
+        "Inventario:",
+        ""
+        "",
+        "Creditos: Kauan",
+        "Final:",
+        "QA: Kauan",
 
           "Design: Kauan, LeonardoAI, RaphaelAI",
           "Design de personagens:",
