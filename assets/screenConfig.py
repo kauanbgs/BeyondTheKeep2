@@ -74,7 +74,7 @@ backMarcacaoTaverna1 = pygame.transform.scale(backMarcacaoTaverna1, (largura, al
 backMarcacaoTaverna2 = pygame.image.load("assets/images/backMarcacaoTaverna2.png")
 backMarcacaoTaverna2 = pygame.transform.scale(backMarcacaoTaverna2, (largura, altura))
 
-persoBase = pygame.image.load("assets/images/PersoBase.png")
+persoBase = pygame.image.load("assets/images/persoBase.png")
 persoBase = pygame.transform.scale(persoBase, (160, 160))
 
 casteloZoom0 = pygame.image.load("assets/images/casteloZoom0.jpeg")
