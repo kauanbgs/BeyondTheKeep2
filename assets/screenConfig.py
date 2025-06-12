@@ -74,7 +74,7 @@ backMarcacaoTaverna1 = pygame.transform.scale(backMarcacaoTaverna1, (largura, al
 backMarcacaoTaverna2 = pygame.image.load("assets/images/backMarcacaoTaverna2.png")
 backMarcacaoTaverna2 = pygame.transform.scale(backMarcacaoTaverna2, (largura, altura))
 
-persoBase = pygame.image.load("assets/images/persoBase.png")
+persoBase = pygame.image.load("assets/images/PersoBase.png")
 persoBase = pygame.transform.scale(persoBase, (160, 160))
 
 casteloZoom0 = pygame.image.load("assets/images/casteloZoom0.jpeg")
@@ -107,10 +107,10 @@ apostasBack = pygame.transform.scale(apostasBack, (largura, altura))
 fundoEldoria = pygame.image.load("assets/images/fundoEldoria.png")
 fundoEldoria = pygame.transform.scale(fundoEldoria, (largura, altura))
 
-persoAndando = pygame.image.load("assets/images/persoAndando.png")
+persoAndando = pygame.image.load("assets/images/PersoAndando.png")
 persoAndando = pygame.transform.scale(persoAndando, (largura, altura))
 
-botaoEldoriaSair = pygame.image.load("assets/images/botaoEldoriaSair.png")
+botaoEldoriaSair = pygame.image.load("assets/images/BotaoEldoriaSair.png")
 botaoEldoriaSair = pygame.transform.scale(botaoEldoriaSair, (250, 250))
 
 botaoEldoriaExplorar = pygame.image.load("assets/images/botaoEldoriaExplorar.png")
@@ -154,7 +154,7 @@ mago_frames = [
     pygame.transform.scale(pygame.image.load("assets/images/magoFrame4.png").convert_alpha(), (160, 160)),
 ]
 
-cavaleiro = pygame.image.load(f"assets/images/cavaleiro.png").convert_alpha()
+cavaleiro = pygame.image.load(f"assets/images/Cavaleiro.png").convert_alpha()
 cavaleiro = pygame.transform.scale(cavaleiro, (480, 480))
 
 npcEldoria = pygame.image.load(f"assets/images/npcEldoria.png").convert_alpha()
@@ -166,14 +166,14 @@ botaoOiEldoriaNpc = pygame.transform.scale(botaoOiEldoriaNpc, (225, 225))
 botaoOuroEldoriaNpc = pygame.image.load(f"assets/images/botaoOuroEldoriaNpc.png").convert_alpha()
 botaoOuroEldoriaNpc = pygame.transform.scale(botaoOuroEldoriaNpc, (225, 225))
 
-pocaovida = pygame.image.load("assets/images/pocaovida.png")
+pocaovida = pygame.image.load("assets/images/Pocaovida.png")
 pocaovida = pygame.transform.scale(pocaovida, (250, 250))
-pocaoforca = pygame.image.load("assets/images/pocaoforca.png")
+pocaoforca = pygame.image.load("assets/images/Pocaoforca.png")
 pocaoforca = pygame.transform.scale(pocaoforca, (250, 250))
 
-pocaovida2 = pygame.image.load("assets/images/pocaovida.png")
+pocaovida2 = pygame.image.load("assets/images/Pocaovida.png")
 pocaovida2 = pygame.transform.scale(pocaovida2, (100, 100))
-pocaoforca2 = pygame.image.load("assets/images/pocaoforca.png")
+pocaoforca2 = pygame.image.load("assets/images/Pocaoforca.png")
 pocaoforca2 = pygame.transform.scale(pocaoforca2, (100, 100))
 
 espada = pygame.image.load("assets/images/espada.png")
@@ -191,7 +191,7 @@ backDuelo = pygame.transform.scale(backDuelo, (largura, altura))
 nextage = pygame.image.load("assets/images/magoFrame1.png")
 nextage = pygame.transform.scale(nextage, (250, 250))
 
-aton = pygame.image.load("assets/images/aton.png")
+aton = pygame.image.load("assets/images/Aton.png")
 aton = pygame.transform.scale(aton, (250, 250))
 
 atonEspada3 = pygame.image.load("assets/images/atonEspada3.png")
